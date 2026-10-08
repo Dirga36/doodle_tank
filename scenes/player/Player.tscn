@@ -1,3 +1,25 @@
 [gd_scene format=3 uid="uid://bnb74kakdh20r"]
 
-[node name="Player" type="Node2D" unique_id=534152243]
+[ext_resource type="Script" uid="uid://bwnlgm7e42ps2" path="res://scenes/player/camera2d.gd" id="1_4kuee"]
+[ext_resource type="Script" uid="uid://cs067voql78lf" path="res://scenes/player/player.gd" id="1_524rm"]
+[ext_resource type="Texture2D" uid="uid://b4q8swvmfnrny" path="res://scenes/player/body.png" id="1_gfjak"]
+[ext_resource type="PackedScene" uid="uid://x4cuqvqshld" path="res://scenes/player/gun.tscn" id="2_gfjak"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D" unique_id=1542430198]
+script = ExtResource("1_524rm")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1291757047]
+zoom = Vector2(10, 10)
+script = ExtResource("1_4kuee")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=1570839702]
+texture_filter = 1
+texture = ExtResource("1_gfjak")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1847681323]
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="Gun" parent="." unique_id=882763557 instance=ExtResource("2_gfjak")]
