@@ -1,3 +1,9 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1791446354
+::res://::1791447726
 icon.svg::CompressedTexture2D::4057279484909065668::1791446340::1791446356::1::::<><><>0<>0<>e6d41db27c9aa11d2040f0c366dd31b2<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+::res://scenes/::1791446759
+::res://scenes/player/::1791447017
+body.png::CompressedTexture2D::4456964186819611790::1791444539::1791447017::1::::<><><>0<>0<>756da176a8088dc41bb7437f338e95d2<>res://.godot/imported/body.png-a5e897259d6fd5d881fcc20ad275daea.ctex::
+gun.png::CompressedTexture2D::7667858290936434992::1791445470::1791447017::1::::<><><>0<>0<>526e683d1e790c85f2103222c781845f<>res://.godot/imported/gun.png-d87a351d46d2d8f1dd83a5e4ad28427b.ctex::
+player.gd::GDScript::6089790494263574063::1791446804::0::1::::<>Node<><>0<>0<><>::
+Player.tscn::PackedScene::3302935286225522551::1791446808::0::1::::<><><>0<>0<><>::

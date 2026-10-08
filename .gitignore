@@ -1,0 +1,37 @@
+# Godot-specific ignores
+.godot/
+.godot/editor/
+
+# Imported assets / build cache
+*.import
+
+# Exported binaries / builds
+/build/
+/exports/
+*.apk
+*.aab
+*.exe
+*.a
+*.o
+*.so
+*.dylib
+*.app
+*.dmg
+*.ipa
+
+# System and editor files
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+
+# IDE / Code Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment variables & secrets (if using APIs / custom tools)
+.env
+.env.*
+!.env.example
