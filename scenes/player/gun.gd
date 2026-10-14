@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var fire_cooldown: float
+@export var fire_cooldown: float = 0.5
 
 const Bullet = preload("uid://b4nipybh6moco")
 @onready var marker_2d: Marker2D = $Marker2D

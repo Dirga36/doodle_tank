@@ -1,39 +1,15 @@
 extends CharacterBody2D
-signal player_die
 
-var speed: float = 1
-var rotation_speed: float = 0.5
-var backward_multiplier: float = 0.8
+@export var speed = 250
+@export var rotation_speed = 3
 
-var max_health: int = 3
-var health: int = max_health
+var rotation_direction = 0
 
+func get_input():
+	rotation_direction = Input.get_axis("left", "right")
+	velocity = transform.x * Input.get_axis("down", "up") * speed
 
-# func _ready():
-#	Global.player_node = self
-
-var rotation_direction: float = 0.0
-	
-func get_input() -> void:
-	rotation_direction = Input.get_axis("turn_left", "turn_right")
-	var throttle: float = Input.get_axis("move_backward", "move_forward")
-	velocity = _get_drive_velocity(throttle)
-
-func _get_drive_velocity(throttle: float) -> Vector2:
-	if throttle < 0.0:
-		throttle *= backward_multiplier
-	return -throttle * speed * transform.y
-
-func _physics_process(delta: float) -> void:
+func _physics_process(delta):
 	get_input()
 	rotation += rotation_direction * rotation_speed * delta
 	move_and_slide()
-
-func take_damage(amount: int) -> void:
-	health -= amount
-	if health <= 0:
-		die()
-
-func die():
-	await get_tree().create_timer(0.1).timeout
-	player_die.emit()

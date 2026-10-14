@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://dbg3o405bx0l1"]
 
 [ext_resource type="PackedScene" uid="uid://bnb74kakdh20r" path="res://scenes/player/Player.tscn" id="1_hyk8p"]
+[ext_resource type="PackedScene" uid="uid://d04y7pydw2wq5" path="res://scenes/map/map.tscn" id="2_iuonh"]
 
 [node name="Main" type="Node" unique_id=1450268258]
 
 [node name="Player" parent="." unique_id=1542430198 instance=ExtResource("1_hyk8p")]
+
+[node name="Map" parent="." unique_id=250008948 instance=ExtResource("2_iuonh")]

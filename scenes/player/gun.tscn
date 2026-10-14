@@ -10,7 +10,6 @@ script = ExtResource("1_j0ebl")
 
 [node name="Gun" type="Sprite2D" parent="." unique_id=742158677]
 texture_filter = 1
-rotation = 1.5707964
 texture = ExtResource("1_ae5e1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=816926680]

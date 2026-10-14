@@ -1,6 +1,6 @@
 extends Area2D
 
-var speed: float = 100
+var speed: float = 500
 var damage: int = 1
 
 func _physics_process(delta: float) -> void:
@@ -12,5 +12,7 @@ func _on_body_entered(body):
 		body.take_damage(damage)
 		queue_free() # Destroy the bullet on impact
 
-func _on_lifespan_timeout() -> void:
-	queue_free() # Deletes the bullet when time runs out
+func _ready():
+	# Deletes the bullet when time runs out
+	await get_tree().create_timer(5.0).timeout
+	queue_free()
