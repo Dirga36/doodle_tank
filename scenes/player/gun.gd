@@ -1,12 +1,10 @@
 extends Node2D
 
-@export var fire_cooldown: float = 0.5
-
 const Bullet = preload("uid://b4nipybh6moco")
-@onready var marker_2d: Marker2D = $Marker2D
-
+var fire_cooldown: float = 0.5
 var _cooldown_timer: float = 0.0
-
+@onready var marker_2d: Marker2D = $Marker2D
+@onready var particles: GPUParticles2D = $Marker2D/GPUParticles2D
 
 func _physics_process(delta: float) -> void:
 	look_at(get_global_mouse_position())
@@ -36,4 +34,6 @@ func _shoot() -> void:
 	bullet.global_transform = marker_2d.global_transform
 	var spawn_parent := get_tree().root
 	spawn_parent.add_child(bullet)
+	particles.restart()
+	particles.emitting = true
 	_cooldown_timer = fire_cooldown

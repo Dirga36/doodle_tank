@@ -5,6 +5,32 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j0ebl"]
 
+[sub_resource type="Gradient" id="Gradient_j0ebl"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e0dt0"]
+gradient = SubResource("Gradient_j0ebl")
+
+[sub_resource type="Curve" id="Curve_xf7jr"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_j0ebl"]
+curve = SubResource("Curve_xf7jr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1vivr"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+inherit_velocity_ratio = 1.0
+spread = 30.0
+initial_velocity_min = 50.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_j0ebl")
+color_ramp = SubResource("GradientTexture1D_e0dt0")
+
 [node name="Gun" type="Area2D" unique_id=882763557]
 script = ExtResource("1_j0ebl")
 
@@ -18,3 +44,10 @@ shape = SubResource("CircleShape2D_j0ebl")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1669542452]
 position = Vector2(24, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Marker2D" unique_id=1223999381]
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1vivr")
