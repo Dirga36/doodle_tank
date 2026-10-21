@@ -6,7 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://x4cuqvqshld" path="res://scenes/player/gun.tscn" id="2_gfjak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
-size = Vector2(16, 16)
+size = Vector2(24, 16)
+
+[sub_resource type="Gradient" id="Gradient_524rm"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_524rm"]
+gradient = SubResource("Gradient_524rm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1vivr"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 10.0
+scale_max = 10.0
+color_ramp = SubResource("GradientTexture1D_524rm")
 
 [node name="Player" type="CharacterBody2D" unique_id=1542430198]
 script = ExtResource("1_524rm")
@@ -16,10 +28,19 @@ zoom = Vector2(10, 10)
 script = ExtResource("1_4kuee")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=1570839702]
+z_index = 1
 texture_filter = 1
+scale = Vector2(1.5, 1)
 texture = ExtResource("1_gfjak")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1847681323]
 shape = SubResource("RectangleShape2D_1vivr")
 
 [node name="Gun" parent="." unique_id=882763557 instance=ExtResource("2_gfjak")]
+z_index = 1
+
+[node name="Trail" type="GPUParticles2D" parent="." unique_id=115994699]
+emitting = false
+amount = 2
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_1vivr")

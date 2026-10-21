@@ -27,8 +27,10 @@ spread = 30.0
 initial_velocity_min = 50.0
 initial_velocity_max = 150.0
 gravity = Vector3(0, 0, 0)
-scale_max = 2.0
+scale_min = 2.0
+scale_max = 3.0
 scale_curve = SubResource("CurveTexture_j0ebl")
+color = Color(0.23753911, 0.23753914, 0.23753911, 1)
 color_ramp = SubResource("GradientTexture1D_e0dt0")
 
 [node name="Gun" type="Area2D" unique_id=882763557]
@@ -43,10 +45,11 @@ visible = false
 shape = SubResource("CircleShape2D_j0ebl")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1669542452]
-position = Vector2(24, 0)
+position = Vector2(22, 0)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Marker2D" unique_id=1223999381]
 emitting = false
+amount = 20
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
