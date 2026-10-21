@@ -1,15 +1,9 @@
 [gd_scene format=3 uid="uid://cls4of2bmwsxn"]
 
-[ext_resource type="Texture2D" uid="uid://cuksdyfklm2h8" path="res://scenes/map/obstacle1.png" id="1_bqnoe"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(16, 16)
 
-[node name="Obstacle1" type="Area2D" unique_id=1858761891]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1867503750]
-visible = false
-texture = ExtResource("1_bqnoe")
+[node name="Obstacle1" type="StaticBody2D" unique_id=1528849847]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1730842281]
 shape = SubResource("RectangleShape2D_1vivr")

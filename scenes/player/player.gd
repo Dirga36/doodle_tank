@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 @onready var gpu_particles_2d: GPUParticles2D = get_tree().root.find_child("Trail", true, false)
 
-@export var speed = 250
-@export var rotation_speed = 3
+var speed = 250
+var rotation_speed = 3
 var rotation_direction = 0
 
 func get_input():
