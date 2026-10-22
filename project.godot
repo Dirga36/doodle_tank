@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Doodle Tank"
-run/main_scene="uid://dbg3o405bx0l1"
+run/main_scene="res://scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,10 +19,26 @@ config/icon="res://icon.svg"
 
 Player="*uid://cs067voql78lf"
 
+[clean_copy_examples]
+
+examples_paths=Array[String](["res://addons/maaacks_game_template/examples/"])
+replace_strings=Dictionary[String, String]({
+"StateExample": "State"
+})
+copy_path="res://"
+
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
+
+[gui]
+
+theme/custom="res://resources/themes/steal_this_theme.tres"
 
 [input]
 
@@ -66,9 +82,31 @@ wheel_down={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/translations/menus_translations.en.translation", "res://addons/maaacks_game_template/base/translations/menus_translations.fr.translation")
+
+[maaacks_game_template]
+
+disable_install_wizard=true
+main_menu_scene_path="res://scenes/menus/main_menu/main_menu.tscn"
+game_scene_path="res://scenes/game/game.tscn"
+ending_scene_path="res://scenes/end_credits/end_credits.tscn"
+copy_path="res://"
+
+[maaacks_scene_loader]
+
+loading_scene_path="res://scenes/loading_screens/loading_screen.tscn"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
+
+[plugin_updater]
+
+plugins={
+"res://addons/maaacks_game_template/": "https://github.com/Maaack/Godot-Game-Template"
+}
 
 [rendering]
 

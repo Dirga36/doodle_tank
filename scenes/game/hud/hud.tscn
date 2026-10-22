@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://c50tl5xtmg1ad"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2xhe5"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[node name="Hud" type="CanvasLayer" unique_id=923868270]
+
+[node name="Control" type="Control" parent="." unique_id=1402279322]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=797549035]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 364.0
+offset_bottom = 94.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer" unique_id=119134276]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer" unique_id=1037974954]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1368284560]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "HP"
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1278910078]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/fill = SubResource("StyleBoxFlat_2xhe5")
+value = 100.0
+fill_mode = 1
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer" unique_id=1634305571]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "SCORE: 000000"
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control" unique_id=1568309733]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -56.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 56.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer2" unique_id=370161962]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer2/VBoxContainer" unique_id=1208606367]
+layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control/MarginContainer2/VBoxContainer/PanelContainer" unique_id=1104649097]
+custom_maximum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="Control/MarginContainer2/VBoxContainer/PanelContainer/SubViewportContainer" unique_id=1287715436]
+
+[node name="Label" type="Label" parent="Control/MarginContainer2/VBoxContainer" unique_id=1769552312]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "TIME 00:0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/MarginContainer2/VBoxContainer" unique_id=1526473463]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "ENEMIES: 0"
+horizontal_alignment = 2
+vertical_alignment = 1

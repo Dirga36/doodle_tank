@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bvpfnr8pembh1"]
+
+[ext_resource type="Script" uid="uid://ba0vnyj06iig1" path="res://scenes/game/scripts/game_timer.gd" id="1_4j704"]
+[ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/nodes/utilities/pause_menu_controller.gd" id="2_kp23o"]
+[ext_resource type="PackedScene" uid="uid://dnbjuvow8mb7t" path="res://scenes/windows/pause_menu.tscn" id="3_5jirj"]
+[ext_resource type="PackedScene" uid="uid://c50tl5xtmg1ad" path="res://scenes/game/hud/hud.tscn" id="4_5i0tg"]
+[ext_resource type="PackedScene" uid="uid://d04y7pydw2wq5" path="res://scenes/game/map/map.tscn" id="4_lfrn8"]
+[ext_resource type="PackedScene" uid="uid://bnb74kakdh20r" path="res://scenes/game/player/Player.tscn" id="5_5i0tg"]
+
+[node name="Game" type="Node" unique_id=1262092417]
+
+[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=986713811]
+process_mode = 3
+autoplay = true
+
+[node name="GameTimer" type="Node" parent="." unique_id=116840261]
+script = ExtResource("1_4j704")
+
+[node name="PauseMenuController" type="Node" parent="." unique_id=1685173287]
+script = ExtResource("2_kp23o")
+pause_menu_packed = ExtResource("3_5jirj")
+
+[node name="Hud" parent="." unique_id=923868270 instance=ExtResource("4_5i0tg")]
+
+[node name="WorldContainer" type="Node" parent="." unique_id=1518243678]
+
+[node name="TileMapLayer" parent="WorldContainer" unique_id=1890088466 instance=ExtResource("4_lfrn8")]
+position = Vector2(1312, 808)
+
+[node name="Player" parent="WorldContainer" unique_id=1542430198 instance=ExtResource("5_5i0tg")]
+position = Vector2(1672, 1576)
+rotation = -0.47647488
+scale = Vector2(0.9999998, 0.9999998)

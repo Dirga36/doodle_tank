@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b7d8mw7jpgjnm"]
+
+[ext_resource type="Texture2D" uid="uid://c2uyete5lp6ub" path="res://scenes/game/map/map.jpg" id="1_jdtl5"]
+
+[node name="Citymap" type="Node2D" unique_id=261524473]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=779944744]
+texture_filter = 1
+texture = ExtResource("1_jdtl5")
