@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 #@onready var trail: GPUParticles2D = $Trail
 
-var speed = 250
+var speed = 100
 var rotation_speed = 3
 var rotation_direction = 0
 

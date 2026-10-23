@@ -22,7 +22,6 @@ curve = SubResource("Curve_xf7jr")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1vivr"]
 lifetime_randomness = 0.2
 particle_flag_disable_z = true
-inherit_velocity_ratio = 1.0
 spread = 30.0
 initial_velocity_min = 50.0
 initial_velocity_max = 150.0
@@ -30,7 +29,7 @@ gravity = Vector3(0, 0, 0)
 scale_min = 2.0
 scale_max = 3.0
 scale_curve = SubResource("CurveTexture_j0ebl")
-color = Color(0.23753911, 0.23753914, 0.23753911, 1)
+color = Color(0.70925504, 0.4110761, 0, 1)
 color_ramp = SubResource("GradientTexture1D_e0dt0")
 
 [node name="Gun" type="Area2D" unique_id=882763557]
