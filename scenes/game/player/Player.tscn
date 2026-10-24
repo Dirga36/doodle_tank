@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cs067voql78lf" path="res://scenes/game/player/player.gd" id="1_524rm"]
 [ext_resource type="Texture2D" uid="uid://b4q8swvmfnrny" path="res://scenes/game/player/body.png" id="1_gfjak"]
 [ext_resource type="PackedScene" uid="uid://x4cuqvqshld" path="res://scenes/game/player/cannon.tscn" id="2_gfjak"]
+[ext_resource type="AudioStream" uid="uid://6jpao1imbdr" path="res://assets/sfx/moving.mp3" id="5_2rpb8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(24, 16)
@@ -31,6 +32,10 @@ border_color = Color(0, 0, 0, 1)
 [node name="Player" type="CharacterBody2D" unique_id=1542430198 node_paths=PackedStringArray("player_health_bar")]
 script = ExtResource("1_524rm")
 player_health_bar = NodePath("CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer/PlayerHealthBar")
+
+[node name="MovingSound" type="AudioStreamPlayer2D" parent="." unique_id=839098852]
+unique_name_in_owner = true
+stream = ExtResource("5_2rpb8")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1291757047]
 zoom = Vector2(10, 10)

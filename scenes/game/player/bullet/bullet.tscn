@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(11, 6)
 
+[sub_resource type="Gradient" id="Gradient_ohgv1"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
 [node name="Bullet" type="Area2D" unique_id=53241792]
 script = ExtResource("1_pyopn")
 
@@ -17,3 +20,10 @@ shape = SubResource("RectangleShape2D_1vivr")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1910756609]
 texture_filter = 1
 texture = ExtResource("1_xikvv")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=69019633]
+top_level = true
+z_index = -1
+width = 1.0
+gradient = SubResource("Gradient_ohgv1")
+sharp_limit = 5.0

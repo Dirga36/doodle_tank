@@ -10,6 +10,8 @@ var rotation_direction = 0
 var current_health: int = 3
 @export var player_health_bar: ProgressBar
 
+@onready var engine_sound: AudioStreamPlayer2D = %MovingSound
+
 func _ready():
 	Global.player = self
 	current_health = max_health
@@ -17,7 +19,7 @@ func _ready():
 	if player_health_bar:
 		player_health_bar.max_value = max_health
 		player_health_bar.value = current_health
-	
+
 func take_damage(amount: int):
 	current_health -= amount
 	# Clamp prevents health from dropping below 0
@@ -49,6 +51,14 @@ func _physics_process(delta):
 	get_input()
 	rotation += rotation_direction * rotation_speed * delta
 	move_and_slide()
-		
+
+	# Check if the tank is actively moving
+	if velocity.length() > 5.0:
+		if not engine_sound.playing:
+			engine_sound.play()
+	else:
+		if engine_sound.playing:
+			engine_sound.stop()
+
 	#if velocity.length() > 0:
 	#	trail.emitting = true

@@ -18,7 +18,6 @@ config/icon="uid://bgs8xguh6kfd3"
 
 [autoload]
 
-Player="*uid://cs067voql78lf"
 Global="*uid://b2hho3yg76d65"
 
 [clean_copy_examples]

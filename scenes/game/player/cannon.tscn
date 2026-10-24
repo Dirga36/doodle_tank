@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dhimrgwsd5tlo" path="res://scenes/game/player/cannon.png" id="1_ae5e1"]
 [ext_resource type="Script" uid="uid://cca0akmqunw5o" path="res://scenes/game/player/cannon.gd" id="1_j0ebl"]
+[ext_resource type="AudioStream" uid="uid://7a1grn3rx8j7" path="res://assets/sfx/cannon2.mp3" id="3_4w2sv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j0ebl"]
 
@@ -42,6 +43,9 @@ texture = ExtResource("1_ae5e1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=816926680]
 visible = false
 shape = SubResource("CircleShape2D_j0ebl")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=968005313]
+stream = ExtResource("3_4w2sv")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1669542452]
 position = Vector2(22, 0)

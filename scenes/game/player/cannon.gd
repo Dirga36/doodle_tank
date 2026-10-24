@@ -3,8 +3,10 @@ extends Node2D
 const Bullet = preload("uid://b4nipybh6moco")
 var fire_cooldown: float = 0.5
 var _cooldown_timer: float = 0.0
+
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var particles: GPUParticles2D = $Marker2D/GPUParticles2D
+@onready var cannon_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _physics_process(delta: float) -> void:
 	look_at(get_global_mouse_position())
@@ -34,6 +36,8 @@ func _shoot() -> void:
 	bullet.global_transform = marker_2d.global_transform
 	var spawn_parent := get_tree().root
 	spawn_parent.add_child(bullet)
+	
+	cannon_sound.play()
 	particles.restart()
 	particles.emitting = true
 	_cooldown_timer = fire_cooldown
