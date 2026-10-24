@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://x4cuqvqshld"]
 
-[ext_resource type="Texture2D" uid="uid://dhimrgwsd5tlo" path="res://scenes/game/player/gun.png" id="1_ae5e1"]
-[ext_resource type="Script" uid="uid://cca0akmqunw5o" path="res://scenes/game/player/gun.gd" id="1_j0ebl"]
+[ext_resource type="Texture2D" uid="uid://dhimrgwsd5tlo" path="res://scenes/game/player/cannon.png" id="1_ae5e1"]
+[ext_resource type="Script" uid="uid://cca0akmqunw5o" path="res://scenes/game/player/cannon.gd" id="1_j0ebl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j0ebl"]
 
@@ -32,10 +32,10 @@ scale_curve = SubResource("CurveTexture_j0ebl")
 color = Color(0.70925504, 0.4110761, 0, 1)
 color_ramp = SubResource("GradientTexture1D_e0dt0")
 
-[node name="Gun" type="Area2D" unique_id=882763557]
+[node name="Cannon" type="Area2D" unique_id=882763557]
 script = ExtResource("1_j0ebl")
 
-[node name="Gun" type="Sprite2D" parent="." unique_id=742158677]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=742158677]
 texture_filter = 1
 texture = ExtResource("1_ae5e1")
 
