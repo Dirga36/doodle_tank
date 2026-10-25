@@ -18,7 +18,7 @@ func _update_cooldown(delta: float) -> void:
 
 
 func _can_fire() -> bool:
-	return Input.is_action_pressed("deploy_bomb") and _cooldown_timer == 0.0
+	return Input.is_action_pressed("set land mine") and _cooldown_timer == 0.0
 
 
 func drop_bomb() -> void:
@@ -31,4 +31,3 @@ func drop_bomb() -> void:
 	# Add the bomb to the root main scene (not as a child of Player)
 	get_tree().root.add_child(trap)
 	_cooldown_timer = fire_cooldown
-	print("DEPLOYED")

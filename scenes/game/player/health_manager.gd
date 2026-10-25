@@ -1,6 +1,6 @@
 extends Node
 
-@export var max_health: int = 3
+var max_health: int = 3
 var current_health: int = 3
 @onready var player_health_bar: ProgressBar = %PlayerHealthBar
 

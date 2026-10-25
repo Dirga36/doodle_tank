@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://mprrns3w350r"]
+
+[ext_resource type="Script" uid="uid://1ufrpodha6ir" path="res://scenes/game/enemy/enemy.gd" id="1_dew2i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(16, 16)
+
+[node name="Enemy" type="Area2D" unique_id=1397214484 groups=["enemy"]]
+script = ExtResource("1_dew2i")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1100296179]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=484295198]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=231684555]
+shape = SubResource("RectangleShape2D_1vivr")

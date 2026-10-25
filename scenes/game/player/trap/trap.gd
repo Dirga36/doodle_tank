@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var damage: int = 50
+@export var damage: int = 1
 @export var fuse_time: float = 2.0
 @export var is_proximity_trap: bool = true  # True for proximity trigger, False for fuse timer
 
@@ -22,7 +22,7 @@ func _ready() -> void:
 		body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node2D) -> void:
-	if is_armed and body.is_in_group("enemies"):
+	if is_armed and body.is_in_group("enemy"):
 		explode()
 
 func _on_fuse_timeout() -> void:
