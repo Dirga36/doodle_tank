@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bcwcbeii2pdot" path="res://scenes/game/hud/ammo_icon.png" id="1_3ujq4"]
 [ext_resource type="Script" uid="uid://bw8fwfgai6i8a" path="res://scenes/game/hud/sub_viewport.gd" id="1_4h4qe"]
 [ext_resource type="Texture2D" uid="uid://c7u0clwgmsph8" path="res://scenes/game/hud/landmine_icon.png" id="2_3ujq4"]
+[ext_resource type="Script" uid="uid://ba0vnyj06iig1" path="res://scenes/game/scripts/game_timer.gd" id="3_7lo7q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ujq4"]
 bg_color = Color(0, 0, 0, 0.37254903)
@@ -94,6 +95,9 @@ text = "TIME: 00:00:00"
 horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("1_2xhe5")
+
+[node name="GameTimer" type="Node" parent="Control/MarginContainer2/VBoxContainer" unique_id=1085067368]
+script = ExtResource("3_7lo7q")
 
 [node name="Label2" type="Label" parent="Control/MarginContainer2/VBoxContainer" unique_id=1526473463]
 layout_mode = 2

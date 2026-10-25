@@ -68,6 +68,7 @@ func game_lost() -> void:
 	if has_won_game or has_lost_game: return
 	has_lost_game = true
 	_load_lose_screen_or_reload()
+	print("LOSt")
 
 func game_won() -> void:
 	if has_won_game or has_lost_game: return

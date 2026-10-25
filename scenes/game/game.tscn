@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://c50tl5xtmg1ad" path="res://scenes/game/hud/hud.tscn" id="4_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://d04y7pydw2wq5" path="res://scenes/game/map/map.tscn" id="4_lfrn8"]
 [ext_resource type="PackedScene" uid="uid://bnb74kakdh20r" path="res://scenes/game/player/Player.tscn" id="5_5i0tg"]
+[ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="7_bdhmt"]
+[ext_resource type="PackedScene" uid="uid://doqtphk66a6re" path="res://scenes/windows/game_won_window.tscn" id="8_4j704"]
+[ext_resource type="Script" uid="uid://b4wss7vwhw5pw" path="res://scenes/game/goal_manager.gd" id="8_87uf6"]
+[ext_resource type="PackedScene" uid="uid://dalkjhvhxdug4" path="res://scenes/windows/game_lost_window.tscn" id="9_kp23o"]
 
 [node name="Game" type="Node" unique_id=1262092417]
 
@@ -31,3 +35,13 @@ position = Vector2(1312, 808)
 position = Vector2(1672, 1576)
 rotation = -0.47647488
 scale = Vector2(0.9999998, 0.9999998)
+
+[node name="WinLoseManager" type="Node" parent="." unique_id=214112579]
+script = ExtResource("7_bdhmt")
+game_won_scene = ExtResource("8_4j704")
+game_lost_scene = ExtResource("9_kp23o")
+
+[node name="GoalManager" type="Node" parent="." unique_id=1125904230]
+script = ExtResource("8_87uf6")
+
+[connection signal="player_died" from="WorldContainer/Player" to="GoalManager" method="_on_player_player_died"]

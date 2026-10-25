@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://bnb74kakdh20r"]
 
+[ext_resource type="Script" uid="uid://cgqd6svchmu7u" path="res://scenes/game/player/land_mine.gd" id="1_2rpb8"]
 [ext_resource type="Script" uid="uid://bwnlgm7e42ps2" path="res://scenes/game/player/camera2d.gd" id="1_4kuee"]
 [ext_resource type="Script" uid="uid://cs067voql78lf" path="res://scenes/game/player/player.gd" id="1_524rm"]
 [ext_resource type="Texture2D" uid="uid://b4q8swvmfnrny" path="res://scenes/game/player/body.png" id="1_gfjak"]
 [ext_resource type="PackedScene" uid="uid://x4cuqvqshld" path="res://scenes/game/player/cannon.tscn" id="2_gfjak"]
 [ext_resource type="AudioStream" uid="uid://6jpao1imbdr" path="res://assets/sfx/moving.mp3" id="5_2rpb8"]
+[ext_resource type="Script" uid="uid://bga3aqjv48503" path="res://scenes/game/player/health_manager.gd" id="7_3vwxf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(24, 16)
@@ -29,17 +31,8 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 
-[node name="Player" type="CharacterBody2D" unique_id=1542430198 node_paths=PackedStringArray("player_health_bar")]
+[node name="Player" type="CharacterBody2D" unique_id=1542430198]
 script = ExtResource("1_524rm")
-player_health_bar = NodePath("CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer/PlayerHealthBar")
-
-[node name="MovingSound" type="AudioStreamPlayer2D" parent="." unique_id=839098852]
-unique_name_in_owner = true
-stream = ExtResource("5_2rpb8")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1291757047]
-zoom = Vector2(10, 10)
-script = ExtResource("1_4kuee")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=1570839702]
 z_index = 1
@@ -51,16 +44,26 @@ texture = ExtResource("1_gfjak")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1847681323]
 shape = SubResource("RectangleShape2D_1vivr")
 
-[node name="Cannon" parent="." unique_id=882763557 instance=ExtResource("2_gfjak")]
-z_index = 1
-
 [node name="Trail" type="GPUParticles2D" parent="." unique_id=115994699]
+unique_name_in_owner = true
 emitting = false
 amount = 2
 lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_1vivr")
 
+[node name="MovingSound" type="AudioStreamPlayer2D" parent="." unique_id=839098852]
+unique_name_in_owner = true
+stream = ExtResource("5_2rpb8")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1291757047]
+zoom = Vector2(10, 10)
+script = ExtResource("1_4kuee")
+
+[node name="HealthManager" type="Node" parent="." unique_id=933980256]
+script = ExtResource("7_3vwxf")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1601982036]
+layer = 0
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=21351546]
 layout_mode = 3
@@ -90,6 +93,7 @@ text = "HP"
 vertical_alignment = 1
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=612878969]
+unique_name_in_owner = true
 z_as_relative = false
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -106,3 +110,11 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "SCORE: 000000"
 vertical_alignment = 1
+
+[node name="Cannon" parent="." unique_id=882763557 instance=ExtResource("2_gfjak")]
+z_index = 1
+
+[node name="LandMine" type="Node" parent="." unique_id=904164333]
+script = ExtResource("1_2rpb8")
+
+[connection signal="player_health_is_zero" from="HealthManager" to="." method="_on_health_manager_player_health_is_zero"]

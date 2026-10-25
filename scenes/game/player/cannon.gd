@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 const Bullet = preload("uid://b4nipybh6moco")
 var fire_cooldown: float = 0.5

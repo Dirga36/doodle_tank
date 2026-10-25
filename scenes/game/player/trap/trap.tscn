@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dw2vx7rwmhiyw"]
+
+[ext_resource type="Script" uid="uid://brg3j2pkhpjm8" path="res://scenes/game/player/trap/trap.gd" id="1_27ja4"]
+[ext_resource type="Texture2D" uid="uid://mwcukmklefo7" path="res://scenes/game/player/trap/trap.png" id="1_vpfkv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(48, 48)
+
+[node name="Trap" type="Area2D" unique_id=1538265662]
+script = ExtResource("1_27ja4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=959115622]
+texture_filter = 1
+scale = Vector2(1.9600008, 1.9999995)
+texture = ExtResource("1_vpfkv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1337044304]
+scale = Vector2(1.9600008, 1.9999995)
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="BlastArea" type="Area2D" parent="." unique_id=2063747739]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlastArea" unique_id=1107076299]
+shape = SubResource("RectangleShape2D_8vrlf")
+
+[node name="FuseTimer" type="Timer" parent="." unique_id=651076542]

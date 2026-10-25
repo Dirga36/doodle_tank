@@ -1,19 +1,12 @@
 extends Label
 
-var time_played: float = 0.0
+@onready var game_timer: Node = $"../GameTimer"
 
-func _process(delta: float) -> void:
-	# Accumulate the elapsed frame time
-	time_played += delta
+func _process(_delta: float) -> void:
+	var total_seconds: int = int(game_timer.play_time)
 	
-	# Update the label text with the formatted time string
-	text = get_formatted_time(time_played)
-
-func get_formatted_time(total_seconds: float) -> String:
-	# Calculate hours, minutes, and seconds
-	var hours: int = int(total_seconds) / 3600
-	var minutes: int = (int(total_seconds) % 3600) / 60
-	var seconds: int = int(total_seconds) % 60
+	var hours: int = total_seconds / 3600
+	var minutes: int = (total_seconds % 3600) / 60
+	var seconds: int = total_seconds % 60
 	
-	# Format to pad single digits with leading zeros (e.g., 01:05:09)
-	return "TIME: " + "%02d:%02d:%02d" % [hours, minutes, seconds]
+	text = "TIME: %02d:%02d:%02d" % [hours, minutes, seconds]

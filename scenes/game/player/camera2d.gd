@@ -9,9 +9,9 @@ extends Camera2D
 @onready var target_zoom: Vector2 = zoom
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("wheel_up"):
+	if event.is_action_pressed("zoom out"):
 		target_zoom += Vector2(zoom_speed, zoom_speed)
-	elif event.is_action_pressed("wheel_down"):
+	elif event.is_action_pressed("zoom in"):
 		target_zoom -= Vector2(zoom_speed, zoom_speed)
 	
 	# Keep target zoom within limits
