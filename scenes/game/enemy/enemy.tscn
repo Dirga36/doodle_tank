@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(16, 16)
 
-[node name="Enemy" type="Area2D" unique_id=1397214484 groups=["enemy"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=407183681 groups=["enemy"]]
 script = ExtResource("1_dew2i")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1100296179]
@@ -16,3 +16,16 @@ polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=231684555]
 shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1358544073]
+path_desired_distance = 10.0
+target_desired_distance = 20.0
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 8.0
+
+[node name="Timer" type="Timer" parent="." unique_id=931943509]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
