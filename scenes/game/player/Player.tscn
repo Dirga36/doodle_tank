@@ -32,6 +32,7 @@ border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=1542430198]
+slide_on_ceiling = false
 script = ExtResource("1_524rm")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=1570839702]

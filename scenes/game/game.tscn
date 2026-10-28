@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c50tl5xtmg1ad" path="res://scenes/game/hud/hud.tscn" id="4_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://d04y7pydw2wq5" path="res://scenes/game/map/map.tscn" id="4_lfrn8"]
 [ext_resource type="PackedScene" uid="uid://bnb74kakdh20r" path="res://scenes/game/player/Player.tscn" id="5_5i0tg"]
+[ext_resource type="Script" uid="uid://bx1vgvegrt2ne" path="res://scenes/game/EnemySpawner.gd" id="6_5jirj"]
 [ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="7_bdhmt"]
 [ext_resource type="PackedScene" uid="uid://mprrns3w350r" path="res://scenes/game/enemy/enemy.tscn" id="7_kp23o"]
 [ext_resource type="PackedScene" uid="uid://doqtphk66a6re" path="res://scenes/windows/game_won_window.tscn" id="8_4j704"]
@@ -40,14 +41,16 @@ navigation_polygon = SubResource("NavigationPolygon_4j704")
 [node name="TileMapLayer" parent="WorldContainer/NavigationRegion2D" unique_id=1890088466 instance=ExtResource("4_lfrn8")]
 position = Vector2(1312, 808)
 
+[node name="EnemySpawner2D" type="Marker2D" parent="WorldContainer/NavigationRegion2D/TileMapLayer" unique_id=1824383573]
+position = Vector2(-1048, -168)
+script = ExtResource("6_5jirj")
+enemy_scene = ExtResource("7_kp23o")
+spawn_interval = 3.0
+
 [node name="Player" parent="WorldContainer" unique_id=1542430198 instance=ExtResource("5_5i0tg")]
 position = Vector2(1672, 1576)
 rotation = -0.47647488
 scale = Vector2(0.9999998, 0.9999998)
-
-[node name="Enemy" parent="WorldContainer" unique_id=407183681 node_paths=PackedStringArray("player") instance=ExtResource("7_kp23o")]
-position = Vector2(1888, 1440)
-player = NodePath("../Player")
 
 [node name="WinLoseManager" type="Node" parent="." unique_id=214112579]
 script = ExtResource("7_bdhmt")

@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
 var speed: float = 50.0
-@export var player: Node2D # Assign your player node in the inspector
+var player = Global.player
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var health_manager: Node = $HealthManager
 
 func _ready() -> void:
 	# Wait for the first physics frame to ensure the NavigationServer is fully synced
@@ -36,8 +37,12 @@ func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 
-
 func _on_timer_timeout() -> void:
 	if player:
 		nav_agent.target_position = player.global_position
-		
+
+func take_damage(amount: int) -> void:
+	health_manager.take_damage(amount)
+
+func _on_health_manager_died() -> void:
+	queue_free()

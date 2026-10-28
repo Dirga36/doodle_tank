@@ -19,10 +19,11 @@ config/icon="uid://bgs8xguh6kfd3"
 [autoload]
 
 Global="*uid://b2hho3yg76d65"
+SceneLoader="*uid://cpehcs7n5c62p"
 
 [clean_copy_examples]
 
-examples_paths=Array[String](["res://addons/maaacks_game_template/examples/"])
+examples_paths=Array[String](["res://addons/maaacks_game_template/examples/", "res://addons/maaacks_scene_loader/examples/"])
 replace_strings=Dictionary[String, String]({
 "StateExample": "State"
 })
@@ -35,7 +36,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
+enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg", "res://addons/maaacks_scene_loader/plugin.cfg", "res://addons/plugin_updater/plugin.cfg")
 
 [gui]
 
@@ -111,7 +112,9 @@ loading_scene_path="res://scenes/loading_screens/loading_screen.tscn"
 [plugin_updater]
 
 plugins={
-"res://addons/maaacks_game_template/": "https://github.com/Maaack/Godot-Game-Template"
+"res://addons/maaacks_game_template/": "https://github.com/Maaack/Godot-Game-Template",
+"res://addons/maaacks_scene_loader/": "https://github.com/Maaack/Godot-Scene-Loader",
+"res://addons/plugin_updater/": "https://github.com/Maaack/Godot-Plugin-Updater"
 }
 
 [rendering]
