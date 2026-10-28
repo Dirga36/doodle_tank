@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://t2jubrypf0dk"]
+
+[ext_resource type="Texture2D" uid="uid://cqo4dhxnb2igt" path="res://scenes/game/enemy/tank/tank_body.png" id="1_6y3eq"]
+[ext_resource type="PackedScene" uid="uid://c5xu0bjcq1s3k" path="res://scenes/game/enemy/tank/tank_cannon/tank_cannon.tscn" id="2_641cv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(31, 20)
+
+[node name="Tank" type="CharacterBody2D" unique_id=766356726]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=464971313]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1066314075]
+texture_filter = 1
+texture = ExtResource("1_6y3eq")
+
+[node name="TankCannon" parent="." unique_id=1450049715 instance=ExtResource("2_641cv")]

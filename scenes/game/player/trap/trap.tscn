@@ -6,8 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
-size = Vector2(48, 48)
+[sub_resource type="CircleShape2D" id="CircleShape2D_wdut5"]
+radius = 48.0
 
 [node name="Trap" type="Area2D" unique_id=1538265662]
 script = ExtResource("1_27ja4")
@@ -24,6 +24,6 @@ shape = SubResource("RectangleShape2D_1vivr")
 [node name="BlastArea" type="Area2D" parent="." unique_id=2063747739]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlastArea" unique_id=1107076299]
-shape = SubResource("RectangleShape2D_8vrlf")
+shape = SubResource("CircleShape2D_wdut5")
 
 [node name="FuseTimer" type="Timer" parent="." unique_id=651076542]

@@ -8,8 +8,15 @@ var _cooldown_timer: float = 0.0
 @onready var particles: GPUParticles2D = $Marker2D/GPUParticles2D
 @onready var cannon_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+var rotation_speed: float = 5.0 # Lower values = slower rotation
+
 func _physics_process(delta: float) -> void:
-	look_at(get_global_mouse_position())
+	var mouse_pos = get_global_mouse_position()
+	var target_angle = global_position.direction_to(mouse_pos).angle()
+	
+	# Interpolate global_rotation instead of local rotation
+	global_rotation = lerp_angle(global_rotation, target_angle, rotation_speed * delta)
+	
 	_normalize_rotation()
 	_update_cooldown(delta)
 	if _can_fire():
@@ -17,7 +24,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _normalize_rotation() -> void:
-	rotation_degrees = wrap(rotation_degrees, 0, 360)
+	global_rotation_degrees = wrap(global_rotation_degrees, 0.0, 360.0)
 
 
 func _update_cooldown(delta: float) -> void:
