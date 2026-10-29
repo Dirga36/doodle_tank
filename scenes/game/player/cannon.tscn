@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://7a1grn3rx8j7" path="res://assets/sfx/cannon2.mp3" id="3_4w2sv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j0ebl"]
+radius = 6.0827627
 
 [sub_resource type="Gradient" id="Gradient_j0ebl"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -36,13 +37,12 @@ color_ramp = SubResource("GradientTexture1D_e0dt0")
 [node name="Cannon" type="Area2D" unique_id=882763557]
 script = ExtResource("1_j0ebl")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=816926680]
+shape = SubResource("CircleShape2D_j0ebl")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=742158677]
 texture_filter = 1
 texture = ExtResource("1_ae5e1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=816926680]
-visible = false
-shape = SubResource("CircleShape2D_j0ebl")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=968005313]
 stream = ExtResource("3_4w2sv")

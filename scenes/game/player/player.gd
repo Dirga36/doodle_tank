@@ -7,6 +7,7 @@ var rotation_speed = 3
 var rotation_direction = 0
 
 @onready var engine_sound: AudioStreamPlayer2D = %MovingSound
+@onready var health_manager: Node = $HealthManager
 
 signal player_died
 
@@ -33,6 +34,9 @@ func _physics_process(delta):
 	if velocity.length() > 0:
 		trail.emitting = true
 
+func take_damage(amount):
+	health_manager.take_damage(amount)
+	
 func _on_health_manager_player_health_is_zero() -> void:
 	emit_signal("player_died")
 	queue_free()

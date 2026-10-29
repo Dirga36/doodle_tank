@@ -4,16 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://c5xu0bjcq1s3k" path="res://scenes/game/enemy/tank/tank_cannon/tank_cannon.tscn" id="2_641cv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
-size = Vector2(31, 20)
+size = Vector2(25, 16)
 
-[node name="Tank" type="CharacterBody2D" unique_id=766356726]
+[node name="Tank" type="CharacterBody2D" unique_id=766356726 groups=["enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=464971313]
-position = Vector2(-1.5, 0)
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_1vivr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1066314075]
 texture_filter = 1
+scale = Vector2(0.9, 0.9)
 texture = ExtResource("1_6y3eq")
 
 [node name="TankCannon" parent="." unique_id=1450049715 instance=ExtResource("2_641cv")]

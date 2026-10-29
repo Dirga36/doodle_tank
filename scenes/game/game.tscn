@@ -38,6 +38,11 @@ pause_menu_packed = ExtResource("3_5jirj")
 
 [node name="WorldContainer" type="Node" parent="." unique_id=1518243678]
 
+[node name="Player" parent="WorldContainer" unique_id=1542430198 instance=ExtResource("5_5i0tg")]
+position = Vector2(1672, 1576)
+rotation = -0.47647488
+scale = Vector2(0.99999976, 0.99999976)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="WorldContainer" unique_id=1609448979]
 navigation_polygon = SubResource("NavigationPolygon_4j704")
 
@@ -50,19 +55,14 @@ script = ExtResource("6_5jirj")
 enemy_scene = ExtResource("7_kp23o")
 spawn_interval = 3.0
 
-[node name="Tank" parent="WorldContainer/NavigationRegion2D/TileMapLayer/EnemySpawner2D" unique_id=766356726 instance=ExtResource("8_otnwt")]
-position = Vector2(1480.5201, 789.28)
+[node name="Armoredcar" parent="WorldContainer" unique_id=1512763097 instance=ExtResource("10_5v6r0")]
+position = Vector2(1784.4501, 1475.26)
 
-[node name="Drone" parent="WorldContainer/NavigationRegion2D/TileMapLayer/EnemySpawner2D/Tank" unique_id=2078730313 instance=ExtResource("9_3xj4h")]
-position = Vector2(79.859985, -1.210083)
+[node name="Drone" parent="WorldContainer" unique_id=2078730313 instance=ExtResource("9_3xj4h")]
+position = Vector2(1824.3801, 1428.07)
 
-[node name="Armoredcar" parent="WorldContainer/NavigationRegion2D/TileMapLayer/EnemySpawner2D/Tank/Drone" unique_id=1512763097 instance=ExtResource("10_5v6r0")]
-position = Vector2(-39.930054, 47.190063)
-
-[node name="Player" parent="WorldContainer" unique_id=1542430198 instance=ExtResource("5_5i0tg")]
-position = Vector2(1672, 1576)
-rotation = -0.47647488
-scale = Vector2(0.9999998, 0.9999998)
+[node name="Tank" parent="WorldContainer" unique_id=766356726 instance=ExtResource("8_otnwt")]
+position = Vector2(1744.5201, 1429.28)
 
 [node name="WinLoseManager" type="Node" parent="." unique_id=214112579]
 script = ExtResource("7_bdhmt")

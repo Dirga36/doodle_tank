@@ -93,6 +93,13 @@ shoot={
 
 locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/translations/menus_translations.en.translation", "res://addons/maaacks_game_template/base/translations/menus_translations.fr.translation")
 
+[layer_names]
+
+2d_physics/layer_1="World and Ground Enemy"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Air Enemy"
+2d_physics/layer_4="Projectiles"
+
 [maaacks_game_template]
 
 disable_install_wizard=true

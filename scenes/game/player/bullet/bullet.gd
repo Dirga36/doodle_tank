@@ -36,6 +36,5 @@ func _on_body_entered(body):
 		body.take_damage(damage)
 		queue_free() # Destroy the bullet on impact
 
-
 func _on_lifespan_timeout() -> void:
 	queue_free()

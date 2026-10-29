@@ -1,17 +1,35 @@
 [gd_scene format=3 uid="uid://de3r350jvsdl0"]
 
+[ext_resource type="Script" uid="uid://b8xu3k3wjjpvp" path="res://scenes/game/enemy/drone/drone.gd" id="1_cni83"]
 [ext_resource type="Texture2D" uid="uid://nlk0yqejf3ut" path="res://scenes/game/enemy/drone/drone.png" id="1_p4tqb"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cni83"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3vwxf"]
+radius = 7.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1vivr"]
 radius = 8.0
 height = 32.0
 
-[node name="Drone" type="CharacterBody2D" unique_id=2078730313]
+[node name="Drone" type="CharacterBody2D" unique_id=2078730313 groups=["enemy"]]
+z_index = 1
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_cni83")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1671821190]
 position = Vector2(-1, 0)
-shape = SubResource("CapsuleShape2D_cni83")
+shape = SubResource("CircleShape2D_3vwxf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1673058693]
 texture_filter = 1
 texture = ExtResource("1_p4tqb")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=954663317]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=148155951]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_1vivr")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

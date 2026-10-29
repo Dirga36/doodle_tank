@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(42, 24)
 
-[node name="Armoredcar" type="CharacterBody2D" unique_id=1512763097]
+[node name="Armoredcar" type="CharacterBody2D" unique_id=1512763097 groups=["enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=763290937]
 shape = SubResource("RectangleShape2D_1vivr")

@@ -20,7 +20,6 @@ func take_damage(amount: int):
 	if current_health <= 0:
 		health_is_zero()
 
-
 func update_player_health_bar():
 	if player_health_bar:
 		player_health_bar.value = current_health
