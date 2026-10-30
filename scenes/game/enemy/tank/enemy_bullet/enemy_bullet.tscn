@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bwbfx4yqypae0"]
+
+[ext_resource type="Script" uid="uid://creht07yttgy6" path="res://scenes/game/enemy/tank/enemy_bullet/enemy_bullet.gd" id="1_nxcno"]
+[ext_resource type="Texture2D" uid="uid://d32wjgghwlguk" path="res://scenes/game/enemy/tank/enemy_bullet/enemy_bullet.png" id="2_vobwe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vobwe"]
+size = Vector2(12, 6)
+
+[sub_resource type="Gradient" id="Gradient_tgyqr"]
+colors = PackedColorArray(0.9372549, 0.12941177, 0.25882354, 1, 0, 0, 0, 1)
+
+[node name="EnemyBullet" type="Area2D" unique_id=777503088]
+collision_layer = 10
+collision_mask = 3
+script = ExtResource("1_nxcno")
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=609346076]
+position = Vector2(7, 0)
+shape = SubResource("RectangleShape2D_vobwe")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1118054364]
+texture_filter = 1
+texture = ExtResource("2_vobwe")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=413753441]
+top_level = true
+z_index = -1
+width = 1.0
+gradient = SubResource("Gradient_tgyqr")
+sharp_limit = 5.0
+
+[node name="Lifespan" type="Timer" parent="." unique_id=1024424851]
+wait_time = 2.0
+one_shot = true
+autostart = true

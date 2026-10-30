@@ -10,6 +10,7 @@ size = Vector2(8, 8)
 radius = 48.0
 
 [node name="Trap" type="Area2D" unique_id=1538265662]
+z_index = -1
 script = ExtResource("1_27ja4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=959115622]

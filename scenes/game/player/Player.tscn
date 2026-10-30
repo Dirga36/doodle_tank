@@ -34,6 +34,7 @@ border_color = Color(0, 0, 0, 1)
 [node name="Player" type="CharacterBody2D" unique_id=1542430198 groups=["player"]]
 collision_layer = 3
 collision_mask = 3
+motion_mode = 1
 slide_on_ceiling = false
 script = ExtResource("1_524rm")
 

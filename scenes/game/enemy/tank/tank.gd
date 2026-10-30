@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var speed: float = 50.0
-var player = Global.player
+var speed: float = 75.0
+@export var player: CharacterBody2D
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var health_manager: Node = $HealthManager
@@ -14,7 +14,7 @@ func actor_setup() -> void:
 	if player:
 		nav_agent.target_position = player.global_position
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta):
 	if not player:
 		return
 		
@@ -33,8 +33,13 @@ func _physics_process(_delta: float) -> void:
 
 	# Calculate direction and apply velocity
 	var direction: Vector2 = current_agent_position.direction_to(next_path_position)
-	velocity = direction * speed
-	
+	var target_angle: float = direction.angle()
+
+	# Smoothly rotate towards the target angle
+	global_rotation = rotate_toward(global_rotation, target_angle, 1 * delta)
+
+	# Move forward in the direction the drone is facing
+	velocity = Vector2.RIGHT.rotated(global_rotation) * speed
 	move_and_slide()
 
 func _on_timer_timeout() -> void:

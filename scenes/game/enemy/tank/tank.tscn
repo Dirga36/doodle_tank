@@ -1,12 +1,19 @@
 [gd_scene format=3 uid="uid://t2jubrypf0dk"]
 
 [ext_resource type="Texture2D" uid="uid://cqo4dhxnb2igt" path="res://scenes/game/enemy/tank/tank_body.png" id="1_6y3eq"]
+[ext_resource type="Script" uid="uid://b2iw27f3qptd0" path="res://scenes/game/enemy/tank/tank.gd" id="1_mdpx2"]
 [ext_resource type="PackedScene" uid="uid://c5xu0bjcq1s3k" path="res://scenes/game/enemy/tank/tank_cannon/tank_cannon.tscn" id="2_641cv"]
+[ext_resource type="Script" uid="uid://bqxdxc52wbqpg" path="res://scenes/game/enemy/tank/health_manager.gd" id="4_mdpx2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(25, 16)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1vivr"]
+radius = 284.00177
+
 [node name="Tank" type="CharacterBody2D" unique_id=766356726 groups=["enemy"]]
+motion_mode = 1
+script = ExtResource("1_mdpx2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=464971313]
 position = Vector2(-0.5, 0)
@@ -18,3 +25,25 @@ scale = Vector2(0.9, 0.9)
 texture = ExtResource("1_6y3eq")
 
 [node name="TankCannon" parent="." unique_id=1450049715 instance=ExtResource("2_641cv")]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1429557330]
+path_desired_distance = 10.0
+target_desired_distance = 20.0
+simplify_path = true
+avoidance_enabled = true
+radius = 25.0
+
+[node name="Timer" type="Timer" parent="." unique_id=1761808205]
+wait_time = 0.2
+autostart = true
+
+[node name="HealthManager" type="Node" parent="." unique_id=1081564431]
+script = ExtResource("4_mdpx2")
+
+[node name="TargetArea" type="Area2D" parent="." unique_id=1101666297]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetArea" unique_id=1665224089]
+shape = SubResource("CircleShape2D_1vivr")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="died" from="HealthManager" to="." method="_on_health_manager_died"]

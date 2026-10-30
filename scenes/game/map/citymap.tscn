@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://b7d8mw7jpgjnm"]
 
 [ext_resource type="Texture2D" uid="uid://c2uyete5lp6ub" path="res://scenes/game/map/map.jpg" id="1_jdtl5"]
-[ext_resource type="Script" uid="uid://bx1vgvegrt2ne" path="res://scenes/game/EnemySpawner.gd" id="2_da5ty"]
-[ext_resource type="PackedScene" uid="uid://mprrns3w350r" path="res://scenes/game/enemy/enemy.tscn" id="3_hfpcn"]
 
 [node name="Citymap" type="Node2D" unique_id=261524473]
 
@@ -11,8 +9,3 @@ texture_filter = 1
 position = Vector2(3.3795834e-05, 0)
 scale = Vector2(0.99846864, 1)
 texture = ExtResource("1_jdtl5")
-
-[node name="EnemySpawner2D" type="Marker2D" parent="." unique_id=697862709]
-position = Vector2(528, 664)
-script = ExtResource("2_da5ty")
-enemy_scene = ExtResource("3_hfpcn")

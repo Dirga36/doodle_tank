@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bnb74kakdh20r" path="res://scenes/game/player/Player.tscn" id="5_5i0tg"]
 [ext_resource type="Script" uid="uid://bx1vgvegrt2ne" path="res://scenes/game/EnemySpawner.gd" id="6_5jirj"]
 [ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="7_bdhmt"]
-[ext_resource type="PackedScene" uid="uid://mprrns3w350r" path="res://scenes/game/enemy/enemy.tscn" id="7_kp23o"]
 [ext_resource type="PackedScene" uid="uid://doqtphk66a6re" path="res://scenes/windows/game_won_window.tscn" id="8_4j704"]
 [ext_resource type="Script" uid="uid://b4wss7vwhw5pw" path="res://scenes/game/goal_manager.gd" id="8_87uf6"]
 [ext_resource type="PackedScene" uid="uid://t2jubrypf0dk" path="res://scenes/game/enemy/tank/tank.tscn" id="8_otnwt"]
@@ -52,7 +51,6 @@ position = Vector2(1312, 808)
 [node name="EnemySpawner2D" type="Marker2D" parent="WorldContainer/NavigationRegion2D/TileMapLayer" unique_id=1824383573]
 position = Vector2(-1048, -168)
 script = ExtResource("6_5jirj")
-enemy_scene = ExtResource("7_kp23o")
 spawn_interval = 3.0
 
 [node name="Armoredcar" parent="WorldContainer" unique_id=1512763097 node_paths=PackedStringArray("player") instance=ExtResource("10_5v6r0")]
@@ -62,8 +60,9 @@ player = NodePath("../Player")
 [node name="Drone" parent="WorldContainer" unique_id=2078730313 instance=ExtResource("9_3xj4h")]
 position = Vector2(1824.3801, 1428.07)
 
-[node name="Tank" parent="WorldContainer" unique_id=766356726 instance=ExtResource("8_otnwt")]
+[node name="Tank" parent="WorldContainer" unique_id=766356726 node_paths=PackedStringArray("player") instance=ExtResource("8_otnwt")]
 position = Vector2(1744.5201, 1429.28)
+player = NodePath("../Player")
 
 [node name="WinLoseManager" type="Node" parent="." unique_id=214112579]
 script = ExtResource("7_bdhmt")

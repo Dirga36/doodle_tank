@@ -1,7 +1,7 @@
 extends Node
 
-var max_health: int = 1
-var current_health: int = 1
+var max_health: int = 5
+var current_health: int = 5
 
 signal died
 

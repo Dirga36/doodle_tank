@@ -2,12 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://dj7aja7mp44m8" path="res://scenes/game/enemy/armoredcar/armoredcar.png" id="1_ksln7"]
 [ext_resource type="Script" uid="uid://dbublq0slvjcd" path="res://scenes/game/enemy/armoredcar/armoredcar.gd" id="1_ov0wq"]
-[ext_resource type="Script" uid="uid://bn02lddjccjb4" path="res://scenes/game/enemy/health_manager.gd" id="3_s6rff"]
+[ext_resource type="Script" uid="uid://cg5aoqw2hokjn" path="res://scenes/game/enemy/armoredcar/health_manager.gd" id="3_ov0wq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(42, 24)
 
 [node name="Armoredcar" type="CharacterBody2D" unique_id=1512763097 groups=["enemy"]]
+motion_mode = 1
 script = ExtResource("1_ov0wq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=763290937]
@@ -30,6 +31,7 @@ wait_time = 0.2
 autostart = true
 
 [node name="HealthManager" type="Node" parent="." unique_id=655271643]
-script = ExtResource("3_s6rff")
+script = ExtResource("3_ov0wq")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="died" from="HealthManager" to="." method="_on_health_manager_died"]

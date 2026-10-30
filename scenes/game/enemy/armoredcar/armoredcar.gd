@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed: float = 50.0
+var speed: float = 120.0
 @export var player: CharacterBody2D
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
@@ -36,7 +36,7 @@ func _physics_process(delta):
 	var target_angle: float = direction.angle()
 
 	# Smoothly rotate towards the target angle
-	global_rotation = rotate_toward(global_rotation, target_angle, 3 * delta)
+	global_rotation = rotate_toward(global_rotation, target_angle, 1 * delta)
 
 	# Move forward in the direction the drone is facing
 	velocity = Vector2.RIGHT.rotated(global_rotation) * speed
