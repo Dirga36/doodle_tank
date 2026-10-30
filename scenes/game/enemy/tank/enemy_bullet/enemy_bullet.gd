@@ -18,10 +18,6 @@ func _physics_process(delta: float) -> void:
 func _ready():
 	# Clear any default trail points set in the editor
 	trail.clear_points()
-	
-	# Deletes the bullet when time runs out
-	await get_tree().create_timer(5.0).timeout
-	queue_free()
 
 func _exit_tree() -> void:
 	# Optional: If the projectile is freed/destroyed, you can let the trail 
