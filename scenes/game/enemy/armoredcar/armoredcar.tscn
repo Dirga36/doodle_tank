@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://cqkajj7gv5f12"]
 
 [ext_resource type="Texture2D" uid="uid://dj7aja7mp44m8" path="res://scenes/game/enemy/armoredcar/armoredcar.png" id="1_ksln7"]
+[ext_resource type="Script" uid="uid://dbublq0slvjcd" path="res://scenes/game/enemy/armoredcar/armoredcar.gd" id="1_ov0wq"]
+[ext_resource type="Script" uid="uid://bn02lddjccjb4" path="res://scenes/game/enemy/health_manager.gd" id="3_s6rff"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(42, 24)
 
 [node name="Armoredcar" type="CharacterBody2D" unique_id=1512763097 groups=["enemy"]]
+script = ExtResource("1_ov0wq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=763290937]
 shape = SubResource("RectangleShape2D_1vivr")
@@ -14,3 +17,19 @@ shape = SubResource("RectangleShape2D_1vivr")
 texture_filter = 1
 scale = Vector2(1.3, 1.3)
 texture = ExtResource("1_ksln7")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=957198635]
+path_desired_distance = 10.0
+target_desired_distance = 20.0
+simplify_path = true
+avoidance_enabled = true
+radius = 25.0
+
+[node name="Timer" type="Timer" parent="." unique_id=888491329]
+wait_time = 0.2
+autostart = true
+
+[node name="HealthManager" type="Node" parent="." unique_id=655271643]
+script = ExtResource("3_s6rff")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

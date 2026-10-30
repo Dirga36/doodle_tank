@@ -55,8 +55,9 @@ script = ExtResource("6_5jirj")
 enemy_scene = ExtResource("7_kp23o")
 spawn_interval = 3.0
 
-[node name="Armoredcar" parent="WorldContainer" unique_id=1512763097 instance=ExtResource("10_5v6r0")]
+[node name="Armoredcar" parent="WorldContainer" unique_id=1512763097 node_paths=PackedStringArray("player") instance=ExtResource("10_5v6r0")]
 position = Vector2(1784.4501, 1475.26)
+player = NodePath("../Player")
 
 [node name="Drone" parent="WorldContainer" unique_id=2078730313 instance=ExtResource("9_3xj4h")]
 position = Vector2(1824.3801, 1428.07)
