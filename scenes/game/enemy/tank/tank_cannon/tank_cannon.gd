@@ -1,8 +1,10 @@
 extends Area2D
 
 const Bullet = preload("uid://bwbfx4yqypae0")
-var fire_cooldown: float = 0.5
+@onready var Player = Global.player
+var fire_cooldown: float = 3
 var _cooldown_timer: float = 0.0
+var aimed: bool = false
 
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var particles: GPUParticles2D = $Marker2D/GPUParticles2D
@@ -11,8 +13,7 @@ var _cooldown_timer: float = 0.0
 var rotation_speed: float = 5.0 # Lower values = slower rotation
 
 func _physics_process(delta: float) -> void:
-	var mouse_pos = get_global_mouse_position()
-	var target_angle = global_position.direction_to(mouse_pos).angle()
+	var target_angle = global_position.direction_to(Player.global_position).angle()
 	
 	# Interpolate global_rotation instead of local rotation
 	global_rotation = lerp_angle(global_rotation, target_angle, rotation_speed * delta)
@@ -31,9 +32,14 @@ func _update_cooldown(delta: float) -> void:
 	if _cooldown_timer > 0.0:
 		_cooldown_timer = maxf(_cooldown_timer - delta, 0.0)
 
+func _on_target_manager_target_lost() -> void:
+	aimed = false
+
+func _on_target_manager_target_in_range() -> void:
+	aimed = true
 
 func _can_fire() -> bool:
-	return Input.is_action_pressed("shoot") and _cooldown_timer == 0.0
+	return aimed == true and _cooldown_timer == 0.0
 
 
 func _shoot() -> void:

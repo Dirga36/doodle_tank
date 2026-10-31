@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b2iw27f3qptd0" path="res://scenes/game/enemy/tank/tank.gd" id="1_mdpx2"]
 [ext_resource type="PackedScene" uid="uid://c5xu0bjcq1s3k" path="res://scenes/game/enemy/tank/tank_cannon/tank_cannon.tscn" id="2_641cv"]
 [ext_resource type="Script" uid="uid://bqxdxc52wbqpg" path="res://scenes/game/enemy/tank/health_manager.gd" id="4_mdpx2"]
+[ext_resource type="Script" uid="uid://irl4b31nui46" path="res://scenes/game/enemy/tank/target_manager.gd" id="5_dp7by"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(25, 16)
@@ -28,7 +29,7 @@ texture = ExtResource("1_6y3eq")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1429557330]
 path_desired_distance = 10.0
-target_desired_distance = 20.0
+target_desired_distance = 270.0
 simplify_path = true
 avoidance_enabled = true
 radius = 25.0
@@ -40,10 +41,17 @@ autostart = true
 [node name="HealthManager" type="Node" parent="." unique_id=1081564431]
 script = ExtResource("4_mdpx2")
 
-[node name="TargetArea" type="Area2D" parent="." unique_id=1101666297]
+[node name="TargetManager" type="Node" parent="." unique_id=1170560296]
+script = ExtResource("5_dp7by")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetArea" unique_id=1665224089]
+[node name="TargetArea" type="Area2D" parent="." unique_id=457028711]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetArea" unique_id=1642897369]
 shape = SubResource("CircleShape2D_1vivr")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="died" from="HealthManager" to="." method="_on_health_manager_died"]
+[connection signal="target_in_range" from="TargetManager" to="TankCannon" method="_on_target_manager_target_in_range"]
+[connection signal="target_lost" from="TargetManager" to="TankCannon" method="_on_target_manager_target_lost"]
+[connection signal="body_entered" from="TargetArea" to="TargetManager" method="_on_target_area_body_entered"]
+[connection signal="body_exited" from="TargetArea" to="TargetManager" method="_on_target_area_body_exited"]
