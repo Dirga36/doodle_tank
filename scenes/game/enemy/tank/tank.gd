@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var speed: float = 75.0
-@export var player: CharacterBody2D
+@onready var Player = Global.player
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var health_manager: Node = $HealthManager
@@ -11,11 +11,11 @@ func _ready() -> void:
 	call_deferred("actor_setup")
 
 func actor_setup() -> void:
-	if player:
-		nav_agent.target_position = player.global_position
+	if Player:
+		nav_agent.target_position = Player.global_position
 
 func _physics_process(delta):
-	if not player:
+	if not Player:
 		return
 		
 	# Update the destination to the player's current position
@@ -43,8 +43,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_timer_timeout() -> void:
-	if player:
-		nav_agent.target_position = player.global_position
+	if Player:
+		nav_agent.target_position = Player.global_position
 
 func take_damage(amount: int) -> void:
 	health_manager.take_damage(amount)
