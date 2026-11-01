@@ -107,6 +107,11 @@
 [ext_resource type="Texture2D" uid="uid://dwsh6c6wuio25" path="res://scenes/menus/main_menu/SQ_png_sequence/098.png" id="104_c05pp"]
 [ext_resource type="Texture2D" uid="uid://1n1axqya3okt" path="res://scenes/menus/main_menu/SQ_png_sequence/099.png" id="105_2uola"]
 [ext_resource type="Script" uid="uid://cp2d57u87ph0q" path="res://scenes/menus/main_menu/animated_sprite_2d.gd" id="106_q5lha"]
+[ext_resource type="AudioStream" uid="uid://bd55m3bkynt55" path="res://assets/bgm/Radetzky_March.ogg" id="108_4eel8"]
+[ext_resource type="AudioStream" uid="uid://bywvrujfnor8w" path="res://assets/bgm/Strauss,_Kaiserwalzer.ogg" id="109_y0y4v"]
+[ext_resource type="AudioStream" uid="uid://cv57ag2vxbtlx" path="res://assets/bgm/Liszt-La_Campanella-Greiss.ogg" id="110_cdvru"]
+[ext_resource type="AudioStream" uid="uid://chars25hta7s0" path="res://assets/bgm/Mozart_-_Eine_kleine_Nachtmusik_-_1._Allegro.ogg" id="111_o5nur"]
+[ext_resource type="AudioStream" uid="uid://b6dypd4c7o5dg" path="res://assets/bgm/The_Modena_Chamber_Orchestra_-_Vivaldi's_Summer,_RV_315_-_III._Presto.ogg" id="112_ku5u4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
 animations = [{
@@ -416,15 +421,22 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_1vivr"]
+shuffle = true
+fade_time = 0.5
+stream_count = 5
+stream_0 = ExtResource("108_4eel8")
+stream_1 = ExtResource("109_y0y4v")
+stream_2 = ExtResource("110_cdvru")
+stream_3 = ExtResource("111_o5nur")
+stream_4 = ExtResource("112_ku5u4")
+
 [node name="MainMenu" unique_id=869232425 instance=ExtResource("1_ub2bi")]
 script = ExtResource("2_x31ro")
 level_select_packed_scene = null
 confirm_new_game = true
 options_packed_scene = ExtResource("3_0jpat")
 credits_packed_scene = ExtResource("4_m0ubd")
-
-[node name="BackgroundMusicPlayer" parent="." index="0" unique_id=1141822549]
-bus = &"Master"
 
 [node name="BackgroundTextureRect" parent="." index="1" unique_id=1940176448]
 texture = ExtResource("5_x31ro")
@@ -447,7 +459,6 @@ color = Color(0, 0, 0, 0.6117647)
 [node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" parent_id_path=PackedInt32Array(556427956) index="0" unique_id=359406872]
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-text = "Doodle Tank"
 
 [node name="SubTitleLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer" parent_id_path=PackedInt32Array(930520368) index="0" unique_id=1037003361]
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -483,7 +494,6 @@ theme_override_font_sizes/font_size = 20
 [node name="VersionLabel" parent="VersionMargin/VersionContainer" parent_id_path=PackedInt32Array(1603969262) index="0" unique_id=793266470]
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-text = "v0.0.1"
 
 [node name="NewGameConfirmation" parent="." index="5" unique_id=487332143 instance=ExtResource("5_627ab")]
 unique_name_in_owner = true
@@ -498,6 +508,11 @@ title = "New Game"
 text = "Are you sure you want to start a new game?
 
 All progress in the current game will be lost."
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="6" unique_id=1681796155]
+stream = SubResource("AudioStreamPlaylist_1vivr")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/ContinueGameButton" to="." method="_on_continue_game_button_pressed"]
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]

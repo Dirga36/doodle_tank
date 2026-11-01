@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://btm7i420xlwpp"]
 
-[ext_resource type="Script" uid="uid://cfq44vqcmmlw8" path="res://addons/spawner/scripts/wave_manager.gd" id="1_ccx76"]
 [ext_resource type="Script" uid="uid://sqqbvtnivy4w" path="res://addons/spawner/scripts/spawner_container.gd" id="2_ccx76"]
 [ext_resource type="Script" uid="uid://bac76abr1ub44" path="res://addons/spawner/scripts/multiple_spawner.gd" id="3_qlg4t"]
 [ext_resource type="Script" uid="uid://bjqcjgsk5ibtr" path="res://addons/spawner/resources/enemy_spawn_res.gd" id="4_w1evj"]
@@ -8,7 +7,6 @@
 [ext_resource type="Script" uid="uid://b22p8fnk36vit" path="res://addons/spawner/cuztomizable_packed_scenes/cuztomizable_packed_scene.gd" id="6_6a2i5"]
 [ext_resource type="PackedScene" uid="uid://cqkajj7gv5f12" path="res://scenes/game/enemy/armoredcar/armoredcar.tscn" id="7_qlg4t"]
 [ext_resource type="PackedScene" uid="uid://t2jubrypf0dk" path="res://scenes/game/enemy/tank/tank.tscn" id="8_w1evj"]
-[ext_resource type="Script" uid="uid://dkpn1c6pclt43" path="res://addons/spawner/resources/wave_res.gd" id="9_qlg4t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0255o"]
 size = Vector2(128, 128)
@@ -21,7 +19,7 @@ scene = ExtResource("5_ccx76")
 script = ExtResource("4_w1evj")
 enemy_scene = SubResource("Resource_4hlpu")
 chance = 50
-max_amount = 100000000000000
+max_amount = 1
 
 [sub_resource type="Resource" id="Resource_xhh7o"]
 script = ExtResource("6_6a2i5")
@@ -30,13 +28,12 @@ scene = ExtResource("7_qlg4t")
 [sub_resource type="Resource" id="Resource_ounlx"]
 script = ExtResource("4_w1evj")
 enemy_scene = SubResource("Resource_xhh7o")
-chance = 30
-max_amount = 100000000000000
+chance = 10
+max_amount = 1
 
 [sub_resource type="Resource" id="Resource_rusqo"]
 script = ExtResource("6_6a2i5")
 scene = ExtResource("8_w1evj")
-metadata/_custom_type_script = "uid://b22p8fnk36vit"
 
 [sub_resource type="Resource" id="Resource_37dwp"]
 script = ExtResource("4_w1evj")
@@ -44,12 +41,6 @@ enemy_scene = SubResource("Resource_rusqo")
 chance = 20
 max_amount = 1
 metadata/_custom_type_script = "uid://bjqcjgsk5ibtr"
-
-[sub_resource type="Resource" id="Resource_1vivr"]
-script = ExtResource("9_qlg4t")
-wave_name = "survive"
-max_active_enemies_override = 7
-metadata/_custom_type_script = "uid://dkpn1c6pclt43"
 
 [node name="EnemySpawner" type="Node2D" unique_id=1112914476]
 
@@ -63,6 +54,8 @@ disabled = true
 
 [node name="SpawnerContainer" type="Node2D" parent="." unique_id=2056546656]
 script = ExtResource("2_ccx76")
+max_active_enemies = 15
+restart_spawning_enemies = true
 
 [node name="MultipleSpawner" type="Marker2D" parent="SpawnerContainer" unique_id=453948181 node_paths=PackedStringArray("area_2d")]
 script = ExtResource("3_qlg4t")
@@ -70,9 +63,3 @@ enemy_scene_array = Array[ExtResource("4_w1evj")]([SubResource("Resource_x2bfl")
 use_random_time = true
 use_custom_areas = true
 area_2d = NodePath("../../Area2D/SpawnZoneCol")
-
-[node name="WaveManager" type="Node" parent="." unique_id=1647178247]
-script = ExtResource("1_ccx76")
-waves = Array[ExtResource("9_qlg4t")]([SubResource("Resource_1vivr")])
-auto_start = true
-metadata/_custom_type_script = "uid://cfq44vqcmmlw8"

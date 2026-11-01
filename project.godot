@@ -16,14 +16,19 @@ run/main_scene="res://scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="uid://dntm7xvd0fpoh"
 
+[audio]
+
+buses/default_bus_layout="uid://by1qd6epe24jl"
+
 [autoload]
 
 Global="*uid://b2hho3yg76d65"
 SceneLoader="*uid://cpehcs7n5c62p"
+ProjectMusicController="*uid://r5t485lr3p7t"
 
 [clean_copy_examples]
 
-examples_paths=Array[String](["res://addons/maaacks_game_template/examples/", "res://addons/maaacks_scene_loader/examples/"])
+examples_paths=Array[String](["res://addons/maaacks_scene_loader/examples/", "res://addons/maaacks_game_template/examples/"])
 replace_strings=Dictionary[String, String]({
 "StateExample": "State"
 })
@@ -36,7 +41,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg", "res://addons/maaacks_scene_loader/plugin.cfg", "res://addons/plugin_updater/plugin.cfg", "res://addons/spawner/plugin.cfg")
+enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg", "res://addons/maaacks_music_controller/plugin.cfg", "res://addons/maaacks_scene_loader/plugin.cfg", "res://addons/plugin_updater/plugin.cfg", "res://addons/spawner/plugin.cfg")
 
 [gui]
 
@@ -108,6 +113,10 @@ game_scene_path="res://scenes/game/game.tscn"
 ending_scene_path="res://scenes/end_credits/end_credits.tscn"
 copy_path="res://"
 
+[maaacks_music_controller]
+
+disable_install_audio_busses=true
+
 [maaacks_scene_loader]
 
 loading_scene_path="res://scenes/loading_screens/loading_screen.tscn"
@@ -120,6 +129,7 @@ loading_scene_path="res://scenes/loading_screens/loading_screen.tscn"
 
 plugins={
 "res://addons/maaacks_game_template/": "https://github.com/Maaack/Godot-Game-Template",
+"res://addons/maaacks_music_controller/": "https://github.com/Maaack/Godot-Music-Controller",
 "res://addons/maaacks_scene_loader/": "https://github.com/Maaack/Godot-Scene-Loader",
 "res://addons/plugin_updater/": "https://github.com/Maaack/Godot-Plugin-Updater"
 }

@@ -1,12 +1,10 @@
 extends CharacterBody2D
 
-@onready var trail: GPUParticles2D = %Trail
-
 var speed = 100
 var rotation_speed = 3
 var rotation_direction = 0
 
-@onready var engine_sound: AudioStreamPlayer2D = %MovingSound
+@onready var moving_sound: AudioStreamPlayer2D = %MovingSound
 @onready var health_manager: Node = $HealthManager
 
 signal player_died
@@ -25,14 +23,11 @@ func _physics_process(delta):
 
 	# Check if the tank is actively moving
 	if velocity.length() > 5.0:
-		if not engine_sound.playing:
-			engine_sound.play()
+		if not moving_sound.playing:
+			moving_sound.play()
 	else:
-		if engine_sound.playing:
-			engine_sound.stop()
-
-	if velocity.length() > 0:
-		trail.emitting = true
+		if moving_sound.playing:
+			moving_sound.stop()
 
 func take_damage(amount):
 	health_manager.take_damage(amount)

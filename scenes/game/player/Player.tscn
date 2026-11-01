@@ -5,23 +5,12 @@
 [ext_resource type="Script" uid="uid://cs067voql78lf" path="res://scenes/game/player/player.gd" id="1_524rm"]
 [ext_resource type="Texture2D" uid="uid://b4q8swvmfnrny" path="res://scenes/game/player/body.png" id="1_gfjak"]
 [ext_resource type="PackedScene" uid="uid://x4cuqvqshld" path="res://scenes/game/player/cannon.tscn" id="2_gfjak"]
+[ext_resource type="AudioStream" uid="uid://cirn1jbfuunkf" path="res://assets/sfx/tankengine_sound.mp3" id="4_vpxtw"]
 [ext_resource type="AudioStream" uid="uid://6jpao1imbdr" path="res://assets/sfx/moving.mp3" id="5_2rpb8"]
 [ext_resource type="Script" uid="uid://bga3aqjv48503" path="res://scenes/game/player/health_manager.gd" id="7_3vwxf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(24, 16)
-
-[sub_resource type="Gradient" id="Gradient_524rm"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_524rm"]
-gradient = SubResource("Gradient_524rm")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1vivr"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
-scale_min = 10.0
-scale_max = 10.0
-color_ramp = SubResource("GradientTexture1D_524rm")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_388e5"]
 bg_color = Color(0.8629314, 0, 0.042751156, 1)
@@ -48,16 +37,16 @@ texture = ExtResource("1_gfjak")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1847681323]
 shape = SubResource("RectangleShape2D_1vivr")
 
-[node name="Trail" type="GPUParticles2D" parent="." unique_id=115994699]
-unique_name_in_owner = true
-emitting = false
-amount = 2
-lifetime = 0.2
-process_material = SubResource("ParticleProcessMaterial_1vivr")
-
 [node name="MovingSound" type="AudioStreamPlayer2D" parent="." unique_id=839098852]
 unique_name_in_owner = true
 stream = ExtResource("5_2rpb8")
+volume_db = -5.0
+
+[node name="EngineSound" type="AudioStreamPlayer2D" parent="." unique_id=583875070]
+unique_name_in_owner = true
+stream = ExtResource("4_vpxtw")
+autoplay = true
+parameters/looping = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1291757047]
 zoom = Vector2(10, 10)

@@ -5,6 +5,10 @@ var rotation_speed: float = 3.0 # Higher values make rotation faster
 var health: int = 1
 var damage: int = 1
 
+@onready var die_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var explode_particles: GPUParticles2D = $ExplodeParticles
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
 func _physics_process(delta):
 	# Guard check to avoid null reference errors
 	if not is_instance_valid(Global.player):
@@ -27,10 +31,16 @@ func take_damage(amount):
 		die()
 
 func die():
+	speed = 10
+	global_rotation = 0
+	sprite_2d.hide()
+	die_sound.play()
+	explode_particles.emitting = true
+	await die_sound.finished
 	queue_free()
 
 func _on_hitbox_body_entered(body: CharacterBody2D) -> void:
 	# Check if the body is the player's body
 	if body.is_in_group("player"):
 		body.take_damage(damage)
-		queue_free() # Destroy the drone on impact
+		die() # Destroy the drone on impact

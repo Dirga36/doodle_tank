@@ -3,9 +3,37 @@
 [ext_resource type="Texture2D" uid="uid://dj7aja7mp44m8" path="res://scenes/game/enemy/armoredcar/armoredcar.png" id="1_ksln7"]
 [ext_resource type="Script" uid="uid://dbublq0slvjcd" path="res://scenes/game/enemy/armoredcar/armoredcar.gd" id="1_ov0wq"]
 [ext_resource type="Script" uid="uid://cg5aoqw2hokjn" path="res://scenes/game/enemy/armoredcar/health_manager.gd" id="3_ov0wq"]
+[ext_resource type="AudioStream" uid="uid://d0f8tp1mh8wwi" path="res://assets/sfx/enemy_die.mp3" id="4_s6rff"]
+[ext_resource type="AudioStream" uid="uid://dl0ctn3eve1k7" path="res://assets/sfx/armoredcar_moving.mp3" id="5_h4ed7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(42, 24)
+
+[sub_resource type="Gradient" id="Gradient_h4ed7"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h4ed7"]
+gradient = SubResource("Gradient_h4ed7")
+
+[sub_resource type="Curve" id="Curve_tdnfm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tdnfm"]
+curve = SubResource("Curve_tdnfm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h4tw5"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = -1.0
+direction = Vector3(0, 0, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_tdnfm")
+color_ramp = SubResource("GradientTexture1D_h4ed7")
 
 [node name="Armoredcar" type="CharacterBody2D" unique_id=1512763097 groups=["enemy"]]
 motion_mode = 1
@@ -32,6 +60,30 @@ autostart = true
 
 [node name="HealthManager" type="Node" parent="." unique_id=655271643]
 script = ExtResource("3_ov0wq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1260843998]
+stream = ExtResource("4_s6rff")
+
+[node name="MovingSound" type="AudioStreamPlayer2D" parent="." unique_id=625724304]
+stream = ExtResource("5_h4ed7")
+volume_db = 10.0
+autoplay = true
+max_distance = 300.0
+parameters/looping = true
+
+[node name="ExplodeParticles" type="GPUParticles2D" parent="." unique_id=1467568423]
+emitting = false
+amount = 30
+lifetime = 0.15000000000000002
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_h4tw5")
+
+[node name="DamagedParticles" type="GPUParticles2D" parent="." unique_id=2005981371]
+emitting = false
+amount = 30
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_h4tw5")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="died" from="HealthManager" to="." method="_on_health_manager_died"]
