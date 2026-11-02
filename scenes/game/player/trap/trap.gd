@@ -1,12 +1,14 @@
 extends Area2D
 
-@export var damage: int = 1
-@export var fuse_time: float = 2.0
-@export var is_proximity_trap: bool = true  # True for proximity trigger, False for fuse timer
+var damage: int = 2
+var fuse_time: float = 2.0
+var is_proximity_trap: bool = true  # True for proximity trigger, False for fuse timer
 
 @onready var fuse_timer: Timer = $FuseTimer
 @onready var explosion_area: Area2D = $BlastArea
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var exploding_sound: AudioStreamPlayer2D = $ExplodingSound
+@onready var exploding_particles: GPUParticles2D = $ExplodingParticles
 
 var is_armed: bool = false
 
@@ -37,8 +39,10 @@ func explode() -> void:
 	for target in targets:
 		if target.has_method("take_damage"):
 			target.take_damage(damage)
-			
-	# Play explosion visual/audio effect here if available
-	
+		
 	# Destroy the bomb
+	animated_sprite_2d.hide()
+	exploding_particles.emitting = true
+	exploding_sound.play()
+	await exploding_sound.finished
 	queue_free()

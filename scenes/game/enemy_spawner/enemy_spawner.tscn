@@ -19,7 +19,7 @@ scene = ExtResource("5_ccx76")
 script = ExtResource("4_w1evj")
 enemy_scene = SubResource("Resource_4hlpu")
 chance = 50
-max_amount = 1
+max_amount = 1000000000000000
 
 [sub_resource type="Resource" id="Resource_xhh7o"]
 script = ExtResource("6_6a2i5")
@@ -29,7 +29,7 @@ scene = ExtResource("7_qlg4t")
 script = ExtResource("4_w1evj")
 enemy_scene = SubResource("Resource_xhh7o")
 chance = 10
-max_amount = 1
+max_amount = 1000000000000000
 
 [sub_resource type="Resource" id="Resource_rusqo"]
 script = ExtResource("6_6a2i5")
@@ -39,7 +39,7 @@ scene = ExtResource("8_w1evj")
 script = ExtResource("4_w1evj")
 enemy_scene = SubResource("Resource_rusqo")
 chance = 20
-max_amount = 1
+max_amount = 1000000000000000
 metadata/_custom_type_script = "uid://bjqcjgsk5ibtr"
 
 [node name="EnemySpawner" type="Node2D" unique_id=1112914476]
@@ -54,7 +54,7 @@ disabled = true
 
 [node name="SpawnerContainer" type="Node2D" parent="." unique_id=2056546656]
 script = ExtResource("2_ccx76")
-max_active_enemies = 15
+max_active_enemies = 5
 restart_spawning_enemies = true
 
 [node name="MultipleSpawner" type="Marker2D" parent="SpawnerContainer" unique_id=453948181 node_paths=PackedStringArray("area_2d")]

@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cs067voql78lf" path="res://scenes/game/player/player.gd" id="1_524rm"]
 [ext_resource type="Texture2D" uid="uid://b4q8swvmfnrny" path="res://scenes/game/player/body.png" id="1_gfjak"]
 [ext_resource type="PackedScene" uid="uid://x4cuqvqshld" path="res://scenes/game/player/cannon.tscn" id="2_gfjak"]
-[ext_resource type="AudioStream" uid="uid://cirn1jbfuunkf" path="res://assets/sfx/tankengine_sound.mp3" id="4_vpxtw"]
+[ext_resource type="AudioStream" uid="uid://cptcmo0edcexf" path="res://assets/sfx/tankengine_sound.mp3" id="4_vpxtw"]
 [ext_resource type="AudioStream" uid="uid://6jpao1imbdr" path="res://assets/sfx/moving.mp3" id="5_2rpb8"]
 [ext_resource type="Script" uid="uid://bga3aqjv48503" path="res://scenes/game/player/health_manager.gd" id="7_3vwxf"]
 
@@ -41,11 +41,14 @@ shape = SubResource("RectangleShape2D_1vivr")
 unique_name_in_owner = true
 stream = ExtResource("5_2rpb8")
 volume_db = -5.0
+max_distance = 10.0
 
 [node name="EngineSound" type="AudioStreamPlayer2D" parent="." unique_id=583875070]
 unique_name_in_owner = true
 stream = ExtResource("4_vpxtw")
 autoplay = true
+max_distance = 10.0
+attenuation = 3.0314324
 parameters/looping = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1291757047]

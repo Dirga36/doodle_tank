@@ -2,6 +2,28 @@
 
 [ext_resource type="Script" uid="uid://brg3j2pkhpjm8" path="res://scenes/game/player/trap/trap.gd" id="1_27ja4"]
 [ext_resource type="Texture2D" uid="uid://mwcukmklefo7" path="res://scenes/game/player/trap/trap.png" id="1_vpfkv"]
+[ext_resource type="AudioStream" uid="uid://hko3bqnpx7k7" path="res://assets/sfx/landmine_explosion_sound.mp3" id="3_k0qlb"]
+[ext_resource type="Texture2D" uid="uid://dmaj5sydfjdhe" path="res://scenes/game/player/trap/trap1.png" id="4_q5c32"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vpfkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_vpfkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q5c32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q5c32")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(8, 8)
@@ -9,14 +31,33 @@ size = Vector2(8, 8)
 [sub_resource type="CircleShape2D" id="CircleShape2D_wdut5"]
 radius = 48.0
 
+[sub_resource type="Gradient" id="Gradient_27ja4"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_npx5i"]
+gradient = SubResource("Gradient_27ja4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1vivr"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 220.0
+initial_velocity_max = 220.0
+gravity = Vector3(0, 98, 0)
+scale_max = 4.0
+color_ramp = SubResource("GradientTexture1D_npx5i")
+
 [node name="Trap" type="Area2D" unique_id=1538265662]
 z_index = -1
 script = ExtResource("1_27ja4")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=959115622]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=355298743]
 texture_filter = 1
-scale = Vector2(1.9600008, 1.9999995)
-texture = ExtResource("1_vpfkv")
+position = Vector2(2.3841858e-07, 2.3841858e-07)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_1vivr")
+autoplay = "default"
+frame_progress = 0.110575214
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1337044304]
 scale = Vector2(1.9600008, 1.9999995)
@@ -28,3 +69,14 @@ shape = SubResource("RectangleShape2D_1vivr")
 shape = SubResource("CircleShape2D_wdut5")
 
 [node name="FuseTimer" type="Timer" parent="." unique_id=651076542]
+
+[node name="ExplodingSound" type="AudioStreamPlayer2D" parent="." unique_id=330402603]
+stream = ExtResource("3_k0qlb")
+
+[node name="ExplodingParticles" type="GPUParticles2D" parent="." unique_id=55456874]
+emitting = false
+amount = 50
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1vivr")

@@ -35,7 +35,7 @@ pause_menu_packed = ExtResource("3_5jirj")
 [node name="WorldContainer" type="Node" parent="." unique_id=1518243678]
 
 [node name="Player" parent="WorldContainer" unique_id=1542430198 instance=ExtResource("5_5i0tg")]
-position = Vector2(576, 847.99994)
+position = Vector2(1711, 1576)
 rotation = -0.47647488
 scale = Vector2(0.99999976, 0.99999976)
 
