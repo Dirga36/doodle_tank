@@ -6,8 +6,8 @@ var health: int = 1
 var damage: int = 1
 
 @onready var die_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var explode_particles: GPUParticles2D = $ExplodeParticles
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var explosion_effect: GPUParticles2D = $Explosion
 
 func _physics_process(delta):
 	# Guard check to avoid null reference errors
@@ -31,11 +31,12 @@ func take_damage(amount):
 		die()
 
 func die():
+	explosion_effect.emitting = true
+	
 	speed = 10
 	global_rotation = 0
 	sprite_2d.hide()
 	die_sound.play()
-	explode_particles.emitting = true
 	await die_sound.finished
 	queue_free()
 

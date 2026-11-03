@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://creht07yttgy6" path="res://scenes/game/enemy/tank/enemy_bullet/enemy_bullet.gd" id="1_nxcno"]
 [ext_resource type="Texture2D" uid="uid://d32wjgghwlguk" path="res://scenes/game/enemy/tank/enemy_bullet/enemy_bullet.png" id="2_vobwe"]
+[ext_resource type="PackedScene" uid="uid://5cy3felaw3iw" path="res://scenes/game/particles_library/bullet_impact/bullet_impact.tscn" id="3_tgyqr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vobwe"]
 size = Vector2(12, 6)
@@ -34,6 +35,11 @@ sharp_limit = 5.0
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=866748835]
+position = Vector2(13, 0)
+
+[node name="BulletImpact" parent="Marker2D" unique_id=1865387584 instance=ExtResource("3_tgyqr")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]

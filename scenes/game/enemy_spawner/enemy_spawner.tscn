@@ -8,9 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cqkajj7gv5f12" path="res://scenes/game/enemy/armoredcar/armoredcar.tscn" id="7_qlg4t"]
 [ext_resource type="PackedScene" uid="uid://t2jubrypf0dk" path="res://scenes/game/enemy/tank/tank.tscn" id="8_w1evj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0255o"]
-size = Vector2(128, 128)
-
 [sub_resource type="Resource" id="Resource_4hlpu"]
 script = ExtResource("6_6a2i5")
 scene = ExtResource("5_ccx76")
@@ -42,24 +39,14 @@ chance = 20
 max_amount = 1000000000000000
 metadata/_custom_type_script = "uid://bjqcjgsk5ibtr"
 
-[node name="EnemySpawner" type="Node2D" unique_id=1112914476]
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1650021491]
-
-[node name="SpawnZoneCol" type="CollisionShape2D" parent="Area2D" unique_id=652584009]
-light_mask = 0
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_0255o")
-disabled = true
-
-[node name="SpawnerContainer" type="Node2D" parent="." unique_id=2056546656]
+[node name="SpawnerContainer" type="Node2D" unique_id=2056546656]
 script = ExtResource("2_ccx76")
 max_active_enemies = 5
 restart_spawning_enemies = true
 
-[node name="MultipleSpawner" type="Marker2D" parent="SpawnerContainer" unique_id=453948181 node_paths=PackedStringArray("area_2d")]
+[node name="MultipleSpawner" type="Marker2D" parent="." unique_id=453948181 node_paths=PackedStringArray("area_2d")]
 script = ExtResource("3_qlg4t")
 enemy_scene_array = Array[ExtResource("4_w1evj")]([SubResource("Resource_x2bfl"), SubResource("Resource_ounlx"), SubResource("Resource_37dwp")])
 use_random_time = true
 use_custom_areas = true
-area_2d = NodePath("../../Area2D/SpawnZoneCol")
+area_2d = NodePath("")

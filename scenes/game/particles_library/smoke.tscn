@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dfq3d7m3ufgy3"]
+
+[sub_resource type="Gradient" id="Gradient_2j17l"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hgaeq"]
+gradient = SubResource("Gradient_2j17l")
+
+[sub_resource type="Curve" id="Curve_h27or"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_h27or"]
+curve = SubResource("Curve_h27or")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1vivr"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 5.0
+angle_min = -179.99998
+angle_max = 180.00002
+spread = 30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_h27or")
+color_ramp = SubResource("GradientTexture1D_hgaeq")
+
+[node name="Smoke" type="GPUParticles2D" unique_id=214062861]
+emitting = false
+amount = 20
+lifetime = 1.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_1vivr")

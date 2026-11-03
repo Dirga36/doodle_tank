@@ -5,6 +5,8 @@ var damage: int = 1
 
 @export var max_points: int = 10
 @onready var trail: Line2D = $Line2D
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var impact_effect: GPUParticles2D = $Marker2D/BulletImpact
 
 func _physics_process(delta: float) -> void:
 	position += transform.x * speed * delta
@@ -30,6 +32,10 @@ func _on_body_entered(body):
 	# Check if the body is the player's body
 	if body.is_in_group("player"):
 		body.take_damage(damage)
+		speed = 0
+		sprite_2d.hide()
+		impact_effect.emitting = true
+		await impact_effect.finished
 		queue_free() # Destroy the bullet on impact
 
 func _on_lifespan_timeout() -> void:

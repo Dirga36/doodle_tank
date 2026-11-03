@@ -7,8 +7,7 @@ var speed: float = 120.0
 @onready var health_manager: Node = $HealthManager
 @onready var die_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var explode_particles: GPUParticles2D = $ExplodeParticles
-@onready var damaged_particles: GPUParticles2D = $DamagedParticles
+@onready var explosion_effect: GPUParticles2D = $Explosion
 
 func _ready() -> void:
 	# Wait for the first physics frame to ensure the NavigationServer is fully synced
@@ -52,12 +51,11 @@ func _on_timer_timeout() -> void:
 
 func take_damage(amount: int) -> void:
 	health_manager.take_damage(amount)
-	damaged_particles.emitting = true
 
 func _on_health_manager_died() -> void:
 	speed = 25
 	sprite_2d.hide()
 	die_sound.play()
-	explode_particles.emitting = true
+	explosion_effect.emitting = true
 	await die_sound.finished
 	queue_free()

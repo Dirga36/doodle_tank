@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://5cy3felaw3iw"]
+
+[ext_resource type="Texture2D" uid="uid://duep5ijfq7503" path="res://scenes/game/particles_library/outline.png" id="1_jtdh0"]
+
+[sub_resource type="Curve" id="Curve_tqmsy"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, -360), 0.0, 0.0, 0, 0, Vector2(1, 360), 1008.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8vrlf"]
+curve = SubResource("Curve_tqmsy")
+
+[sub_resource type="Curve" id="Curve_1h2ff"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_v5gy4"]
+curve = SubResource("Curve_1h2ff")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1vivr"]
+particle_flag_disable_z = true
+angle_min = -179.99998
+angle_max = 180.00002
+angle_curve = SubResource("CurveTexture_8vrlf")
+direction = Vector3(-1, 0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_v5gy4")
+
+[node name="BulletImpact" type="GPUParticles2D" unique_id=1865387584]
+texture_filter = 1
+emitting = false
+texture = ExtResource("1_jtdh0")
+lifetime = 0.1
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_1vivr")

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://nlk0yqejf3ut" path="res://scenes/game/enemy/drone/drone.png" id="1_p4tqb"]
 [ext_resource type="AudioStream" uid="uid://d0f8tp1mh8wwi" path="res://assets/sfx/enemy_die.mp3" id="3_keoet"]
 [ext_resource type="AudioStream" uid="uid://cbxu2elvmuxqd" path="res://assets/sfx/drone_moving.mp3" id="4_l0xqx"]
+[ext_resource type="PackedScene" uid="uid://besolgbkyij51" path="res://scenes/game/particles_library/explosion.tscn" id="5_7w0hk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vwxf"]
 radius = 7.0
@@ -11,30 +12,6 @@ radius = 7.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1vivr"]
 radius = 8.0
 height = 32.0
-
-[sub_resource type="Gradient" id="Gradient_l0xqx"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_l0xqx"]
-gradient = SubResource("Gradient_l0xqx")
-
-[sub_resource type="Curve" id="Curve_7w0hk"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_7w0hk"]
-curve = SubResource("Curve_7w0hk")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1vivr"]
-particle_flag_disable_z = true
-spread = 180.0
-initial_velocity_min = 500.0
-initial_velocity_max = 500.0
-gravity = Vector3(0, 0, 0)
-scale_min = 5.0
-scale_max = 10.0
-scale_curve = SubResource("CurveTexture_7w0hk")
-color_ramp = SubResource("GradientTexture1D_l0xqx")
 
 [node name="Drone" type="CharacterBody2D" unique_id=2078730313 groups=["enemy"]]
 z_index = 1
@@ -69,12 +46,6 @@ autoplay = true
 max_distance = 500.0
 parameters/looping = true
 
-[node name="ExplodeParticles" type="GPUParticles2D" parent="." unique_id=1000945755]
-emitting = false
-amount = 30
-lifetime = 0.15000000000000002
-one_shot = true
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_1vivr")
+[node name="Explosion" parent="." unique_id=1319537123 instance=ExtResource("5_7w0hk")]
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

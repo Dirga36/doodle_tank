@@ -35,8 +35,7 @@ pause_menu_packed = ExtResource("3_5jirj")
 [node name="WorldContainer" type="Node" parent="." unique_id=1518243678]
 
 [node name="Player" parent="WorldContainer" unique_id=1542430198 instance=ExtResource("5_5i0tg")]
-position = Vector2(1711, 1576)
-rotation = -0.47647488
+position = Vector2(263.99997, 640.00006)
 scale = Vector2(0.99999976, 0.99999976)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="WorldContainer" unique_id=1609448979]
@@ -45,8 +44,30 @@ navigation_polygon = SubResource("NavigationPolygon_4j704")
 [node name="TileMapLayer" parent="WorldContainer/NavigationRegion2D" unique_id=1890088466 instance=ExtResource("4_lfrn8")]
 position = Vector2(1312, 808)
 
-[node name="EnemySpawner" parent="WorldContainer/NavigationRegion2D/TileMapLayer" unique_id=1404212752 instance=ExtResource("12_5jirj")]
-position = Vector2(-1048, -160)
+[node name="EnemySpawner" parent="WorldContainer/NavigationRegion2D/TileMapLayer/Area2D1" parent_id_path=PackedInt32Array(1890088466, 1432312104) index="1" unique_id=1404212752 instance=ExtResource("12_5jirj")]
+position = Vector2(-1752, -1520)
+max_active_enemies = 2
+
+[node name="MultipleSpawner" parent="WorldContainer/NavigationRegion2D/TileMapLayer/Area2D1/EnemySpawner" index="0" unique_id=453948181 node_paths=PackedStringArray("area_2d")]
+area_2d = NodePath("../../EnemySpawnZone1")
+
+[node name="SpawnerContainer" parent="WorldContainer/NavigationRegion2D/TileMapLayer/Area2D2" parent_id_path=PackedInt32Array(1890088466, 1250975305) index="1" unique_id=2056546656 instance=ExtResource("12_5jirj")]
+max_active_enemies = 2
+
+[node name="MultipleSpawner" parent="WorldContainer/NavigationRegion2D/TileMapLayer/Area2D2/SpawnerContainer" index="0" unique_id=453948181 node_paths=PackedStringArray("area_2d")]
+area_2d = NodePath("../../EnemySpawnZone2")
+
+[node name="SpawnerContainer" parent="WorldContainer/NavigationRegion2D/TileMapLayer/Area2D3" parent_id_path=PackedInt32Array(1890088466, 1232698835) index="1" unique_id=1582607179 instance=ExtResource("12_5jirj")]
+max_active_enemies = 2
+
+[node name="MultipleSpawner" parent="WorldContainer/NavigationRegion2D/TileMapLayer/Area2D3/SpawnerContainer" index="0" unique_id=453948181 node_paths=PackedStringArray("area_2d")]
+area_2d = NodePath("../../EnemySpawnZone3")
+
+[node name="SpawnerContainer" parent="WorldContainer/NavigationRegion2D/TileMapLayer/Area2D4" parent_id_path=PackedInt32Array(1890088466, 131663628) index="1" unique_id=1648802480 instance=ExtResource("12_5jirj")]
+max_active_enemies = 2
+
+[node name="MultipleSpawner" parent="WorldContainer/NavigationRegion2D/TileMapLayer/Area2D4/SpawnerContainer" index="0" unique_id=453948181 node_paths=PackedStringArray("area_2d")]
+area_2d = NodePath("../../EnemySpawnZone4")
 
 [node name="WinLoseManager" type="Node" parent="." unique_id=214112579]
 script = ExtResource("7_bdhmt")
@@ -57,3 +78,9 @@ game_lost_scene = ExtResource("9_kp23o")
 script = ExtResource("8_87uf6")
 
 [connection signal="player_died" from="WorldContainer/Player" to="GoalManager" method="_on_player_player_died"]
+
+[editable path="WorldContainer/NavigationRegion2D/TileMapLayer"]
+[editable path="WorldContainer/NavigationRegion2D/TileMapLayer/Area2D1/EnemySpawner"]
+[editable path="WorldContainer/NavigationRegion2D/TileMapLayer/Area2D2/SpawnerContainer"]
+[editable path="WorldContainer/NavigationRegion2D/TileMapLayer/Area2D3/SpawnerContainer"]
+[editable path="WorldContainer/NavigationRegion2D/TileMapLayer/Area2D4/SpawnerContainer"]
