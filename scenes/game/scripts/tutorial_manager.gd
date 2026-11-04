@@ -4,7 +4,7 @@ extends Node
 ## A list of tutorial scenes to open, one after the other.
 @export var tutorial_scenes : Array[PackedScene]
 ## If true, open the tutorials when the scene becomes ready.
-@export var auto_open : bool = false
+@export var auto_open : bool = true
 ## Delay before opening the tutorials when the scene becomes ready.
 @export var auto_open_delay : float = 0.25
 
