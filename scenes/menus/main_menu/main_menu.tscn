@@ -466,14 +466,14 @@ theme_override_constants/outline_size = 8
 text = "*Alpha Test*"
 
 [node name="NewGameButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" parent_id_path=PackedInt32Array(2017477786) index="0" unique_id=2044537792]
+visible = false
 theme_override_font_sizes/font_size = 20
 
 [node name="ContinueGameButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" parent_id_path=PackedInt32Array(2017477786) index="1" unique_id=1495566523]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-text = "Continue"
+text = "Play"
 
 [node name="LevelSelectButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" parent_id_path=PackedInt32Array(2017477786) index="2" unique_id=1348895676]
 unique_name_in_owner = true
