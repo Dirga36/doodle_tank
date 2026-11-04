@@ -1,1 +1,1 @@
-![alt text](docs\SuperConqueror.gif)
+![alt text](docs/SuperConqueror.gif)
