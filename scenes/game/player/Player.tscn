@@ -100,14 +100,6 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_388e5")
 max_value = 3.0
 value = 3.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=1638231248]
-visible = false
-layout_mode = 2
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 32
-text = "SCORE: 000000"
-vertical_alignment = 1
-
 [node name="Cannon" parent="." unique_id=882763557 instance=ExtResource("2_gfjak")]
 z_index = 1
 

@@ -53,6 +53,7 @@ func take_damage(amount: int) -> void:
 	health_manager.take_damage(amount)
 
 func _on_health_manager_died() -> void:
+	ScoreManager.add_points(10)
 	speed = 25
 	sprite_2d.hide()
 	die_sound.play()

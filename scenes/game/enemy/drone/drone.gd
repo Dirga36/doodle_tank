@@ -31,10 +31,10 @@ func take_damage(amount):
 		die()
 
 func die():
-	explosion_effect.emitting = true
-	
+	ScoreManager.add_points(10)
 	speed = 10
 	global_rotation = 0
+	explosion_effect.emitting = true
 	sprite_2d.hide()
 	die_sound.play()
 	await die_sound.finished

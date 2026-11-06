@@ -10,6 +10,7 @@ const FILE_PATH = "res://scripts/game_state.gd"
 @export var total_games_played : int
 @export var play_time : int
 @export var total_time : int
+@export var total_score : int
 
 static func get_level_state(level_state_key : String) -> LevelState:
 	level_state_key = ResourceUID.ensure_path(level_state_key)
@@ -77,4 +78,5 @@ static func reset() -> void:
 	game_state.checkpoint_level_path = ""
 	game_state.play_time = 0
 	game_state.total_time = 0
+	game_state.total_score = 0
 	GlobalState.save()

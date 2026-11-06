@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c7u0clwgmsph8" path="res://scenes/game/hud/landmine_icon.png" id="2_3ujq4"]
 [ext_resource type="Script" uid="uid://ba0vnyj06iig1" path="res://scenes/game/scripts/game_timer.gd" id="3_7lo7q"]
 [ext_resource type="Script" uid="uid://d21pyej6c8sog" path="res://scenes/game/scripts/tutorial_manager.gd" id="6_etamk"]
+[ext_resource type="Script" uid="uid://8umpgnrt3jvu" path="res://scenes/game/hud/score_label.gd" id="6_nwgrr"]
 [ext_resource type="PackedScene" uid="uid://bicpqmetncwf1" path="res://scenes/game/tutorials/tutorial_1.tscn" id="7_spx7p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ujq4"]
@@ -181,6 +182,24 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "LAND MINE"
 vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=371289244]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 364.0
+offset_bottom = 142.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer" unique_id=1492715294]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="Control/MarginContainer/VBoxContainer" unique_id=828109067]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "SCORE: 000000"
+vertical_alignment = 1
+script = ExtResource("6_nwgrr")
 
 [node name="TutorialManager" type="Node" parent="." unique_id=928111894]
 script = ExtResource("6_etamk")

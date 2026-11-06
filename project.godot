@@ -25,6 +25,7 @@ buses/default_bus_layout="uid://by1qd6epe24jl"
 Global="*uid://b2hho3yg76d65"
 SceneLoader="*uid://cpehcs7n5c62p"
 ProjectMusicController="*uid://r5t485lr3p7t"
+ScoreManager="*uid://bdj5dwtuu8x88"
 
 [clean_copy_examples]
 

@@ -54,6 +54,7 @@ func take_damage(amount: int) -> void:
 	health_manager.take_damage(amount)
 
 func _on_health_manager_died() -> void:
+	ScoreManager.add_points(15)
 	speed = 10
 	sprite_2d.hide()
 	tank_cannon.hide()
