@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bh1tt3gn2qci3"]
 
-[ext_resource type="Texture2D" uid="uid://c7u0clwgmsph8" path="res://scenes/game/hud/landmine_icon.png" id="2_15viq"]
+[ext_resource type="Script" uid="uid://ybhtd41v7od1" path="res://scenes/menus/armory_menu/total_score.gd" id="2_kjroa"]
 [ext_resource type="Texture2D" uid="uid://dntm7xvd0fpoh" path="res://icon.png" id="2_krp6m"]
 [ext_resource type="PackedScene" uid="uid://b1hnrly8yf0dl" path="res://scenes/menus/armory_menu/upgrade_row.tscn" id="3_krp6m"]
 
@@ -37,12 +37,14 @@ horizontal_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=645033746]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = -1
+anchor_top = 0.333
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -108.0
-offset_bottom = 250.0
+anchor_bottom = 0.88600004
+offset_left = 32.0
+offset_top = 0.21600342
+offset_right = -32.0
+offset_bottom = -0.12805176
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -68,16 +70,14 @@ text = "Exchange score points to upgrade your tank's qualities"
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer" unique_id=728391304]
 layout_mode = 2
 
-[node name="ScoreIcon" type="TextureRect" parent="MarginContainer2/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=627039275]
+[node name="TotalScore" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=925771829]
 layout_mode = 2
-texture = ExtResource("2_15viq")
-
-[node name="Score" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=925771829]
-layout_mode = 2
-text = "10000000"
+script = ExtResource("2_kjroa")
 
 [node name="StatsList" type="VBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer" unique_id=64515611]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
 
 [node name="UpgradeRow_Health" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList" unique_id=425628962 instance=ExtResource("3_krp6m")]
 layout_mode = 2

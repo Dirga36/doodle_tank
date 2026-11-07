@@ -7,9 +7,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="StatIcon" type="TextureRect" parent="." unique_id=268454035]
-layout_mode = 2
+theme_override_constants/separation = 16
 
 [node name="StatName" type="Label" parent="." unique_id=24482138]
 custom_minimum_size = Vector2(100, 0)
@@ -18,16 +16,24 @@ layout_mode = 2
 [node name="UpgradeLevel" type="HBoxContainer" parent="." unique_id=1930164835]
 layout_mode = 2
 size_flags_horizontal = 3
+alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="UpgradeLevel" unique_id=483948982]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 3.0
+value = 3.0
 
 [node name="UpgradeButton" type="Button" parent="." unique_id=448688465]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-text = "UPGRADE"
+theme_override_font_sizes/font_size = 32
+text = "+"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2063942504]
 layout_mode = 2
 
-[node name="ScoreIcon" type="TextureRect" parent="HBoxContainer" unique_id=884823610]
-layout_mode = 2
-
 [node name="ScoreLabel" type="Label" parent="HBoxContainer" unique_id=483533118]
 layout_mode = 2
+text = "1000"
