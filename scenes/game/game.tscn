@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dnbjuvow8mb7t" path="res://scenes/windows/pause_menu.tscn" id="3_5jirj"]
 [ext_resource type="PackedScene" uid="uid://c50tl5xtmg1ad" path="res://scenes/game/hud/hud.tscn" id="4_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://d04y7pydw2wq5" path="res://scenes/game/map/map.tscn" id="4_lfrn8"]
-[ext_resource type="PackedScene" uid="uid://bnb74kakdh20r" path="res://scenes/game/player/Player.tscn" id="5_5i0tg"]
+[ext_resource type="PackedScene" uid="uid://bnb74kakdh20r" path="res://scenes/game/player/player.tscn" id="5_5i0tg"]
 [ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="7_bdhmt"]
 [ext_resource type="PackedScene" uid="uid://doqtphk66a6re" path="res://scenes/windows/game_won_window.tscn" id="8_4j704"]
 [ext_resource type="Script" uid="uid://b4wss7vwhw5pw" path="res://scenes/game/scripts/goal_manager.gd" id="8_87uf6"]

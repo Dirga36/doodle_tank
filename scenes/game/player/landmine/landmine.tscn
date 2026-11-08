@@ -47,7 +47,7 @@ gravity = Vector3(0, 98, 0)
 scale_max = 4.0
 color_ramp = SubResource("GradientTexture1D_npx5i")
 
-[node name="Trap" type="Area2D" unique_id=1538265662]
+[node name="Landmine" type="Area2D" unique_id=1538265662]
 z_index = -1
 script = ExtResource("1_27ja4")
 
