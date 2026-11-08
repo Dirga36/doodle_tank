@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brg3j2pkhpjm8" path="res://scenes/game/player/landmine/landmine.gd" id="1_27ja4"]
 [ext_resource type="Texture2D" uid="uid://mwcukmklefo7" path="res://scenes/game/player/landmine/landmine.png" id="1_vpfkv"]
+[ext_resource type="Resource" uid="uid://cep85g2d16hf8" path="res://resources/player_stats.tres" id="2_6vccw"]
 [ext_resource type="AudioStream" uid="uid://hko3bqnpx7k7" path="res://assets/sfx/landmine_explosion_sound.mp3" id="3_k0qlb"]
 [ext_resource type="Texture2D" uid="uid://dmaj5sydfjdhe" path="res://scenes/game/player/landmine/landmine1.png" id="4_q5c32"]
 
@@ -50,6 +51,7 @@ color_ramp = SubResource("GradientTexture1D_npx5i")
 [node name="Landmine" type="Area2D" unique_id=1538265662]
 z_index = -1
 script = ExtResource("1_27ja4")
+stats = ExtResource("2_6vccw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=355298743]
 texture_filter = 1

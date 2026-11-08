@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerStats" format=3 uid="uid://cep85g2d16hf8"]
+
+[ext_resource type="Script" uid="uid://cta33kxlfcayx" path="res://scenes/game/player/player_stats.gd" id="1_wld0n"]
+
+[resource]
+script = ExtResource("1_wld0n")
+max_health = 3
+speed = 100.0
+main_cannon_damage = 1
+landmine_damage = 3
+metadata/_custom_type_script = "uid://cta33kxlfcayx"

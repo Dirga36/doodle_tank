@@ -1,12 +1,13 @@
 extends Area2D
 
-var speed: float = 500
-var damage: int = 1
-
+@export var stats: PlayerStats
 @export var max_points: int = 10
 @onready var trail: Line2D = $Line2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var impact_effect: GPUParticles2D = $Marker2D/BulletImpact
+
+var speed: float = 500
+@onready var damage: int = stats.main_cannon_damage
 
 func _physics_process(delta: float) -> void:
 	position += transform.x * speed * delta

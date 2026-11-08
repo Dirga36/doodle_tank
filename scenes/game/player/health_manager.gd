@@ -1,8 +1,9 @@
 extends Node
 
-var max_health: int = 3
-var current_health: int = 3
+@export var stats: PlayerStats
 @onready var player_health_bar: ProgressBar = %PlayerHealthBar
+@onready var max_health: int = stats.max_health
+var current_health: int = max_health
 
 signal player_health_is_zero
 

@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://bnb74kakdh20r"]
 
 [ext_resource type="Script" uid="uid://cgqd6svchmu7u" path="res://scenes/game/player/landmine/landmine_deployer.gd" id="1_2rpb8"]
-[ext_resource type="Script" uid="uid://bwnlgm7e42ps2" path="res://scenes/game/player/camera2d.gd" id="1_4kuee"]
+[ext_resource type="Script" uid="uid://bwnlgm7e42ps2" path="res://scenes/game/player/camera.gd" id="1_4kuee"]
 [ext_resource type="Script" uid="uid://cs067voql78lf" path="res://scenes/game/player/player.gd" id="1_524rm"]
 [ext_resource type="Texture2D" uid="uid://b4q8swvmfnrny" path="res://scenes/game/player/body.png" id="1_gfjak"]
 [ext_resource type="PackedScene" uid="uid://x4cuqvqshld" path="res://scenes/game/player/cannon/cannon.tscn" id="2_gfjak"]
 [ext_resource type="AudioStream" uid="uid://cptcmo0edcexf" path="res://assets/sfx/tankengine_sound.mp3" id="4_vpxtw"]
 [ext_resource type="AudioStream" uid="uid://6jpao1imbdr" path="res://assets/sfx/moving.mp3" id="5_2rpb8"]
 [ext_resource type="Script" uid="uid://bga3aqjv48503" path="res://scenes/game/player/health_manager.gd" id="7_3vwxf"]
+[ext_resource type="Script" uid="uid://cacvu1aaw7k8j" path="res://scenes/game/player/movement_manager.gd" id="8_6bxg8"]
+[ext_resource type="Resource" uid="uid://cep85g2d16hf8" path="res://resources/player_stats.tres" id="9_ywish"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(24, 16)
@@ -51,44 +53,55 @@ max_distance = 10.0
 attenuation = 3.0314324
 parameters/looping = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1291757047]
+[node name="Camera" type="Camera2D" parent="." unique_id=1291757047]
 zoom = Vector2(10, 10)
 script = ExtResource("1_4kuee")
 
+[node name="Cannon" parent="." unique_id=882763557 instance=ExtResource("2_gfjak")]
+z_index = 1
+
+[node name="LandMine" type="Node" parent="." unique_id=904164333]
+script = ExtResource("1_2rpb8")
+
+[node name="MovementManager" type="Node" parent="." unique_id=265634521]
+script = ExtResource("8_6bxg8")
+stats = ExtResource("9_ywish")
+
 [node name="HealthManager" type="Node" parent="." unique_id=933980256]
 script = ExtResource("7_3vwxf")
+stats = ExtResource("9_ywish")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1601982036]
+[node name="CanvasLayer" type="CanvasLayer" parent="HealthManager" unique_id=1601982036]
 layer = 0
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=21351546]
+[node name="Control" type="Control" parent="HealthManager/CanvasLayer" unique_id=21351546]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" unique_id=528403507]
+[node name="MarginContainer" type="MarginContainer" parent="HealthManager/CanvasLayer/Control" unique_id=528403507]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 364.0
 offset_bottom = 94.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer" unique_id=705786424]
+[node name="VBoxContainer" type="VBoxContainer" parent="HealthManager/CanvasLayer/Control/MarginContainer" unique_id=705786424]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=424194670]
+[node name="HBoxContainer" type="HBoxContainer" parent="HealthManager/CanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=424194670]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=598689729]
+[node name="Label" type="Label" parent="HealthManager/CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=598689729]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "HP"
 vertical_alignment = 1
 
-[node name="PlayerHealthBar" type="ProgressBar" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=612878969]
+[node name="PlayerHealthBar" type="ProgressBar" parent="HealthManager/CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=612878969]
 unique_name_in_owner = true
 z_as_relative = false
 custom_minimum_size = Vector2(300, 0)
@@ -98,12 +111,5 @@ theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/fill = SubResource("StyleBoxFlat_388e5")
 max_value = 3.0
-value = 3.0
-
-[node name="Cannon" parent="." unique_id=882763557 instance=ExtResource("2_gfjak")]
-z_index = 1
-
-[node name="LandMine" type="Node" parent="." unique_id=904164333]
-script = ExtResource("1_2rpb8")
 
 [connection signal="player_health_is_zero" from="HealthManager" to="." method="_on_health_manager_player_health_is_zero"]

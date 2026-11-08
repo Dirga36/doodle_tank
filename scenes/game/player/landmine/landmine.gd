@@ -1,15 +1,15 @@
 extends Area2D
 
-var damage: int = 2
-var fuse_time: float = 2.0
-var is_proximity_trap: bool = true  # True for proximity trigger, False for fuse timer
-
+@export var stats: PlayerStats
 @onready var fuse_timer: Timer = $FuseTimer
 @onready var explosion_area: Area2D = $BlastArea
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var exploding_sound: AudioStreamPlayer2D = $ExplodingSound
 @onready var exploding_particles: GPUParticles2D = $ExplodingParticles
 
+@onready var damage: int = stats.landmine_damage
+var fuse_time: float = 2.0
+var is_proximity_trap: bool = true  # True for proximity trigger, False for fuse timer
 var is_armed: bool = false
 
 func _ready() -> void:
