@@ -1,11 +1,10 @@
-[gd_scene format=3 uid="uid://bh1tt3gn2qci3"]
+[gd_scene format=3 uid="uid://co1r8vl0iaa8w"]
 
 [ext_resource type="Script" uid="uid://ybhtd41v7od1" path="res://scenes/menus/armory_menu/total_score.gd" id="2_kjroa"]
 [ext_resource type="Texture2D" uid="uid://dntm7xvd0fpoh" path="res://icon.png" id="2_krp6m"]
 [ext_resource type="PackedScene" uid="uid://b1hnrly8yf0dl" path="res://scenes/menus/armory_menu/upgrade_row.tscn" id="3_krp6m"]
 
-[node name="ArmoryMenu" type="Control" unique_id=596980402]
-texture_filter = 1
+[node name="ArmoryMenu" type="Control" unique_id=678493903]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,68 +12,65 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="ColorRect" parent="." unique_id=992614053]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=261148035]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1005729139]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
+anchor_bottom = 0.057000004
+offset_bottom = -36.936
 grow_horizontal = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=154755723]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1683397894]
 layout_mode = 2
 alignment = 1
 
-[node name="ArmoryMenu" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1137684555]
+[node name="ArmoryMenu" type="Label" parent="MarginContainer/HBoxContainer" unique_id=181389026]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Armory"
 horizontal_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=645033746]
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1777184871]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.028
 anchor_top = 0.333
-anchor_right = 1.0
+anchor_right = 0.97200006
 anchor_bottom = 0.88600004
-offset_left = 32.0
+offset_left = -0.25600052
 offset_top = 0.21600342
-offset_right = -32.0
+offset_right = 0.25598145
 offset_bottom = -0.12805176
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2" unique_id=279314535]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2" unique_id=1807963106]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer2/HBoxContainer" unique_id=1553608279]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer2/HBoxContainer" unique_id=951198658]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TankSprite" type="TextureRect" parent="MarginContainer2/HBoxContainer/CenterContainer" unique_id=32221465]
+[node name="TankSprite" type="TextureRect" parent="MarginContainer2/HBoxContainer/CenterContainer" unique_id=1483148127]
 layout_mode = 2
 texture = ExtResource("2_krp6m")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/HBoxContainer" unique_id=844461072]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/HBoxContainer" unique_id=1994390289]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" unique_id=1802229504]
+[node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" unique_id=433339788]
 layout_mode = 2
 text = "Exchange score points to upgrade your tank's qualities"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer" unique_id=728391304]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer" unique_id=235502282]
 layout_mode = 2
 
-[node name="TotalScore" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=925771829]
+[node name="TotalScore" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=2029327692]
 layout_mode = 2
 script = ExtResource("2_kjroa")
 
-[node name="StatsList" type="VBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer" unique_id=64515611]
+[node name="StatsList" type="VBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer" unique_id=493829793]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
@@ -82,20 +78,26 @@ theme_override_constants/separation = 16
 [node name="UpgradeRow_Health" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList" unique_id=425628962 instance=ExtResource("3_krp6m")]
 layout_mode = 2
 
-[node name="StatName" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Health" index="1" unique_id=24482138]
+[node name="StatName" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Health" index="0" unique_id=24482138]
 text = "HEALTH"
 
-[node name="UpgradeRow_Speed" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList" unique_id=608078460 instance=ExtResource("3_krp6m")]
+[node name="UpgradeRow_Speed" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList" unique_id=1593692458 instance=ExtResource("3_krp6m")]
 layout_mode = 2
 
-[node name="StatName" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Speed" index="1" unique_id=24482138]
+[node name="StatName" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Speed" index="0" unique_id=24482138]
 text = "SPEED"
 
-[node name="UpgradeRow_Damage" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList" unique_id=2028403570 instance=ExtResource("3_krp6m")]
+[node name="ProgressBar" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Speed/UpgradeLevel" parent_id_path=PackedInt32Array(1593692458, 1930164835) index="0" unique_id=483948982]
+value = 2.0
+
+[node name="UpgradeRow_Damage" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList" unique_id=551389085 instance=ExtResource("3_krp6m")]
 layout_mode = 2
 
-[node name="StatName" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Damage" index="1" unique_id=24482138]
+[node name="StatName" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Damage" index="0" unique_id=24482138]
 text = "DAMAGE"
+
+[node name="ProgressBar" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Damage/UpgradeLevel" parent_id_path=PackedInt32Array(551389085, 1930164835) index="0" unique_id=483948982]
+value = 2.0
 
 [editable path="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Health"]
 [editable path="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Speed"]

@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cg5aoqw2hokjn" path="res://scenes/game/enemy/armoredcar/health_manager.gd" id="3_ov0wq"]
 [ext_resource type="AudioStream" uid="uid://d0f8tp1mh8wwi" path="res://assets/sfx/enemy_die.mp3" id="4_s6rff"]
 [ext_resource type="AudioStream" uid="uid://dl0ctn3eve1k7" path="res://assets/sfx/armoredcar_moving.mp3" id="5_h4ed7"]
-[ext_resource type="PackedScene" uid="uid://besolgbkyij51" path="res://scenes/game/particles_library/explosion.tscn" id="6_tdnfm"]
+[ext_resource type="PackedScene" uid="uid://besolgbkyij51" path="res://scenes/game/VFX/explosion.tscn" id="6_tdnfm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(42, 24)

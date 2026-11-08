@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://5cy3felaw3iw"]
 
-[ext_resource type="Texture2D" uid="uid://duep5ijfq7503" path="res://scenes/game/particles_library/outline.png" id="1_jtdh0"]
+[ext_resource type="Texture2D" uid="uid://duep5ijfq7503" path="res://scenes/game/VFX/outline.png" id="1_jtdh0"]
 
 [sub_resource type="Curve" id="Curve_tqmsy"]
 _limits = [-360.0, 360.0, 0.0, 1.0]

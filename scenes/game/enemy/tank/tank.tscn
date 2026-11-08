@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://irl4b31nui46" path="res://scenes/game/enemy/tank/target_manager.gd" id="5_dp7by"]
 [ext_resource type="AudioStream" uid="uid://d0f8tp1mh8wwi" path="res://assets/sfx/enemy_die.mp3" id="6_p5h3f"]
 [ext_resource type="AudioStream" uid="uid://cptcmo0edcexf" path="res://assets/sfx/tankengine_sound.mp3" id="7_1yfg1"]
-[ext_resource type="PackedScene" uid="uid://besolgbkyij51" path="res://scenes/game/particles_library/explosion.tscn" id="8_aj8ae"]
+[ext_resource type="PackedScene" uid="uid://besolgbkyij51" path="res://scenes/game/VFX/explosion.tscn" id="8_aj8ae"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(25, 16)

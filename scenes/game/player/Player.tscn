@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bnb74kakdh20r"]
 
-[ext_resource type="Script" uid="uid://cgqd6svchmu7u" path="res://scenes/game/player/land_mine.gd" id="1_2rpb8"]
+[ext_resource type="Script" uid="uid://cgqd6svchmu7u" path="res://scenes/game/player/landmine/landmine_deployer.gd" id="1_2rpb8"]
 [ext_resource type="Script" uid="uid://bwnlgm7e42ps2" path="res://scenes/game/player/camera2d.gd" id="1_4kuee"]
 [ext_resource type="Script" uid="uid://cs067voql78lf" path="res://scenes/game/player/player.gd" id="1_524rm"]
 [ext_resource type="Texture2D" uid="uid://b4q8swvmfnrny" path="res://scenes/game/player/body.png" id="1_gfjak"]
-[ext_resource type="PackedScene" uid="uid://x4cuqvqshld" path="res://scenes/game/player/cannon.tscn" id="2_gfjak"]
+[ext_resource type="PackedScene" uid="uid://x4cuqvqshld" path="res://scenes/game/player/cannon/cannon.tscn" id="2_gfjak"]
 [ext_resource type="AudioStream" uid="uid://cptcmo0edcexf" path="res://assets/sfx/tankengine_sound.mp3" id="4_vpxtw"]
 [ext_resource type="AudioStream" uid="uid://6jpao1imbdr" path="res://assets/sfx/moving.mp3" id="5_2rpb8"]
 [ext_resource type="Script" uid="uid://bga3aqjv48503" path="res://scenes/game/player/health_manager.gd" id="7_3vwxf"]

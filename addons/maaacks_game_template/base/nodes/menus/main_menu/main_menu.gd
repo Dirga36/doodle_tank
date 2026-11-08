@@ -10,6 +10,8 @@ signal game_exited
 ## Defines the path to the game scene. Hides the play button if empty.
 ## Will use ProjectSettings paths if left empty.
 @export_file("*.tscn") var game_scene_path : String
+## The scene to open when a player clicks the 'Armory' button.
+@export var armory_packed_scene : PackedScene
 ## The scene to open when a player clicks the 'Options' button.
 @export var options_packed_scene : PackedScene
 ## The scene to open when a player clicks the 'Credits' button.
@@ -26,6 +28,7 @@ var sub_menu : Control
 
 @onready var menu_buttons_box_container = %MenuButtonsBoxContainer
 @onready var new_game_button = %NewGameButton
+@onready var armory_button = %ArmoryButton
 @onready var options_button = %OptionsButton
 @onready var credits_button = %CreditsButton
 @onready var exit_button = %ExitButton
@@ -96,6 +99,10 @@ func _hide_new_game_if_unset() -> void:
 	if get_game_scene_path().is_empty():
 		new_game_button.hide()
 
+func _hide_armory_if_unset() -> void:
+	if armory_packed_scene == null:
+		armory_button.hide()
+
 func _hide_options_if_unset() -> void:
 	if options_packed_scene == null:
 		options_button.hide()
@@ -112,6 +119,9 @@ func _ready() -> void:
 
 func _on_new_game_button_pressed() -> void:
 	new_game()
+
+func _on_armory_button_pressed() -> void:
+	_open_sub_menu(armory_packed_scene)
 
 func _on_options_button_pressed() -> void:
 	_open_sub_menu(options_packed_scene)
