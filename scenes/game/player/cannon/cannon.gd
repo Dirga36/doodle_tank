@@ -5,7 +5,7 @@ var fire_cooldown: float = 0.5
 var _cooldown_timer: float = 0.0
 
 @onready var marker_2d: Marker2D = $Marker2D
-@onready var particles: GPUParticles2D = $Marker2D/GPUParticles2D
+@onready var firing_effect: GPUParticles2D = $Marker2D/CannonFiring
 @onready var cannon_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var rotation_speed: float = 5.0 # Lower values = slower rotation
@@ -45,6 +45,6 @@ func _shoot() -> void:
 	spawn_parent.add_child(bullet)
 	
 	cannon_sound.play()
-	particles.restart()
-	particles.emitting = true
+	firing_effect.restart()
+	firing_effect.emitting = true
 	_cooldown_timer = fire_cooldown

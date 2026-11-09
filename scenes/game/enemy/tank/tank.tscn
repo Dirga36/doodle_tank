@@ -65,7 +65,7 @@ stream = ExtResource("6_p5h3f")
 stream = ExtResource("7_1yfg1")
 volume_db = 10.0
 
-[node name="Explosion" parent="." unique_id=1319537123 instance=ExtResource("8_aj8ae")]
+[node name="Explosion" parent="." unique_id=1590463719 instance=ExtResource("8_aj8ae")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="died" from="HealthManager" to="." method="_on_health_manager_died"]

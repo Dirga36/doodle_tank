@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://cep85g2d16hf8" path="res://resources/player_stats.tres" id="2_6vccw"]
 [ext_resource type="AudioStream" uid="uid://hko3bqnpx7k7" path="res://assets/sfx/landmine_explosion_sound.mp3" id="3_k0qlb"]
 [ext_resource type="Texture2D" uid="uid://dmaj5sydfjdhe" path="res://scenes/game/player/landmine/landmine1.png" id="4_q5c32"]
+[ext_resource type="Texture2D" uid="uid://duep5ijfq7503" path="res://scenes/game/VFX/outline.png" id="6_3hobw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
 animations = [{
@@ -40,12 +41,14 @@ gradient = SubResource("Gradient_27ja4")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1vivr"]
 particle_flag_disable_z = true
+angle_min = -179.99998
+angle_max = 180.00002
 direction = Vector3(0, 0, 0)
 spread = 180.0
 initial_velocity_min = 220.0
 initial_velocity_max = 220.0
 gravity = Vector3(0, 98, 0)
-scale_max = 4.0
+scale_min = 0.19999999
 color_ramp = SubResource("GradientTexture1D_npx5i")
 
 [node name="Landmine" type="Area2D" unique_id=1538265662]
@@ -76,9 +79,11 @@ shape = SubResource("CircleShape2D_wdut5")
 stream = ExtResource("3_k0qlb")
 
 [node name="ExplodingParticles" type="GPUParticles2D" parent="." unique_id=55456874]
+texture_filter = 1
 emitting = false
-amount = 50
+amount = 25
+texture = ExtResource("6_3hobw")
 lifetime = 0.2
 one_shot = true
-explosiveness = 1.0
+explosiveness = 0.8
 process_material = SubResource("ParticleProcessMaterial_1vivr")

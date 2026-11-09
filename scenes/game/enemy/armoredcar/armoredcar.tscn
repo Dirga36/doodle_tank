@@ -46,7 +46,7 @@ autoplay = true
 max_distance = 300.0
 parameters/looping = true
 
-[node name="Explosion" parent="." unique_id=1319537123 instance=ExtResource("6_tdnfm")]
+[node name="Explosion" parent="." unique_id=1590463719 instance=ExtResource("6_tdnfm")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="died" from="HealthManager" to="." method="_on_health_manager_died"]

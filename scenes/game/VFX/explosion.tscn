@@ -4,7 +4,7 @@
 
 [sub_resource type="Gradient" id="Gradient_a2d1f"]
 offsets = PackedFloat32Array(0, 0.4, 0.7, 1)
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1, 0.5019608, 0.5019608, 0.5019608, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.9372549, 0.12941177, 0.25882354, 1, 1, 1, 1, 1, 0.5019608, 0.5019608, 0.5019608, 1, 0, 0, 0, 1)
 metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_qbdty"]
@@ -29,7 +29,7 @@ scale_max = 5.0
 scale_curve = SubResource("CurveTexture_8vrlf")
 color_ramp = SubResource("GradientTexture1D_qbdty")
 
-[node name="GPUParticles2D" type="GPUParticles2D" unique_id=1590463719]
+[node name="Explosion" type="GPUParticles2D" unique_id=1590463719]
 texture_filter = 1
 emitting = false
 amount = 25

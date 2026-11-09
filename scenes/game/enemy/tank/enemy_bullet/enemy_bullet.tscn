@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://creht07yttgy6" path="res://scenes/game/enemy/tank/enemy_bullet/enemy_bullet.gd" id="1_nxcno"]
 [ext_resource type="Texture2D" uid="uid://d32wjgghwlguk" path="res://scenes/game/enemy/tank/enemy_bullet/enemy_bullet.png" id="2_vobwe"]
-[ext_resource type="PackedScene" uid="uid://5cy3felaw3iw" path="res://scenes/game/VFX/bullet_impact/bullet_impact.tscn" id="3_tgyqr"]
+[ext_resource type="PackedScene" uid="uid://5cy3felaw3iw" path="res://scenes/game/VFX/bullet_impact.tscn" id="3_tgyqr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vobwe"]
 size = Vector2(12, 6)
