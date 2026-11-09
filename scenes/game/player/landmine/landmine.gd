@@ -7,7 +7,7 @@ extends Area2D
 @onready var exploding_sound: AudioStreamPlayer2D = $ExplodingSound
 @onready var exploding_particles: GPUParticles2D = $ExplodingParticles
 
-@onready var damage: int = stats.landmine_damage
+@onready var damage: int = stats.damage * 3
 var fuse_time: float = 2.0
 var is_proximity_trap: bool = true  # True for proximity trigger, False for fuse timer
 var is_armed: bool = false

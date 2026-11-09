@@ -4,8 +4,7 @@
 
 [resource]
 script = ExtResource("1_wld0n")
-max_health = 3
-speed = 100.0
-main_cannon_damage = 1
-landmine_damage = 3
+max_health = 0.0
+speed = 0.0
+damage = 0.0
 metadata/_custom_type_script = "uid://cta33kxlfcayx"

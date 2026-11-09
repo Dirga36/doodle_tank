@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://co1r8vl0iaa8w"]
 
+[ext_resource type="Script" uid="uid://bxqks3gvk11h0" path="res://scenes/menus/armory_menu/armory_menu.gd" id="1_kjroa"]
 [ext_resource type="Script" uid="uid://ybhtd41v7od1" path="res://scenes/menus/armory_menu/total_score.gd" id="2_kjroa"]
 [ext_resource type="Texture2D" uid="uid://dntm7xvd0fpoh" path="res://icon.png" id="2_krp6m"]
+[ext_resource type="Resource" uid="uid://cep85g2d16hf8" path="res://resources/player_stats.tres" id="2_wtrf8"]
 [ext_resource type="PackedScene" uid="uid://b1hnrly8yf0dl" path="res://scenes/menus/armory_menu/upgrade_row.tscn" id="3_krp6m"]
 
 [node name="ArmoryMenu" type="Control" unique_id=678493903]
@@ -11,6 +13,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_kjroa")
+stats = ExtResource("2_wtrf8")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1005729139]
 layout_mode = 1
@@ -81,14 +85,17 @@ layout_mode = 2
 [node name="StatName" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Health" index="0" unique_id=24482138]
 text = "HEALTH"
 
+[node name="UpgradeCostLabel" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Health/HBoxContainer" parent_id_path=PackedInt32Array(425628962, 2063942504) index="0" unique_id=483533118]
+text = ""
+
 [node name="UpgradeRow_Speed" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList" unique_id=1593692458 instance=ExtResource("3_krp6m")]
 layout_mode = 2
 
 [node name="StatName" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Speed" index="0" unique_id=24482138]
 text = "SPEED"
 
-[node name="ProgressBar" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Speed/UpgradeLevel" parent_id_path=PackedInt32Array(1593692458, 1930164835) index="0" unique_id=483948982]
-value = 2.0
+[node name="UpgradeCostLabel" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Speed/HBoxContainer" parent_id_path=PackedInt32Array(1593692458, 2063942504) index="0" unique_id=483533118]
+text = ""
 
 [node name="UpgradeRow_Damage" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList" unique_id=551389085 instance=ExtResource("3_krp6m")]
 layout_mode = 2
@@ -96,8 +103,12 @@ layout_mode = 2
 [node name="StatName" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Damage" index="0" unique_id=24482138]
 text = "DAMAGE"
 
-[node name="ProgressBar" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Damage/UpgradeLevel" parent_id_path=PackedInt32Array(551389085, 1930164835) index="0" unique_id=483948982]
-value = 2.0
+[node name="UpgradeCostLabel" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Damage/HBoxContainer" parent_id_path=PackedInt32Array(551389085, 2063942504) index="0" unique_id=483533118]
+text = ""
+
+[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Health/UpgradeButton" to="." method="_on_health_upgrade"]
+[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Speed/UpgradeButton" to="." method="_on_speed_upgrade"]
+[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Damage/UpgradeButton" to="." method="_on_damage_upgrade"]
 
 [editable path="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Health"]
 [editable path="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Speed"]
