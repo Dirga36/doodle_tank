@@ -99,7 +99,7 @@ jobs:
 
   deploy-to-itch:
     name: Deploy to Itch.io
-    needs: [export-web, export-windows, export-linux, export-mac]
+    needs: [export-windows]
     runs-on: ubuntu-24.04
     env:
       BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }} # Create this SECRET on Github
@@ -129,18 +129,6 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Deploying version: $VERSION"
 
-      - name: Upload to Itch.io - Web
-        run: |
-          ./butler push builds/web ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME }}:html5 --userversion "${{ steps.version.outputs.version }}"
-
       - name: Upload to Itch.io - Windows
         run: |
           ./butler push builds/windows ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME }}:windows --userversion "${{ steps.version.outputs.version }}"
-
-      - name: Upload to Itch.io - Linux
-        run: |
-          ./butler push builds/linux ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME }}:linux --userversion "${{ steps.version.outputs.version }}"
-
-      - name: Upload to Itch.io - macOS
-        run: |
-          ./butler push builds/mac ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME }}:mac --userversion "${{ steps.version.outputs.version }}"
