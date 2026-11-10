@@ -37,17 +37,17 @@ func get_upgrade_cost(current_level: int) -> int:
 
 func update_ui() -> void:	
 	# Update progress bars based on current level vs max level
-	health_bar.value = (float(stats.health_level) / MAX_LEVEL) * 100
-	speed_bar.value = (float(stats.speed_level) / MAX_LEVEL) * 100
-	damage_bar.value = (float(stats.damage_level) / MAX_LEVEL) * 100
+	health_bar.value = stats.max_health_level
+	speed_bar.value = stats.speed_level
+	damage_bar.value = stats.damage_level
 	
 	# Calculate current specific cost for each stat
-	var current_health_cost: int = get_upgrade_cost(stats.health_level)
+	var current_health_cost: int = get_upgrade_cost(stats.max_health_level)
 	var current_speed_cost: int = get_upgrade_cost(stats.speed_level)
 	var current_damage_cost: int = get_upgrade_cost(stats.damage_level)
 	
 	# Disable upgrade buttons if the player lacks points for that specific stat or reached max level
-	health_btn.disabled = game_state.total_score < current_health_cost or stats.health_level >= MAX_LEVEL
+	health_btn.disabled = game_state.total_score < current_health_cost or stats.max_health_level >= MAX_LEVEL
 	speed_btn.disabled = game_state.total_score < current_speed_cost or stats.speed_level >= MAX_LEVEL
 	damage_btn.disabled = game_state.total_score < current_damage_cost or stats.damage_level >= MAX_LEVEL
 	
@@ -57,10 +57,10 @@ func update_ui() -> void:
 	$MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Damage/HBoxContainer/UpgradeCostLabel.text = str(current_damage_cost) + " PTS"
 
 func _on_health_upgrade() -> void:
-	var cost = get_upgrade_cost(stats.health_level)
-	if game_state.total_score >= cost and stats.health_level < MAX_LEVEL:
+	var cost = get_upgrade_cost(stats.max_health_level)
+	if game_state.total_score >= cost and stats.max_health_level < MAX_LEVEL:
 		game_state.total_score -= cost
-		stats.health_level += 1
+		stats.max_health_level += 1
 		stats.max_health += 2
 		save_stats()
 
@@ -69,7 +69,7 @@ func _on_speed_upgrade() -> void:
 	if game_state.total_score >= cost and stats.speed_level < MAX_LEVEL:
 		game_state.total_score -= cost
 		stats.speed_level += 1
-		stats.speed += 15.0
+		stats.speed += 20
 		save_stats()
 
 func _on_damage_upgrade() -> void:

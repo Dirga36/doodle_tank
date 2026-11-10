@@ -3,6 +3,7 @@ extends Resource
 
 const STATE_NAME : String = "GameState"
 const FILE_PATH = "res://scripts/game_state.gd"
+const PLAYER_STATS_RESOURCE_PATH = "res://resources/player_stats.tres"
 
 @export var level_states : Dictionary = {}
 @export var current_level_path : String
@@ -79,4 +80,15 @@ static func reset() -> void:
 	game_state.play_time = 0
 	game_state.total_time = 0
 	game_state.total_score = 0
+	reset_player_stats()
 	GlobalState.save()
+
+static func reset_player_stats() -> void:
+	var player_stats = ResourceLoader.load(PLAYER_STATS_RESOURCE_PATH)
+	player_stats.max_health = 0.0
+	player_stats.speed = 0.0
+	player_stats.damage = 0.0
+	player_stats.max_health_level = 0
+	player_stats.speed_level = 0
+	player_stats.damage_level = 0
+	
