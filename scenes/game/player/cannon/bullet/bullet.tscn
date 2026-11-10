@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://daik45d0067d8" path="res://scenes/game/player/cannon/bullet/bullet.gd" id="1_pyopn"]
 [ext_resource type="Texture2D" uid="uid://bg8vp6l8mg4m0" path="res://scenes/game/player/cannon/bullet/bullet.png" id="1_xikvv"]
-[ext_resource type="Resource" uid="uid://cep85g2d16hf8" path="res://resources/player_stats.tres" id="2_qkbos"]
+[ext_resource type="Resource" uid="uid://by0bka1fq63q3" path="res://resources/player_stats.tres" id="2_qkbos"]
 [ext_resource type="PackedScene" uid="uid://5cy3felaw3iw" path="res://scenes/game/VFX/bullet_impact.tscn" id="3_a1xt6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djw1o"]

@@ -85,10 +85,11 @@ static func reset() -> void:
 
 static func reset_player_stats() -> void:
 	var player_stats = ResourceLoader.load(PLAYER_STATS_RESOURCE_PATH)
-	player_stats.max_health = 0.0
-	player_stats.speed = 0.0
-	player_stats.damage = 0.0
+	player_stats.max_health = 3.0
+	player_stats.speed = 100.0
+	player_stats.damage = 1.0
 	player_stats.max_health_level = 0
 	player_stats.speed_level = 0
 	player_stats.damage_level = 0
+	ResourceSaver.save(player_stats, PLAYER_STATS_RESOURCE_PATH)
 	

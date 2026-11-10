@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://d04y7pydw2wq5"]
 
+[ext_resource type="Texture2D" uid="uid://cd51x3dl3nano" path="res://scenes/game/map/map_coloured.jpg" id="2_ltxuh"]
 [ext_resource type="PackedScene" uid="uid://cls4of2bmwsxn" path="res://scenes/game/map/obstacle1.tscn" id="2_tqkkf"]
-[ext_resource type="Texture2D" uid="uid://c2uyete5lp6ub" path="res://scenes/game/map/map.jpg" id="3_er8mx"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_a2pkv"]
 scenes/2/scene = ExtResource("2_tqkkf")
@@ -34,9 +34,9 @@ tile_map_data = PackedByteArray("AAD//wAABQAAAAAAAQC0/+D/AwAAAAAAAgC0/+H/AwAAAAA
 tile_set = SubResource("TileSet_scl2d")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=39263836]
-position = Vector2(-7.999966, 8)
-scale = Vector2(0.99846864, 1)
-texture = ExtResource("3_er8mx")
+position = Vector2(-7.999941, 7.9999676)
+scale = Vector2(1.9969372, 1.9999999)
+texture = ExtResource("2_ltxuh")
 
 [node name="Border1" type="StaticBody2D" parent="." unique_id=1363387891]
 position = Vector2(-1312, -808)

@@ -7,6 +7,7 @@ var _cooldown_timer: float = 0.0
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var firing_effect: GPUParticles2D = $Marker2D/CannonFiring
 @onready var cannon_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
 
 var rotation_speed: float = 5.0 # Lower values = slower rotation
 
@@ -37,6 +38,7 @@ func _can_fire() -> bool:
 
 
 func _shoot() -> void:
+	animation_player.play("recoil")
 	var bullet := Bullet.instantiate() as Area2D
 	if bullet == null:
 		return

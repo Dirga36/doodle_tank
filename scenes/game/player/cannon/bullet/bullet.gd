@@ -7,7 +7,7 @@ extends Area2D
 @onready var impact_effect: GPUParticles2D = $Marker2D/BulletImpact
 
 var speed: float = 500
-@onready var damage: int = stats.damage * 1
+@onready var damage: float = stats.damage * 1
 
 func _physics_process(delta: float) -> void:
 	position += transform.x * speed * delta

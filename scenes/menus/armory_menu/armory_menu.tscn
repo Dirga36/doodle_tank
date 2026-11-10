@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bxqks3gvk11h0" path="res://scenes/menus/armory_menu/armory_menu.gd" id="1_kjroa"]
 [ext_resource type="Script" uid="uid://ybhtd41v7od1" path="res://scenes/menus/armory_menu/total_score.gd" id="2_kjroa"]
 [ext_resource type="Texture2D" uid="uid://dntm7xvd0fpoh" path="res://icon.png" id="2_krp6m"]
-[ext_resource type="Resource" uid="uid://dxq5i2lj1g3k6" path="res://resources/player_stats.tres" id="2_wtrf8"]
+[ext_resource type="Resource" path="res://resources/player_stats.tres" id="2_wtrf8"]
 [ext_resource type="PackedScene" uid="uid://b1hnrly8yf0dl" path="res://scenes/menus/armory_menu/upgrade_row.tscn" id="3_krp6m"]
 
 [node name="ArmoryMenu" type="Control" unique_id=678493903]
