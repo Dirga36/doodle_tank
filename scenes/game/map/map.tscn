@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://d04y7pydw2wq5"]
 
-[ext_resource type="Texture2D" uid="uid://cd51x3dl3nano" path="res://scenes/game/map/map_coloured.jpg" id="2_ltxuh"]
+[ext_resource type="Texture2D" uid="uid://c2uyete5lp6ub" path="res://scenes/game/map/map.jpg" id="2_ltxuh"]
 [ext_resource type="PackedScene" uid="uid://cls4of2bmwsxn" path="res://scenes/game/map/obstacle1.tscn" id="2_tqkkf"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_a2pkv"]
@@ -23,7 +23,7 @@ size = Vector2(282, 146)
 size = Vector2(1280, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5gy4"]
-size = Vector2(576, 168)
+size = Vector2(608, 184)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbdty"]
 size = Vector2(64, 304)
@@ -34,8 +34,8 @@ tile_map_data = PackedByteArray("AAD//wAABQAAAAAAAQC0/+D/AwAAAAAAAgC0/+H/AwAAAAA
 tile_set = SubResource("TileSet_scl2d")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=39263836]
-position = Vector2(-7.999941, 7.9999676)
-scale = Vector2(1.9969372, 1.9999999)
+position = Vector2(-8.00004, 8.000032)
+scale = Vector2(0.9984687, 0.99999994)
 texture = ExtResource("2_ltxuh")
 
 [node name="Border1" type="StaticBody2D" parent="." unique_id=1363387891]
@@ -80,7 +80,7 @@ shape = SubResource("RectangleShape2D_8vrlf")
 position = Vector2(-848, 768)
 
 [node name="EnemySpawnZone3" type="CollisionShape2D" parent="Area2D3" unique_id=2017066273]
-position = Vector2(-144, -44)
+position = Vector2(-160, -36)
 shape = SubResource("RectangleShape2D_v5gy4")
 
 [node name="Area2D4" type="Area2D" parent="." unique_id=131663628]
