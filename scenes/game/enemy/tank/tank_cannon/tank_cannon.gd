@@ -1,11 +1,11 @@
 extends Area2D
 
 const Bullet = preload("uid://bwbfx4yqypae0")
-@onready var Player = Global.player
 var fire_cooldown: float = 3
 var _cooldown_timer: float = 0.0
 var aimed: bool = false
 
+@onready var Player = Global.player
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var firing_effect: GPUParticles2D = $Marker2D/CannonFiring
 @onready var cannon_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -14,6 +14,8 @@ var aimed: bool = false
 var rotation_speed: float = 5.0 # Lower values = slower rotation
 
 func _physics_process(delta: float) -> void:
+	if not is_instance_valid(Player):
+		return
 	var target_angle = global_position.direction_to(Player.global_position).angle()
 	
 	# Interpolate global_rotation instead of local rotation

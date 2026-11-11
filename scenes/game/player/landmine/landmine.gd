@@ -24,6 +24,7 @@ func _ready() -> void:
 		body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node2D) -> void:
+	# Note: Landmines affects only ground enemies
 	if is_armed and body.is_in_group("enemy"):
 		explode()
 
@@ -46,3 +47,7 @@ func explode() -> void:
 	exploding_sound.play()
 	await exploding_sound.finished
 	queue_free()
+
+
+func _on_lifespan_timeout() -> void:
+	explode()

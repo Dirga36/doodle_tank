@@ -4,7 +4,7 @@ extends Node
 @onready var game_timer: Node = $"../GameTimer"
 
 func _process(_delta: float) -> void:
-	if game_timer.play_time >= 1200.1:
+	if game_timer.play_time >= 5.1: # shorten for testing, usually 1200.1
 		print("WIN")
 		win_lose_manager.game_won()
 		set_process(false) # Stops checking once win condition is met

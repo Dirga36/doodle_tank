@@ -43,7 +43,7 @@ func _shoot() -> void:
 	if bullet == null:
 		return
 	bullet.global_transform = marker_2d.global_transform
-	var spawn_parent := get_tree().root
+	var spawn_parent := get_tree().current_scene
 	spawn_parent.add_child(bullet)
 	
 	cannon_sound.play()

@@ -5,13 +5,14 @@ var rotation_speed: float = 3.0 # Higher values make rotation faster
 var health: int = 1
 var damage: int = 1
 
+@onready var Player = Global.player
 @onready var die_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var explosion_effect: GPUParticles2D = $Explosion
 
 func _physics_process(delta):
 	# Guard check to avoid null reference errors
-	if not is_instance_valid(Global.player):
+	if not is_instance_valid(Player):
 		return
 
 	# Calculate direction vector and target angle towards the player

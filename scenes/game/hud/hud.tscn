@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bcwcbeii2pdot" path="res://scenes/game/hud/ammo_icon.png" id="1_3ujq4"]
 [ext_resource type="Script" uid="uid://djiq3d2g3bs8m" path="res://scenes/game/scripts/configurable_sub_viewport.gd" id="1_spx7p"]
 [ext_resource type="Texture2D" uid="uid://c7u0clwgmsph8" path="res://scenes/game/hud/landmine_icon.png" id="2_3ujq4"]
-[ext_resource type="Script" uid="uid://ba0vnyj06iig1" path="res://scenes/game/scripts/game_timer.gd" id="3_7lo7q"]
 [ext_resource type="Script" uid="uid://d21pyej6c8sog" path="res://scenes/game/scripts/tutorial_manager.gd" id="6_etamk"]
 [ext_resource type="Script" uid="uid://8umpgnrt3jvu" path="res://scenes/game/hud/score_label.gd" id="6_nwgrr"]
 [ext_resource type="PackedScene" uid="uid://bicpqmetncwf1" path="res://scenes/game/tutorials/tutorial_1.tscn" id="7_spx7p"]
@@ -45,7 +44,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=371289244]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.014
@@ -123,9 +121,6 @@ text = "00:00:00"
 horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("1_2xhe5")
-
-[node name="GameTimer" type="Node" parent="Control/MarginContainer2/VBoxContainer" unique_id=1085067368]
-script = ExtResource("3_7lo7q")
 
 [node name="Label2" type="Label" parent="Control/MarginContainer2/VBoxContainer" unique_id=1526473463]
 visible = false

@@ -28,6 +28,10 @@ SceneLoader="*uid://cpehcs7n5c62p"
 ProjectMusicController="*uid://r5t485lr3p7t"
 ScoreManager="*uid://bdj5dwtuu8x88"
 
+[autopilot]
+
+project_id="9c74ab85-b17c-411e-80dd-b8318a4bb015"
+
 [clean_copy_examples]
 
 examples_paths=Array[String](["res://addons/maaacks_scene_loader/examples/", "res://addons/maaacks_game_template/examples/"])

@@ -29,5 +29,5 @@ func drop_bomb() -> void:
 	# Spawn at player's current global position
 	trap.global_position = player.global_position
 	# Add the bomb to the root main scene (not as a child of Player)
-	get_tree().root.add_child(trap)
+	get_tree().current_scene.add_child(trap)
 	_cooldown_timer = fire_cooldown

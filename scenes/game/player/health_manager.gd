@@ -27,9 +27,3 @@ func update_player_health_bar():
 		
 func health_is_zero():
 	emit_signal("player_health_is_zero")
-
-# damage test
-func _input(event):
-	if event.is_action_pressed("ui_select"):
-		take_damage(1)
-		print("-1")

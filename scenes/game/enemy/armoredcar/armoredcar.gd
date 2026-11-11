@@ -18,7 +18,7 @@ func actor_setup() -> void:
 		nav_agent.target_position = Player.global_position
 
 func _physics_process(delta):
-	if not Player:
+	if not is_instance_valid(Player):
 		return
 		
 	# Update the destination to the player's current position
