@@ -5,7 +5,7 @@ extends Label
 func _process(_delta: float) -> void:
 	var total_seconds: int = int(game_timer.play_time)
 	
-	var minutes: int = (total_seconds % 3600) / 60
+	var minutes: int = int((total_seconds % 3600) / 60.0)
 	var seconds: int = total_seconds % 60
 	
 	text = "%02d:%02d" % [minutes, seconds]
