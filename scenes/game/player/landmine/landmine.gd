@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var stats: PlayerStats
+var stats: PlayerStats = preload("res://resources/player_stats.tres")
 @onready var fuse_timer: Timer = $FuseTimer
 @onready var explosion_area: Area2D = $BlastArea
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D

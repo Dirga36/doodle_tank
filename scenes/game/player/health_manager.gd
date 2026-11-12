@@ -1,6 +1,6 @@
 extends Node
 
-@export var stats: PlayerStats
+var stats: PlayerStats = preload("res://resources/player_stats.tres")
 
 @onready var player_health_bar: ProgressBar = %PlayerHealthBar
 @onready var max_health: int = stats.max_health

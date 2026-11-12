@@ -3,7 +3,7 @@ extends Node
 @onready var player: CharacterBody2D = $".."
 @onready var moving_sound: AudioStreamPlayer2D = %MovingSound
 
-@export var stats: PlayerStats
+var stats: PlayerStats = preload("res://resources/player_stats.tres")
 
 @onready var speed: float = stats.speed
 var rotation_speed: int = 3

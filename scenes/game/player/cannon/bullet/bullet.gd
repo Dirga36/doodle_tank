@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var stats: PlayerStats
+var stats: PlayerStats = preload("res://resources/player_stats.tres")
 @export var max_points: int = 10
 @onready var trail: Line2D = $Line2D
 @onready var sprite_2d: Sprite2D = $Sprite2D

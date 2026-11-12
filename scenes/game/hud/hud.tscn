@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c5ofnsn7jyw6h" path="res://scenes/game/hud/time_played_label.gd" id="1_2xhe5"]
 [ext_resource type="Texture2D" uid="uid://bcwcbeii2pdot" path="res://scenes/game/hud/ammo_icon.png" id="1_3ujq4"]
 [ext_resource type="Script" uid="uid://djiq3d2g3bs8m" path="res://scenes/game/scripts/configurable_sub_viewport.gd" id="1_spx7p"]
+[ext_resource type="Script" uid="uid://d1wgoouu2cy7f" path="res://scenes/game/hud/hud.gd" id="1_tet4d"]
 [ext_resource type="Texture2D" uid="uid://c7u0clwgmsph8" path="res://scenes/game/hud/landmine_icon.png" id="2_3ujq4"]
 [ext_resource type="Script" uid="uid://d21pyej6c8sog" path="res://scenes/game/scripts/tutorial_manager.gd" id="6_etamk"]
 [ext_resource type="Script" uid="uid://8umpgnrt3jvu" path="res://scenes/game/hud/score_label.gd" id="6_nwgrr"]
@@ -33,6 +34,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [node name="Hud" type="CanvasLayer" unique_id=923868270]
+script = ExtResource("1_tet4d")
 
 [node name="Control" type="Control" parent="." unique_id=1402279322]
 texture_filter = 1
