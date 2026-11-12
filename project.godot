@@ -27,6 +27,7 @@ Global="*uid://b2hho3yg76d65"
 SceneLoader="*uid://cpehcs7n5c62p"
 ProjectMusicController="*uid://r5t485lr3p7t"
 ScoreManager="*uid://bdj5dwtuu8x88"
+PhantomCameraManager="*uid://duq6jhf6unyis"
 
 [autopilot]
 
@@ -47,7 +48,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg", "res://addons/maaacks_music_controller/plugin.cfg", "res://addons/maaacks_scene_loader/plugin.cfg", "res://addons/plugin_updater/plugin.cfg", "res://addons/spawner/plugin.cfg")
+enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg", "res://addons/maaacks_music_controller/plugin.cfg", "res://addons/maaacks_scene_loader/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/plugin_updater/plugin.cfg", "res://addons/spawner/plugin.cfg")
 
 [gui]
 

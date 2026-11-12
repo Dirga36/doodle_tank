@@ -7,19 +7,32 @@
 [ext_resource type="PackedScene" uid="uid://x4cuqvqshld" path="res://scenes/game/player/cannon/cannon.tscn" id="2_gfjak"]
 [ext_resource type="AudioStream" uid="uid://cptcmo0edcexf" path="res://assets/sfx/tankengine_sound.mp3" id="4_vpxtw"]
 [ext_resource type="AudioStream" uid="uid://6jpao1imbdr" path="res://assets/sfx/moving.mp3" id="5_2rpb8"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_ixkur"]
 [ext_resource type="Script" uid="uid://bga3aqjv48503" path="res://scenes/game/player/health_manager.gd" id="7_3vwxf"]
 [ext_resource type="Script" uid="uid://cacvu1aaw7k8j" path="res://scenes/game/player/movement_manager.gd" id="8_6bxg8"]
+[ext_resource type="Script" uid="uid://bhd4nuiu23e7l" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_noise_emitter_2d.gd" id="10_bcwky"]
+[ext_resource type="Script" uid="uid://dimvdouy8g0sv" path="res://addons/phantom_camera/scripts/resources/phantom_camera_noise_2d.gd" id="11_i0dnl"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="12_sxkrj"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="13_ixkur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(24, 16)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_388e5"]
-bg_color = Color(0.8629314, 0, 0.042751156, 1)
+bg_color = Color(0.10980392, 0.7882353, 0.23921569, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Resource" id="Resource_i0dnl"]
+script = ExtResource("13_ixkur")
+
+[sub_resource type="Resource" id="Resource_t5vmf"]
+script = ExtResource("11_i0dnl")
+noise_seed = 584
+metadata/_custom_type_script = "uid://dimvdouy8g0sv"
 
 [node name="Player" type="CharacterBody2D" unique_id=1542430198 groups=["player"]]
 collision_layer = 3
@@ -51,10 +64,6 @@ autoplay = true
 max_distance = 10.0
 attenuation = 3.0314324
 parameters/looping = true
-
-[node name="Camera" type="Camera2D" parent="." unique_id=1291757047]
-zoom = Vector2(10, 10)
-script = ExtResource("1_4kuee")
 
 [node name="Cannon" parent="." unique_id=882763557 instance=ExtResource("2_gfjak")]
 z_index = 1
@@ -108,5 +117,39 @@ theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/fill = SubResource("StyleBoxFlat_388e5")
 max_value = 3.0
+
+[node name="CameraManager" type="Node" parent="." unique_id=460608095]
+script = ExtResource("1_4kuee")
+
+[node name="Camera" type="Camera2D" parent="CameraManager" unique_id=1291757047]
+physics_interpolation_mode = 1
+top_level = true
+position = Vector2(2.3841858e-07, 0)
+zoom = Vector2(4, 4)
+
+[node name="PhantomCameraHost" type="Node" parent="CameraManager/Camera" unique_id=558434319]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("6_ixkur")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="PhantomCamera2D" type="Node2D" parent="CameraManager" unique_id=1471685986 node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(2.3841858e-07, 0)
+script = ExtResource("12_sxkrj")
+follow_mode = 1
+follow_target = NodePath("../../Body")
+zoom = Vector2(4, 4)
+tween_resource = SubResource("Resource_i0dnl")
+noise_emitter_layer = 1
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="PhantomCameraNoiseEmitter2D" type="Node2D" parent="CameraManager" unique_id=706704056]
+script = ExtResource("10_bcwky")
+noise = SubResource("Resource_t5vmf")
+growth_time = 0.02
+duration = 0.3
+decay_time = 0.1
+metadata/_custom_type_script = "uid://bhd4nuiu23e7l"
 
 [connection signal="player_health_is_zero" from="HealthManager" to="." method="_on_health_manager_player_health_is_zero"]
