@@ -1,6 +1,6 @@
 extends Label
 
-@onready var game_timer: Node = $"../../../../../GameTimer"
+@onready var game_timer: Node = $"../../../../../../GameTimer"
 
 func _process(_delta: float) -> void:
 	var total_seconds: int = int(game_timer.play_time)

@@ -12,6 +12,18 @@
 [ext_resource type="PackedScene" uid="uid://bafkrac6u80cf" path="res://scenes/game/tutorials/tutorial_enemy.tscn" id="9_xskmx"]
 [ext_resource type="PackedScene" uid="uid://das1m3hcsprb0" path="res://scenes/game/tutorials/tutorial_control.tscn" id="10_lnl2y"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gdx8"]
+bg_color = Color(1, 0.7882353, 0.23921569, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ujq4"]
 bg_color = Color(0, 0, 0, 0.37254903)
 border_width_left = 4
@@ -128,14 +140,26 @@ scale = Vector2(0.41666752, 1.2500023)
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(84, 60, 108, 60, 108, 68, 84, 68)
 
-[node name="TimePlayedLabel" type="Label" parent="Control/MarginContainer2/VBoxContainer" unique_id=1769552312]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer2/VBoxContainer" unique_id=329381871]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TimePlayedLabel" type="Label" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1769552312]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
-text = "00:00:00"
+text = "00:00"
 horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("1_2xhe5")
+
+[node name="TutorialButton" type="Button" parent="Control/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1520689335]
+custom_minimum_size = Vector2(21, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_0gdx8")
+text = "!"
 
 [node name="Label2" type="Label" parent="Control/MarginContainer2/VBoxContainer" unique_id=1526473463]
 visible = false
@@ -223,3 +247,6 @@ vertical_alignment = 1
 [node name="TutorialManager" type="Node" parent="." unique_id=928111894]
 script = ExtResource("6_etamk")
 tutorial_scenes = Array[PackedScene]([ExtResource("7_spx7p"), ExtResource("9_xskmx"), ExtResource("9_tet4d"), ExtResource("10_lnl2y")])
+auto_open = false
+
+[connection signal="pressed" from="Control/MarginContainer2/VBoxContainer/HBoxContainer/TutorialButton" to="TutorialManager" method="_on_tutorial_button_pressed"]

@@ -9,6 +9,8 @@ const PLAYER_STATS_RESOURCE_PATH = "res://resources/player_stats.tres"
 @export var current_level_path : String
 @export var checkpoint_level_path : String
 @export var total_games_played : int
+
+# used
 @export var play_time : int
 @export var total_time : int
 @export var total_score : int
@@ -77,6 +79,8 @@ static func reset() -> void:
 	game_state.level_states = {}
 	game_state.current_level_path = ""
 	game_state.checkpoint_level_path = ""
+	
+	# used
 	game_state.play_time = 0
 	game_state.total_time = 0
 	game_state.total_score = 0
