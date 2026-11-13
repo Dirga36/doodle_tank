@@ -5,9 +5,12 @@
 [ext_resource type="Script" uid="uid://djiq3d2g3bs8m" path="res://scenes/game/scripts/configurable_sub_viewport.gd" id="1_spx7p"]
 [ext_resource type="Script" uid="uid://d1wgoouu2cy7f" path="res://scenes/game/hud/hud.gd" id="1_tet4d"]
 [ext_resource type="Texture2D" uid="uid://c7u0clwgmsph8" path="res://scenes/game/hud/landmine_icon.png" id="2_3ujq4"]
+[ext_resource type="Script" uid="uid://8umpgnrt3jvu" path="res://scenes/game/hud/score_container.gd" id="2_nwgrr"]
 [ext_resource type="Script" uid="uid://d21pyej6c8sog" path="res://scenes/game/scripts/tutorial_manager.gd" id="6_etamk"]
-[ext_resource type="Script" uid="uid://8umpgnrt3jvu" path="res://scenes/game/hud/score_label.gd" id="6_nwgrr"]
 [ext_resource type="PackedScene" uid="uid://bicpqmetncwf1" path="res://scenes/game/tutorials/tutorial_1.tscn" id="7_spx7p"]
+[ext_resource type="PackedScene" uid="uid://b6dfd4bls15b5" path="res://scenes/game/tutorials/tutorial_score.tscn" id="9_tet4d"]
+[ext_resource type="PackedScene" uid="uid://bafkrac6u80cf" path="res://scenes/game/tutorials/tutorial_enemy.tscn" id="9_xskmx"]
+[ext_resource type="PackedScene" uid="uid://das1m3hcsprb0" path="res://scenes/game/tutorials/tutorial_control.tscn" id="10_lnl2y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ujq4"]
 bg_color = Color(0, 0, 0, 0.37254903)
@@ -45,7 +48,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=371289244]
+[node name="ScoreContainer" type="MarginContainer" parent="Control" unique_id=371289244]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.014
@@ -56,17 +59,27 @@ offset_left = -0.12800026
 offset_top = -0.15200806
 offset_right = 4.575989
 offset_bottom = 0.08799744
+script = ExtResource("2_nwgrr")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer" unique_id=1492715294]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScoreContainer" unique_id=1492715294]
 layout_mode = 2
 
-[node name="ScoreLabel" type="Label" parent="Control/MarginContainer/VBoxContainer" unique_id=828109067]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ScoreContainer/VBoxContainer" unique_id=966504216]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ScoreLabel" type="Label" parent="Control/ScoreContainer/VBoxContainer/HBoxContainer" unique_id=828109067]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "SCORE: 000000"
 vertical_alignment = 1
-script = ExtResource("6_nwgrr")
+
+[node name="ScoreMultiplierLabel" type="Label" parent="Control/ScoreContainer/VBoxContainer/HBoxContainer" unique_id=455914491]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9372549, 0.12941177, 0.25882354, 1)
+theme_override_constants/outline_size = 6
+text = "x1"
 
 [node name="MarginContainer2" type="MarginContainer" parent="Control" unique_id=1568309733]
 texture_filter = 1
@@ -209,4 +222,4 @@ vertical_alignment = 1
 
 [node name="TutorialManager" type="Node" parent="." unique_id=928111894]
 script = ExtResource("6_etamk")
-tutorial_scenes = Array[PackedScene]([ExtResource("7_spx7p")])
+tutorial_scenes = Array[PackedScene]([ExtResource("7_spx7p"), ExtResource("9_xskmx"), ExtResource("9_tet4d"), ExtResource("10_lnl2y")])

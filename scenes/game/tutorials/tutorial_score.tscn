@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b6dfd4bls15b5"]
+
+[ext_resource type="PackedScene" uid="uid://6gdbfi0172ji" path="res://addons/maaacks_game_template/base/nodes/windows/popup_window_panel.tscn" id="1_dgu6i"]
+
+[node name="PopupWindowPanel" unique_id=1876550858 instance=ExtResource("1_dgu6i")]
+process_mode = 3
+custom_minimum_size = Vector2(420, 200)
+pauses_game = true
+update_content = true
+title = "Tutorial: Score"
+text = "Different enemy types gives you different ammounts of score when destroyed.
+
+Every 5 minutes you gain 0.5 score multiplier (MAX 5 times)"
+
+[node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="0" unique_id=1049966061]
+theme_override_font_sizes/font_size = 20
+text = "Tutorial: Score"
+
+[node name="DescriptionLabel" parent="ContentContainer/BoxContainer/BodyMargin/BoxContainer" parent_id_path=PackedInt32Array(1957884530) index="0" unique_id=617407155]
+text = "Different enemy types gives you different ammounts of score when destroyed.
+
+Every 5 minutes you gain 0.5 score multiplier (MAX 5 times)"

@@ -4,6 +4,7 @@ var stats: PlayerStats = preload("res://resources/player_stats.tres")
 
 @onready var player_health_bar: ProgressBar = %PlayerHealthBar
 @onready var phantom_camera_noise_emitter_2d: PhantomCameraNoiseEmitter2D = $"../CameraManager/PhantomCameraNoiseEmitter2D"
+@onready var hurt_sound: AudioStreamPlayer2D = %HurtSound
 @onready var max_health: int = stats.max_health
 var low_health_threshold: int = 1
 var current_health: int = max_health
@@ -27,8 +28,9 @@ func take_damage(amount: int):
 
 	current_health -= amount
 	phantom_camera_noise_emitter_2d.emit()
-	current_health = clamp(current_health, 0, max_health) 
+	current_health = clamp(current_health, 0, max_health)
 	update_player_health_bar()
+	hurt_sound.play()
 	
 	if current_health <= 0:
 		health_is_zero()

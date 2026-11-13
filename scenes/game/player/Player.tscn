@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://x4cuqvqshld" path="res://scenes/game/player/cannon/cannon.tscn" id="2_gfjak"]
 [ext_resource type="AudioStream" uid="uid://cptcmo0edcexf" path="res://assets/sfx/tankengine_sound.mp3" id="4_vpxtw"]
 [ext_resource type="AudioStream" uid="uid://6jpao1imbdr" path="res://assets/sfx/moving.mp3" id="5_2rpb8"]
+[ext_resource type="AudioStream" uid="uid://0fyriqobva55" path="res://assets/sfx/hurt_sound.mp3" id="5_jvpd5"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_ixkur"]
 [ext_resource type="Script" uid="uid://bga3aqjv48503" path="res://scenes/game/player/health_manager.gd" id="7_3vwxf"]
 [ext_resource type="Script" uid="uid://cacvu1aaw7k8j" path="res://scenes/game/player/movement_manager.gd" id="8_6bxg8"]
@@ -64,6 +65,10 @@ autoplay = true
 max_distance = 10.0
 attenuation = 3.0314324
 parameters/looping = true
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=2116628262]
+unique_name_in_owner = true
+stream = ExtResource("5_jvpd5")
 
 [node name="Cannon" parent="." unique_id=882763557 instance=ExtResource("2_gfjak")]
 z_index = 1

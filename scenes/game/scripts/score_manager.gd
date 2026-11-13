@@ -1,6 +1,7 @@
 extends Node
 
 signal score_changed(new_score: int)
+signal score_multiplier_changed(new_score_multiplier: float)
 
 var score: int = 0
 var score_multiplier: float = 1.0
@@ -35,6 +36,7 @@ func _on_multiplier_timer_timeout() -> void:
 	if multiplier_increases < MAX_MULTIPLIER_INCREASES:
 		score_multiplier += 0.5
 		multiplier_increases += 1
+		score_multiplier_changed.emit(score_multiplier)
 		print("Multiplier increased! Current multiplier: ", score_multiplier)
 		
 		# Stop the timer once we hit the max to save processing
