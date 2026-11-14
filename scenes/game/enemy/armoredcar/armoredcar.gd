@@ -1,60 +1,69 @@
 extends CharacterBody2D
+## Ground enemy that navigates toward the player and explodes when destroyed.
 
-var speed: float = 120.0
-@onready var Player = Global.player
+const SCORE_REWARD: int = 10
+const DEATH_SPEED: float = 25.0
 
+@export var speed: float = 120.0
+
+@onready var player: CharacterBody2D = Global.player
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var health_manager: Node = $HealthManager
 @onready var die_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var explosion_effect: GPUParticles2D = $Explosion
 
+
 func _ready() -> void:
-	# Wait for the first physics frame to ensure the NavigationServer is fully synced
-	call_deferred("actor_setup")
+	# Wait for the first physics frame to ensure the NavigationServer is fully synced.
+	actor_setup.call_deferred()
 
-func actor_setup() -> void:
-	if Player:
-		nav_agent.target_position = Player.global_position
 
-func _physics_process(delta):
-	if not is_instance_valid(Player):
+func _physics_process(delta: float) -> void:
+	if not is_instance_valid(player):
 		return
-		
-	# Update the destination to the player's current position
-	# nav_agent.target_position = player.global_position
 
-	# Stop moving if the enemy is close enough to the player
+	# Stop moving if the enemy is close enough to the player.
 	if nav_agent.is_navigation_finished():
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
 
-	# Get the current position and the next waypoint on the path
+	# Get the current position and the next waypoint on the path.
 	var current_agent_position: Vector2 = global_position
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
 
-	# Calculate direction and apply velocity
+	# Calculate direction and apply velocity.
 	var direction: Vector2 = current_agent_position.direction_to(next_path_position)
 	var target_angle: float = direction.angle()
 
-	# Smoothly rotate towards the target angle
+	# Smoothly rotate towards the target angle.
 	global_rotation = rotate_toward(global_rotation, target_angle, 1 * delta)
 
-	# Move forward in the direction the drone is facing
+	# Move forward in the direction the vehicle is facing.
 	velocity = Vector2.RIGHT.rotated(global_rotation) * speed
 	move_and_slide()
 
-func _on_timer_timeout() -> void:
-	if Player:
-		nav_agent.target_position = Player.global_position
 
+## Initializes the navigation target once the navigation map is ready.
+func actor_setup() -> void:
+	if player:
+		nav_agent.target_position = player.global_position
+
+
+## Applies incoming damage through the health manager.
 func take_damage(amount: int) -> void:
 	health_manager.take_damage(amount)
 
+
+func _on_timer_timeout() -> void:
+	if player:
+		nav_agent.target_position = player.global_position
+
+
 func _on_health_manager_died() -> void:
-	ScoreManager.add_points(10)
-	speed = 25
+	ScoreManager.add_points(SCORE_REWARD)
+	speed = DEATH_SPEED
 	sprite_2d.hide()
 	die_sound.play()
 	explosion_effect.emitting = true

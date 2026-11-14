@@ -1,5 +1,6 @@
 class_name PlayerStats
 extends Resource
+## Tunable stats for the player's tank, shared as a [Resource].
 
 @export var max_health: int = 3
 @export var speed: int = 100

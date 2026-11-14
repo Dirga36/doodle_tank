@@ -24,6 +24,7 @@ process_mode = 3
 autoplay = true
 
 [node name="GameTimer" type="Node" parent="." unique_id=116840261]
+unique_name_in_owner = true
 script = ExtResource("1_4j704")
 
 [node name="PauseMenuController" type="Node" parent="." unique_id=1685173287]
@@ -32,8 +33,9 @@ pause_menu_packed = ExtResource("3_5jirj")
 
 [node name="Hud" parent="." unique_id=923868270 instance=ExtResource("4_5i0tg")]
 
-[node name="TimePlayedLabel" parent="Hud/Control/MarginContainer2/VBoxContainer" parent_id_path=PackedInt32Array(923868270, 370161962) index="1" unique_id=1769552312]
+[node name="TimePlayedLabel" parent="Hud/Control/MarginContainer2/VBoxContainer" parent_id_path=PackedInt32Array(923868270, 370161962) index="1" unique_id=1769552312 node_paths=PackedStringArray("game_timer")]
 text = "00:00"
+game_timer = NodePath("../../../../../../GameTimer")
 
 [node name="WorldContainer" type="Node" parent="." unique_id=1518243678]
 
@@ -73,6 +75,7 @@ max_active_enemies = 2
 area_2d = NodePath("../../EnemySpawnZone4")
 
 [node name="WinLoseManager" type="Node" parent="." unique_id=214112579]
+unique_name_in_owner = true
 script = ExtResource("7_bdhmt")
 game_won_scene = ExtResource("8_4j704")
 game_lost_scene = ExtResource("9_kp23o")

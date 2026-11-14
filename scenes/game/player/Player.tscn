@@ -73,11 +73,13 @@ stream = ExtResource("5_jvpd5")
 [node name="Cannon" parent="." unique_id=882763557 instance=ExtResource("2_gfjak")]
 z_index = 1
 
-[node name="LandMine" type="Node" parent="." unique_id=904164333]
+[node name="LandMine" type="Node" parent="." unique_id=904164333 node_paths=PackedStringArray("player")]
 script = ExtResource("1_2rpb8")
+player = NodePath("..")
 
-[node name="MovementManager" type="Node" parent="." unique_id=265634521]
+[node name="MovementManager" type="Node" parent="." unique_id=265634521 node_paths=PackedStringArray("player")]
 script = ExtResource("8_6bxg8")
+player = NodePath("..")
 
 [node name="HealthManager" type="Node" parent="." unique_id=933980256]
 script = ExtResource("7_3vwxf")
@@ -150,6 +152,7 @@ noise_emitter_layer = 1
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="PhantomCameraNoiseEmitter2D" type="Node2D" parent="CameraManager" unique_id=706704056]
+unique_name_in_owner = true
 script = ExtResource("10_bcwky")
 noise = SubResource("Resource_t5vmf")
 growth_time = 0.02

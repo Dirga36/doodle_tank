@@ -1,60 +1,69 @@
 extends Node
-
-var stats: PlayerStats = preload("res://resources/player_stats.tres")
-
-@onready var player_health_bar: ProgressBar = %PlayerHealthBar
-@onready var phantom_camera_noise_emitter_2d: PhantomCameraNoiseEmitter2D = $"../CameraManager/PhantomCameraNoiseEmitter2D"
-@onready var hurt_sound: AudioStreamPlayer2D = %HurtSound
-@onready var max_health: int = stats.max_health
-var low_health_threshold: int = 1
-var current_health: int = max_health
-var normal_color: Color = Color("1cc93d") # Green
-var low_color: Color = Color("dc000b")    # Red
-var is_invulnerable: bool = false
-var invulnerability_duration: float = 1.0 # Duration in seconds
+## Tracks the player's health and drives the HUD bar, hurt sound and camera shake.
 
 signal player_health_is_zero
 
-func _ready():
+const NORMAL_COLOR: Color = Color("1cc93d") # Green
+const LOW_COLOR: Color = Color("dc000b")    # Red
+
+@export var low_health_threshold: int = 1
+@export var invulnerability_duration: float = 1.0
+
+var stats: PlayerStats = preload("res://resources/player_stats.tres")
+
+var max_health: int = stats.max_health
+var current_health: int = stats.max_health
+var is_invulnerable: bool = false
+
+@onready var player_health_bar: ProgressBar = %PlayerHealthBar
+@onready var phantom_camera_noise_emitter_2d: PhantomCameraNoiseEmitter2D = %PhantomCameraNoiseEmitter2D
+@onready var hurt_sound: AudioStreamPlayer2D = %HurtSound
+
+
+func _ready() -> void:
 	current_health = max_health
 	if player_health_bar:
 		player_health_bar.max_value = max_health
 		player_health_bar.value = current_health
 
-func take_damage(amount: int):
-	# Ignore damage while invulnerable
+
+## Applies incoming damage, ignoring it while invulnerable.
+func take_damage(amount: int) -> void:
+	# Ignore damage while invulnerable.
 	if is_invulnerable:
 		return
 
 	current_health -= amount
 	phantom_camera_noise_emitter_2d.emit()
 	current_health = clamp(current_health, 0, max_health)
-	update_player_health_bar()
+	_update_player_health_bar()
 	hurt_sound.play()
-	
-	if current_health <= 0:
-		health_is_zero()
-	else:
-		start_invulnerability()
 
-func start_invulnerability():	
-	# Wait for the specified duration before making the player vulnerable again
+	if current_health <= 0:
+		_health_is_zero()
+	else:
+		_start_invulnerability()
+
+
+func _start_invulnerability() -> void:
+	# Wait for the specified duration before making the player vulnerable again.
 	await get_tree().create_timer(invulnerability_duration).timeout
 
-func update_player_health_bar():
+
+func _update_player_health_bar() -> void:
 	if player_health_bar:
 		player_health_bar.value = current_health
-	
-	# Get the StyleBoxFlat from the fill style override
-	var style_box = player_health_bar.get_theme_stylebox("fill") as StyleBoxFlat
+
+	# Get the StyleBoxFlat from the fill style override.
+	var style_box: StyleBoxFlat = player_health_bar.get_theme_stylebox("fill") as StyleBoxFlat
 	if style_box == null:
 		return
-		
-	# Check if health is low
-	if current_health <= low_health_threshold:
-		style_box.bg_color = low_color
-	else:
-		style_box.bg_color = normal_color
 
-func health_is_zero():
-	emit_signal("player_health_is_zero")
+	if current_health <= low_health_threshold:
+		style_box.bg_color = LOW_COLOR
+	else:
+		style_box.bg_color = NORMAL_COLOR
+
+
+func _health_is_zero() -> void:
+	player_health_is_zero.emit()

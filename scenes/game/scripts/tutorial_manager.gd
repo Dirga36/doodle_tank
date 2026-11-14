@@ -2,16 +2,25 @@ extends Node
 ## A script to add into a level or game scene to display tutorial windows.
 
 ## A list of tutorial scenes to open, one after the other.
-@export var tutorial_scenes : Array[PackedScene]
+@export var tutorial_scenes: Array[PackedScene]
 ## If true, open the tutorials when the scene becomes ready.
-@export var auto_open : bool = true
+@export var auto_open: bool = true
 ## Delay before opening the tutorials when the scene becomes ready.
-@export var auto_open_delay : float = 0.25
+@export var auto_open_delay: float = 0.25
 
+
+func _ready() -> void:
+	if auto_open:
+		if auto_open_delay > 0.0:
+			await get_tree().create_timer(auto_open_delay, false).timeout
+		open_tutorials.call_deferred()
+
+
+## Opens every tutorial scene in order, waiting for each to close before the next.
 func open_tutorials() -> void:
-	var _initial_focus_control : Control = get_viewport().gui_get_focus_owner()
-	for tutorial_scene in tutorial_scenes:
-		var tutorial_menu : Control = tutorial_scene.instantiate()
+	var initial_focus_control: Control = get_viewport().gui_get_focus_owner()
+	for tutorial_scene: PackedScene in tutorial_scenes:
+		var tutorial_menu: Control = tutorial_scene.instantiate()
 		if tutorial_menu == null:
 			push_warning("tutorial failed to open %s" % tutorial_scene)
 			return
@@ -22,14 +31,8 @@ func open_tutorials() -> void:
 			await tutorial_menu.tree_exited
 		if is_instance_valid(tutorial_menu):
 			tutorial_menu.queue_free()
-		if is_inside_tree() and _initial_focus_control:
-			_initial_focus_control.grab_focus()
-
-func _ready() -> void:
-	if auto_open:
-		if auto_open_delay > 0.0:
-			await get_tree().create_timer(auto_open_delay, false).timeout
-		open_tutorials.call_deferred()
+		if is_inside_tree() and initial_focus_control:
+			initial_focus_control.grab_focus()
 
 
 func _on_tutorial_button_pressed() -> void:
