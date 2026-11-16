@@ -29,5 +29,5 @@ func _physics_process(delta: float) -> void:
 
 
 func _get_input() -> void:
-	rotation_direction = Input.get_axis("left", "right")
-	player.velocity = player.transform.x * Input.get_axis("down", "up") * speed
+	rotation_direction = Input.get_axis("turn_left", "turn_right")
+	player.velocity = player.transform.x * Input.get_axis("move_backward", "move_forward") * speed

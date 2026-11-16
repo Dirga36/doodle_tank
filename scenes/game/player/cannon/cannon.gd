@@ -37,7 +37,7 @@ func _update_cooldown(delta: float) -> void:
 
 
 func _can_fire() -> bool:
-	return Input.is_action_pressed("shoot") and _cooldown_timer == 0.0
+	return Input.is_action_pressed("shoot main cannon") and _cooldown_timer == 0.0
 
 
 func _shoot() -> void:
