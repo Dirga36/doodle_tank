@@ -8,7 +8,7 @@ const DEATH_SPEED: float = 25.0
 
 @onready var player: CharacterBody2D = Global.player
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var health_component: Node = $HealthManager
+@onready var health_component: Node = $HealthComponent
 @onready var die_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var explosion_effect: GPUParticles2D = $Explosion
@@ -51,7 +51,7 @@ func actor_setup() -> void:
 		nav_agent.target_position = player.global_position
 
 
-## Applies incoming damage through the health manager.
+## Applies incoming damage through the health Component.
 func take_damage(amount: int) -> void:
 	health_component.take_damage(amount)
 

@@ -9,8 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://6jpao1imbdr" path="res://assets/sfx/moving.mp3" id="5_2rpb8"]
 [ext_resource type="AudioStream" uid="uid://0fyriqobva55" path="res://assets/sfx/hurt_sound.mp3" id="5_jvpd5"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_ixkur"]
-[ext_resource type="Script" uid="uid://bga3aqjv48503" path="res://scenes/game/player/health_component.gd" id="7_3vwxf"]
-[ext_resource type="Script" uid="uid://cacvu1aaw7k8j" path="res://scenes/game/player/movement_component.gd" id="8_6bxg8"]
+[ext_resource type="Script" uid="uid://bga3aqjv48503" path="res://scenes/game/player/health_manager.gd" id="7_3vwxf"]
+[ext_resource type="Script" uid="uid://cacvu1aaw7k8j" path="res://scenes/game/player/movement_manager.gd" id="8_6bxg8"]
 [ext_resource type="Script" uid="uid://bhd4nuiu23e7l" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_noise_emitter_2d.gd" id="10_bcwky"]
 [ext_resource type="Script" uid="uid://dimvdouy8g0sv" path="res://addons/phantom_camera/scripts/resources/phantom_camera_noise_2d.gd" id="11_i0dnl"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="12_sxkrj"]
@@ -45,8 +45,6 @@ script = ExtResource("1_524rm")
 [node name="Body" type="Sprite2D" parent="." unique_id=1570839702]
 z_index = 1
 texture_filter = 1
-position = Vector2(2.3841858e-07, 0)
-scale = Vector2(1.5, 1)
 texture = ExtResource("1_gfjak")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1847681323]
@@ -131,7 +129,6 @@ script = ExtResource("1_4kuee")
 [node name="Camera" type="Camera2D" parent="CameraComponent" unique_id=1291757047]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(2.3841858e-07, 0)
 zoom = Vector2(4, 4)
 
 [node name="PhantomCameraHost" type="Node" parent="CameraComponent/Camera" unique_id=558434319]
@@ -142,7 +139,6 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraComponent" unique_id=1471685986 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(2.3841858e-07, 0)
 script = ExtResource("12_sxkrj")
 follow_mode = 2
 follow_target = NodePath("../../Body")

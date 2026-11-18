@@ -6,14 +6,14 @@ extends Area2D
 
 var stats: PlayerStats = preload("res://resources/player_stats.tres")
 
+var is_armed: bool = false
+
 @onready var damage: int = stats.damage * 3
 @onready var fuse_timer: Timer = $FuseTimer
 @onready var explosion_area: Area2D = $BlastArea
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var exploding_sound: AudioStreamPlayer2D = $ExplodingSound
 @onready var exploding_particles: GPUParticles2D = $ExplodingParticles
-
-var is_armed: bool = false
 
 
 func _ready() -> void:
@@ -23,7 +23,7 @@ func _ready() -> void:
 
 	if not is_proximity_trap:
 		fuse_timer.start(fuse_time)
-		fuse_timer.timeout.connect(_on_fuse_timeout)
+		fuse_timer.timeout.connect(_on_fuse_timer_timeout)
 	else:
 		body_entered.connect(_on_body_entered)
 
@@ -53,9 +53,9 @@ func _on_body_entered(body: Node2D) -> void:
 		explode()
 
 
-func _on_fuse_timeout() -> void:
+func _on_lifespan_timeout() -> void:
 	explode()
 
 
-func _on_lifespan_timeout() -> void:
+func _on_fuse_timer_timeout() -> void:
 	explode()

@@ -3,8 +3,8 @@ extends CharacterBody2D
 
 signal player_died
 
-@onready var health_component: Node = $HealthManager
-@onready var movement_component: Node = $MovementManager
+@onready var health_component: Node = $HealthComponent
+@onready var movement_component: Node = $MovementComponent
 
 
 func _ready() -> void:
