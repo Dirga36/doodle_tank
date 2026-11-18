@@ -70,10 +70,10 @@ parameters/looping = true
 unique_name_in_owner = true
 stream = ExtResource("5_jvpd5")
 
-[node name="Cannon" parent="." unique_id=882763557 instance=ExtResource("2_gfjak")]
+[node name="MainCannon" parent="." unique_id=882763557 instance=ExtResource("2_gfjak")]
 z_index = 1
 
-[node name="LandMine" type="Node" parent="." unique_id=904164333 node_paths=PackedStringArray("player")]
+[node name="LandMineDeployer" type="Node" parent="." unique_id=904164333 node_paths=PackedStringArray("player")]
 script = ExtResource("1_2rpb8")
 player = NodePath("..")
 

@@ -1,7 +1,7 @@
 extends Node
 ## Drops landmines at the player's position on input.
 
-const Trap: PackedScene = preload("uid://dw2vx7rwmhiyw")
+const Landmine: PackedScene = preload("uid://dw2vx7rwmhiyw")
 
 # TODO: Prefer having [Player] pass itself in rather than reaching up the tree.
 @export var player: CharacterBody2D
@@ -27,11 +27,11 @@ func _can_fire() -> bool:
 
 
 func _drop_bomb() -> void:
-	var trap: Area2D = Trap.instantiate() as Area2D
-	if trap == null:
+	var landmine: Area2D = Landmine.instantiate() as Area2D
+	if landmine == null:
 		return
 	# Spawn at the player's current global position.
-	trap.global_position = player.global_position
+	landmine.global_position = player.global_position
 	# Add the bomb to the main scene (not as a child of the player).
-	get_tree().current_scene.add_child(trap)
+	get_tree().current_scene.add_child(landmine)
 	_cooldown_timer = fire_cooldown
