@@ -61,7 +61,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScoreContainer" type="MarginContainer" parent="Control" unique_id=371289244]
+[node name="BoltsContainer" type="MarginContainer" parent="Control" unique_id=371289244]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.014
@@ -74,25 +74,25 @@ offset_right = 4.575989
 offset_bottom = 0.08799744
 script = ExtResource("2_nwgrr")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScoreContainer" unique_id=1492715294]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/BoltsContainer" unique_id=1492715294]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/ScoreContainer/VBoxContainer" unique_id=966504216]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/BoltsContainer/VBoxContainer" unique_id=966504216]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="BoltsIcon" type="TextureRect" parent="Control/ScoreContainer/VBoxContainer/HBoxContainer" unique_id=1096688133]
+[node name="BoltsIcon" type="TextureRect" parent="Control/BoltsContainer/VBoxContainer/HBoxContainer" unique_id=1096688133]
 layout_mode = 2
 texture = ExtResource("3_0gdx8")
 expand_mode = 2
 
-[node name="ScoreLabel" type="Label" parent="Control/ScoreContainer/VBoxContainer/HBoxContainer" unique_id=828109067]
+[node name="BoltsLabel" type="Label" parent="Control/BoltsContainer/VBoxContainer/HBoxContainer" unique_id=828109067]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 vertical_alignment = 1
 
-[node name="ScoreMultiplierLabel" type="Label" parent="Control/ScoreContainer/VBoxContainer/HBoxContainer" unique_id=455914491]
+[node name="BoltsMultiplierLabel" type="Label" parent="Control/BoltsContainer/VBoxContainer/HBoxContainer" unique_id=455914491]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9372549, 0.12941177, 0.25882354, 1)
 theme_override_constants/outline_size = 6
