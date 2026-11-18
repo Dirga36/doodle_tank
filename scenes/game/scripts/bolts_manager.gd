@@ -1,16 +1,16 @@
 extends Node
-## Tracks the player's score and the timed score multiplier.
+## Tracks the player's bolts and the timed bolts multiplier.
 
-signal score_changed(new_score: int)
-signal score_multiplier_changed(new_score_multiplier: float)
+signal bolts_changed(new_bolts: int)
+signal bolts_multiplier_changed(new_bolts_multiplier: float)
 
 const MAX_MULTIPLIER_INCREASES: int = 3
 const MULTIPLIER_INTERVAL_SECONDS: float = 300.0 # 5 minutes
 const MULTIPLIER_STEP: float = 0.5
 const DEFAULT_BASE_POINTS: int = 10
 
-var score: int = 0
-var score_multiplier: float = 1.0
+var bolts: int = 0
+var bolts_multiplier: float = 1.0
 var multiplier_increases: int = 0
 
 var _multiplier_timer: Timer
@@ -20,12 +20,12 @@ func _ready() -> void:
 	_setup_timer()
 
 
-## Awards points scaled by the current score multiplier.
+## Awards points scaled by the current bolts multiplier.
 func add_points(base_points: int = DEFAULT_BASE_POINTS) -> void:
-	var points_earned: int = int(base_points * score_multiplier)
-	score += points_earned
-	score_changed.emit(score)
-	print("Enemy destroyed! Earned: %d | Total Score: %d" % [points_earned, score])
+	var points_earned: int = int(base_points * bolts_multiplier)
+	bolts += points_earned
+	bolts_changed.emit(bolts)
+	print("Enemy destroyed! Earned: %d | Total Bolts: %d" % [points_earned, bolts])
 
 
 func _setup_timer() -> void:
@@ -41,10 +41,10 @@ func _setup_timer() -> void:
 
 func _on_multiplier_timer_timeout() -> void:
 	if multiplier_increases < MAX_MULTIPLIER_INCREASES:
-		score_multiplier += MULTIPLIER_STEP
+		bolts_multiplier += MULTIPLIER_STEP
 		multiplier_increases += 1
-		score_multiplier_changed.emit(score_multiplier)
-		print("Multiplier increased! Current multiplier: ", score_multiplier)
+		bolts_multiplier_changed.emit(bolts_multiplier)
+		print("Multiplier increased! Current multiplier: ", bolts_multiplier)
 
 		# Stop the timer once we hit the max to save processing.
 		if multiplier_increases >= MAX_MULTIPLIER_INCREASES:

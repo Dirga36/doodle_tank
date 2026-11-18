@@ -1438,7 +1438,7 @@ func _eval_raw(expression: String) -> Dictionary:
 # the variables its script declares. Engine properties are skipped - there are
 # thousands per node and none of them are what a game calls its state - which is
 # what keeps this cheap enough to run either side of every probe. Deliberately
-# knows nothing about any particular game: `_slots`, `health` and `score` are all
+# knows nothing about any particular game: `_slots`, `health` and `bolts` are all
 # just script variables here.
 #
 # Values are hashed, never stringified. var_to_str() on a game that keeps its

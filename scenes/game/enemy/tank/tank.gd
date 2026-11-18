@@ -1,7 +1,7 @@
 extends CharacterBody2D
 ## Heavy ground enemy that chases the player and fires shells from its cannon.
 
-const SCORE_REWARD: int = 15
+const BOLTS_REWARD: int = 15
 const DEATH_SPEED: float = 10.0
 
 @export var speed: float = 75.0
@@ -63,7 +63,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_health_manager_died() -> void:
-	ScoreManager.add_points(SCORE_REWARD)
+	BoltsManager.add_points(BOLTS_REWARD)
 	speed = DEATH_SPEED
 	sprite_2d.hide()
 	tank_cannon.hide()

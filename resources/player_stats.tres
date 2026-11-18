@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="PlayerStats" format=3]
+[gd_resource type="Resource" script_class="PlayerStats" format=3 uid="uid://s8jg3w0kbj47"]
 
-[ext_resource type="Script" path="res://scenes/game/player/player_stats.gd" id="1_wld0n"]
+[ext_resource type="Script" uid="uid://cta33kxlfcayx" path="res://scenes/game/player/player_stats.gd" id="1_wld0n"]
 
 [resource]
 script = ExtResource("1_wld0n")
+max_health = 5
+max_health_level = 1
 metadata/_custom_type_script = "uid://cta33kxlfcayx"

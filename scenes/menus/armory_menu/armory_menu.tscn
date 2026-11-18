@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://co1r8vl0iaa8w"]
 
 [ext_resource type="Script" uid="uid://bxqks3gvk11h0" path="res://scenes/menus/armory_menu/armory_menu.gd" id="1_kjroa"]
-[ext_resource type="Script" uid="uid://ybhtd41v7od1" path="res://scenes/menus/armory_menu/total_score.gd" id="2_kjroa"]
+[ext_resource type="Script" uid="uid://ybhtd41v7od1" path="res://scenes/menus/armory_menu/total_bolts.gd" id="2_kjroa"]
 [ext_resource type="Texture2D" uid="uid://dntm7xvd0fpoh" path="res://icon.png" id="2_krp6m"]
-[ext_resource type="Resource" path="res://resources/player_stats.tres" id="2_wtrf8"]
+[ext_resource type="Resource" uid="uid://s8jg3w0kbj47" path="res://resources/player_stats.tres" id="2_wtrf8"]
 [ext_resource type="PackedScene" uid="uid://b1hnrly8yf0dl" path="res://scenes/menus/armory_menu/upgrade_row.tscn" id="3_krp6m"]
+[ext_resource type="Texture2D" uid="uid://kchtqqjqivg1" path="res://assets/ui_icons/bolts.png" id="5_g04py"]
 
 [node name="ArmoryMenu" type="Control" unique_id=678493903]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,12 +67,17 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" unique_id=433339788]
 layout_mode = 2
-text = "Exchange score points to upgrade your tank's qualities"
+text = "Exchange bolts to upgrade your tank's qualities"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer" unique_id=235502282]
 layout_mode = 2
 
-[node name="TotalScore" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=2029327692]
+[node name="BoltsIcon" type="TextureRect" parent="MarginContainer2/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1124546431]
+layout_mode = 2
+texture = ExtResource("5_g04py")
+expand_mode = 2
+
+[node name="TotalBolts" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=2029327692]
 layout_mode = 2
 script = ExtResource("2_kjroa")
 

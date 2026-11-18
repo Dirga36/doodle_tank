@@ -7,16 +7,16 @@ process_mode = 3
 custom_minimum_size = Vector2(420, 200)
 pauses_game = true
 update_content = true
-title = "Tutorial: Score"
-text = "Different enemy types gives you different ammounts of score when destroyed.
+title = "Tutorial: Bolts"
+text = "Different enemy types gives you different ammounts of bolts when destroyed.
 
-Every 5 minutes you gain 0.5 score multiplier (MAX 5 times)"
+Every 5 minutes you gain 0.5 bolts multiplier (MAX 5 times)"
 
 [node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="0" unique_id=1049966061]
 theme_override_font_sizes/font_size = 20
-text = "Tutorial: Score"
+text = "Tutorial: Bolts"
 
 [node name="DescriptionLabel" parent="ContentContainer/BoxContainer/BodyMargin/BoxContainer" parent_id_path=PackedInt32Array(1957884530) index="0" unique_id=617407155]
-text = "Different enemy types gives you different ammounts of score when destroyed.
+text = "Different enemy types gives you different ammounts of bolts when destroyed.
 
-Every 5 minutes you gain 0.5 score multiplier (MAX 5 times)"
+Every 5 minutes you gain 0.5 bolts multiplier (MAX 5 times)"

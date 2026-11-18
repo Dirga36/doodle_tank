@@ -13,7 +13,7 @@ const PLAYER_STATS_RESOURCE_PATH = "res://resources/player_stats.tres"
 # used
 @export var play_time : int
 @export var total_time : int
-@export var total_score : int
+@export var total_bolts : int
 
 static func get_level_state(level_state_key : String) -> LevelState:
 	level_state_key = ResourceUID.ensure_path(level_state_key)
@@ -83,7 +83,7 @@ static func reset() -> void:
 	# used
 	game_state.play_time = 0
 	game_state.total_time = 0
-	game_state.total_score = 0
+	game_state.total_bolts = 0
 	reset_player_stats()
 	GlobalState.save()
 

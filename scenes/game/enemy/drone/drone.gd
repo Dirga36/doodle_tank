@@ -1,7 +1,7 @@
 extends CharacterBody2D
 ## Flying enemy that chases the player and explodes on contact.
 
-const SCORE_REWARD: int = 10
+const BOLTS_REWARD: int = 10
 const DEATH_SPEED: float = 10.0
 
 @export var speed: float = 75.0
@@ -40,7 +40,7 @@ func take_damage(amount: int) -> void:
 
 
 func _die() -> void:
-	ScoreManager.add_points(SCORE_REWARD)
+	BoltsManager.add_points(BOLTS_REWARD)
 	speed = DEATH_SPEED
 	global_rotation = 0.0
 	explosion_effect.emitting = true

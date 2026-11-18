@@ -5,10 +5,11 @@
 [ext_resource type="Script" uid="uid://djiq3d2g3bs8m" path="res://scenes/game/scripts/configurable_sub_viewport.gd" id="1_spx7p"]
 [ext_resource type="Script" uid="uid://d1wgoouu2cy7f" path="res://scenes/game/hud/hud.gd" id="1_tet4d"]
 [ext_resource type="Texture2D" uid="uid://c7u0clwgmsph8" path="res://scenes/game/hud/landmine_icon.png" id="2_3ujq4"]
-[ext_resource type="Script" uid="uid://8umpgnrt3jvu" path="res://scenes/game/hud/score_container.gd" id="2_nwgrr"]
+[ext_resource type="Script" uid="uid://8umpgnrt3jvu" path="res://scenes/game/hud/bolts_container.gd" id="2_nwgrr"]
+[ext_resource type="Texture2D" uid="uid://kchtqqjqivg1" path="res://assets/ui_icons/bolts.png" id="3_0gdx8"]
 [ext_resource type="Script" uid="uid://d21pyej6c8sog" path="res://scenes/game/scripts/tutorial_manager.gd" id="6_etamk"]
 [ext_resource type="PackedScene" uid="uid://bicpqmetncwf1" path="res://scenes/game/tutorials/tutorial_1.tscn" id="7_spx7p"]
-[ext_resource type="PackedScene" uid="uid://b6dfd4bls15b5" path="res://scenes/game/tutorials/tutorial_score.tscn" id="9_tet4d"]
+[ext_resource type="PackedScene" uid="uid://b6dfd4bls15b5" path="res://scenes/game/tutorials/tutorial_bolts.tscn" id="9_tet4d"]
 [ext_resource type="PackedScene" uid="uid://bafkrac6u80cf" path="res://scenes/game/tutorials/tutorial_enemy.tscn" id="9_xskmx"]
 [ext_resource type="PackedScene" uid="uid://das1m3hcsprb0" path="res://scenes/game/tutorials/tutorial_control.tscn" id="10_lnl2y"]
 
@@ -80,11 +81,15 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 16
 
+[node name="BoltsIcon" type="TextureRect" parent="Control/ScoreContainer/VBoxContainer/HBoxContainer" unique_id=1096688133]
+layout_mode = 2
+texture = ExtResource("3_0gdx8")
+expand_mode = 2
+
 [node name="ScoreLabel" type="Label" parent="Control/ScoreContainer/VBoxContainer/HBoxContainer" unique_id=828109067]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
-text = "SCORE: 000000"
 vertical_alignment = 1
 
 [node name="ScoreMultiplierLabel" type="Label" parent="Control/ScoreContainer/VBoxContainer/HBoxContainer" unique_id=455914491]

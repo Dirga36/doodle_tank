@@ -1,7 +1,7 @@
 extends CharacterBody2D
 ## Ground enemy that navigates toward the player and explodes when destroyed.
 
-const SCORE_REWARD: int = 10
+const BOLTS_REWARD: int = 10
 const DEATH_SPEED: float = 25.0
 
 @export var speed: float = 120.0
@@ -62,7 +62,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_health_manager_died() -> void:
-	ScoreManager.add_points(SCORE_REWARD)
+	BoltsManager.add_points(BOLTS_REWARD)
 	speed = DEATH_SPEED
 	sprite_2d.hide()
 	die_sound.play()
