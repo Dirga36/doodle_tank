@@ -23,7 +23,7 @@ func _update_cooldown(delta: float) -> void:
 
 
 func _can_fire() -> bool:
-	return Input.is_action_pressed("set land mine") and _cooldown_timer == 0.0
+	return Input.is_action_pressed("deploy land mine") and _cooldown_timer == 0.0
 
 
 func _drop_bomb() -> void:
