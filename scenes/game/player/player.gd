@@ -3,8 +3,8 @@ extends CharacterBody2D
 
 signal player_died
 
-@onready var health_manager: Node = $HealthManager
-@onready var movement_manager: Node = $MovementManager
+@onready var health_component: Node = $HealthManager
+@onready var movement_component: Node = $MovementManager
 
 
 func _ready() -> void:
@@ -13,10 +13,10 @@ func _ready() -> void:
 
 ## Applies incoming damage through the health manager.
 func take_damage(amount: int) -> void:
-	health_manager.take_damage(amount)
+	health_component.take_damage(amount)
 
 
-func _on_health_manager_player_health_is_zero() -> void:
+func _on_health_component_player_health_is_zero() -> void:
 	await get_tree().create_timer(0.1).timeout
 	queue_free()
 	player_died.emit()

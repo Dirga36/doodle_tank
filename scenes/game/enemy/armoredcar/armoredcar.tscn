@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dj7aja7mp44m8" path="res://scenes/game/enemy/armoredcar/armoredcar.png" id="1_ksln7"]
 [ext_resource type="Script" uid="uid://dbublq0slvjcd" path="res://scenes/game/enemy/armoredcar/armoredcar.gd" id="1_ov0wq"]
-[ext_resource type="Script" uid="uid://cg5aoqw2hokjn" path="res://scenes/game/enemy/armoredcar/health_manager.gd" id="3_ov0wq"]
+[ext_resource type="Script" uid="uid://cg5aoqw2hokjn" path="res://scenes/game/enemy/armoredcar/health_component.gd" id="3_ov0wq"]
 [ext_resource type="AudioStream" uid="uid://d0f8tp1mh8wwi" path="res://assets/sfx/enemy_die.mp3" id="4_s6rff"]
 [ext_resource type="AudioStream" uid="uid://dl0ctn3eve1k7" path="res://assets/sfx/armoredcar_moving.mp3" id="5_h4ed7"]
 [ext_resource type="PackedScene" uid="uid://besolgbkyij51" path="res://scenes/game/VFX/explosion.tscn" id="6_tdnfm"]
@@ -14,27 +14,13 @@ size = Vector2(42, 24)
 motion_mode = 1
 script = ExtResource("1_ov0wq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=763290937]
-shape = SubResource("RectangleShape2D_1vivr")
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=135896240]
 texture_filter = 1
 scale = Vector2(1.3, 1.3)
 texture = ExtResource("1_ksln7")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=957198635]
-path_desired_distance = 10.0
-target_desired_distance = 20.0
-simplify_path = true
-avoidance_enabled = true
-radius = 25.0
-
-[node name="Timer" type="Timer" parent="." unique_id=888491329]
-wait_time = 0.2
-autostart = true
-
-[node name="HealthManager" type="Node" parent="." unique_id=655271643]
-script = ExtResource("3_ov0wq")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=763290937]
+shape = SubResource("RectangleShape2D_1vivr")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1260843998]
 stream = ExtResource("4_s6rff")
@@ -48,5 +34,19 @@ parameters/looping = true
 
 [node name="Explosion" parent="." unique_id=1590463719 instance=ExtResource("6_tdnfm")]
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=957198635]
+path_desired_distance = 10.0
+target_desired_distance = 20.0
+simplify_path = true
+avoidance_enabled = true
+radius = 25.0
+
+[node name="Timer" type="Timer" parent="." unique_id=888491329]
+wait_time = 0.2
+autostart = true
+
+[node name="HealthComponent" type="Node" parent="." unique_id=655271643]
+script = ExtResource("3_ov0wq")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="died" from="HealthManager" to="." method="_on_health_manager_died"]
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

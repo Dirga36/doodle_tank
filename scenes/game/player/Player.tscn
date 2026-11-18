@@ -9,8 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://6jpao1imbdr" path="res://assets/sfx/moving.mp3" id="5_2rpb8"]
 [ext_resource type="AudioStream" uid="uid://0fyriqobva55" path="res://assets/sfx/hurt_sound.mp3" id="5_jvpd5"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_ixkur"]
-[ext_resource type="Script" uid="uid://bga3aqjv48503" path="res://scenes/game/player/health_manager.gd" id="7_3vwxf"]
-[ext_resource type="Script" uid="uid://cacvu1aaw7k8j" path="res://scenes/game/player/movement_manager.gd" id="8_6bxg8"]
+[ext_resource type="Script" uid="uid://bga3aqjv48503" path="res://scenes/game/player/health_component.gd" id="7_3vwxf"]
+[ext_resource type="Script" uid="uid://cacvu1aaw7k8j" path="res://scenes/game/player/movement_component.gd" id="8_6bxg8"]
 [ext_resource type="Script" uid="uid://bhd4nuiu23e7l" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_noise_emitter_2d.gd" id="10_bcwky"]
 [ext_resource type="Script" uid="uid://dimvdouy8g0sv" path="res://addons/phantom_camera/scripts/resources/phantom_camera_noise_2d.gd" id="11_i0dnl"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="12_sxkrj"]
@@ -77,44 +77,44 @@ z_index = 1
 script = ExtResource("1_2rpb8")
 player = NodePath("..")
 
-[node name="MovementManager" type="Node" parent="." unique_id=265634521 node_paths=PackedStringArray("player")]
+[node name="MovementComponent" type="Node" parent="." unique_id=265634521 node_paths=PackedStringArray("player")]
 script = ExtResource("8_6bxg8")
 player = NodePath("..")
 
-[node name="HealthManager" type="Node" parent="." unique_id=933980256]
+[node name="HealthComponent" type="Node" parent="." unique_id=933980256]
 script = ExtResource("7_3vwxf")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="HealthManager" unique_id=1601982036]
+[node name="CanvasLayer" type="CanvasLayer" parent="HealthComponent" unique_id=1601982036]
 layer = 0
 
-[node name="Control" type="Control" parent="HealthManager/CanvasLayer" unique_id=21351546]
+[node name="Control" type="Control" parent="HealthComponent/CanvasLayer" unique_id=21351546]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MarginContainer" type="MarginContainer" parent="HealthManager/CanvasLayer/Control" unique_id=528403507]
+[node name="MarginContainer" type="MarginContainer" parent="HealthComponent/CanvasLayer/Control" unique_id=528403507]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 364.0
 offset_bottom = 94.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HealthManager/CanvasLayer/Control/MarginContainer" unique_id=705786424]
+[node name="VBoxContainer" type="VBoxContainer" parent="HealthComponent/CanvasLayer/Control/MarginContainer" unique_id=705786424]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HealthManager/CanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=424194670]
+[node name="HBoxContainer" type="HBoxContainer" parent="HealthComponent/CanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=424194670]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="HealthManager/CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=598689729]
+[node name="Label" type="Label" parent="HealthComponent/CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=598689729]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "HP"
 vertical_alignment = 1
 
-[node name="PlayerHealthBar" type="ProgressBar" parent="HealthManager/CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=612878969]
+[node name="PlayerHealthBar" type="ProgressBar" parent="HealthComponent/CanvasLayer/Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=612878969]
 unique_name_in_owner = true
 z_as_relative = false
 custom_minimum_size = Vector2(300, 0)
@@ -125,22 +125,22 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/fill = SubResource("StyleBoxFlat_388e5")
 max_value = 3.0
 
-[node name="CameraManager" type="Node" parent="." unique_id=460608095]
+[node name="CameraComponent" type="Node" parent="." unique_id=460608095]
 script = ExtResource("1_4kuee")
 
-[node name="Camera" type="Camera2D" parent="CameraManager" unique_id=1291757047]
+[node name="Camera" type="Camera2D" parent="CameraComponent" unique_id=1291757047]
 physics_interpolation_mode = 1
 top_level = true
 position = Vector2(2.3841858e-07, 0)
 zoom = Vector2(4, 4)
 
-[node name="PhantomCameraHost" type="Node" parent="CameraManager/Camera" unique_id=558434319]
+[node name="PhantomCameraHost" type="Node" parent="CameraComponent/Camera" unique_id=558434319]
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("6_ixkur")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
-[node name="PhantomCamera2D" type="Node2D" parent="CameraManager" unique_id=1471685986 node_paths=PackedStringArray("follow_target")]
+[node name="PhantomCamera2D" type="Node2D" parent="CameraComponent" unique_id=1471685986 node_paths=PackedStringArray("follow_target")]
 top_level = true
 position = Vector2(2.3841858e-07, 0)
 script = ExtResource("12_sxkrj")
@@ -153,7 +153,7 @@ lookahead_time = Vector2(0.25, 0.25)
 noise_emitter_layer = 1
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
-[node name="PhantomCameraNoiseEmitter2D" type="Node2D" parent="CameraManager" unique_id=706704056]
+[node name="PhantomCameraNoiseEmitter2D" type="Node2D" parent="CameraComponent" unique_id=706704056]
 unique_name_in_owner = true
 script = ExtResource("10_bcwky")
 noise = SubResource("Resource_t5vmf")
@@ -162,4 +162,4 @@ duration = 0.3
 decay_time = 0.1
 metadata/_custom_type_script = "uid://bhd4nuiu23e7l"
 
-[connection signal="player_health_is_zero" from="HealthManager" to="." method="_on_health_manager_player_health_is_zero"]
+[connection signal="player_health_is_zero" from="HealthComponent" to="." method="_on_health_component_player_health_is_zero"]

@@ -58,9 +58,9 @@ func _shoot() -> void:
 	_cooldown_timer = fire_cooldown
 
 
-func _on_target_manager_target_lost() -> void:
+func _on_target_component_target_lost() -> void:
 	aimed = false
 
 
-func _on_target_manager_target_in_range() -> void:
+func _on_target_component_target_in_range() -> void:
 	aimed = true
