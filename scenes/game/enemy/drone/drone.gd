@@ -10,9 +10,9 @@ const DEATH_SPEED: float = 10.0
 @export var damage: int = 1
 
 @onready var player: CharacterBody2D = Global.player
-@onready var die_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var explosion_effect: GPUParticles2D = $Explosion
+@onready var exploding_effect: GPUParticles2D = %ExplodingEffect
+@onready var exploding_sound: AudioStreamPlayer2D = %ExplodingSound
 
 
 func _physics_process(delta: float) -> void:
@@ -43,10 +43,10 @@ func _die() -> void:
 	BoltsManager.add_points(BOLTS_REWARD)
 	speed = DEATH_SPEED
 	global_rotation = 0.0
-	explosion_effect.emitting = true
+	exploding_effect.emitting = true
 	sprite_2d.hide()
-	die_sound.play()
-	await die_sound.finished
+	exploding_sound.play()
+	await exploding_sound.finished
 	queue_free()
 
 

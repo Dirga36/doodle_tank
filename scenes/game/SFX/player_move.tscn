@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dqmxu3l6ng5rd"]
+
+[ext_resource type="AudioStream" uid="uid://dt4cn1js7epvg" path="res://assets/sfx/player_move.mp3" id="1_3wn35"]
+
+[node name="PlayerMove" type="AudioStreamPlayer2D" unique_id=1531839324]
+stream = ExtResource("1_3wn35")

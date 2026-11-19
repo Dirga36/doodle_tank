@@ -6,12 +6,12 @@ const Bullet: PackedScene = preload("uid://b4nipybh6moco")
 @export var fire_cooldown: float = 0.5
 @export var rotation_speed: float = 5.0 # Lower values = slower rotation.
 
-@onready var marker_2d: Marker2D = $Marker2D
-@onready var firing_effect: GPUParticles2D = $Marker2D/CannonFiring
-@onready var cannon_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
-
 var _cooldown_timer: float = 0.0
+
+@onready var marker_2d: Marker2D = $Marker2D
+@onready var firing_effect: GPUParticles2D = %FiringEffect
+@onready var firing_sound: AudioStreamPlayer2D = %FiringSound
+@onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
 
 
 func _physics_process(delta: float) -> void:
@@ -49,7 +49,7 @@ func _shoot() -> void:
 	var spawn_parent: Node = get_tree().current_scene
 	spawn_parent.add_child(bullet)
 
-	cannon_sound.play()
+	firing_sound.play()
 	firing_effect.restart()
 	firing_effect.emitting = true
 	_cooldown_timer = fire_cooldown

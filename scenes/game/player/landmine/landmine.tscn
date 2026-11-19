@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://brg3j2pkhpjm8" path="res://scenes/game/player/landmine/landmine.gd" id="1_27ja4"]
 [ext_resource type="Texture2D" uid="uid://mwcukmklefo7" path="res://scenes/game/player/landmine/landmine.png" id="1_vpfkv"]
-[ext_resource type="AudioStream" uid="uid://hko3bqnpx7k7" path="res://assets/sfx/landmine_explosion_sound.mp3" id="3_k0qlb"]
+[ext_resource type="PackedScene" uid="uid://bifysae8h680l" path="res://scenes/game/VFX/explosion2.tscn" id="4_6vccw"]
 [ext_resource type="Texture2D" uid="uid://dmaj5sydfjdhe" path="res://scenes/game/player/landmine/landmine1.png" id="4_q5c32"]
-[ext_resource type="Texture2D" uid="uid://duep5ijfq7503" path="res://scenes/game/VFX/outline.png" id="6_3hobw"]
+[ext_resource type="PackedScene" uid="uid://bieqtx8jk758p" path="res://scenes/game/SFX/explosion2.tscn" id="5_6vccw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1vivr"]
 animations = [{
@@ -32,24 +32,6 @@ size = Vector2(8, 8)
 [sub_resource type="CircleShape2D" id="CircleShape2D_wdut5"]
 radius = 48.0
 
-[sub_resource type="Gradient" id="Gradient_27ja4"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_npx5i"]
-gradient = SubResource("Gradient_27ja4")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1vivr"]
-particle_flag_disable_z = true
-angle_min = -179.99998
-angle_max = 180.00002
-direction = Vector3(0, 0, 0)
-spread = 180.0
-initial_velocity_min = 220.0
-initial_velocity_max = 220.0
-gravity = Vector3(0, 98, 0)
-scale_min = 0.19999999
-color_ramp = SubResource("GradientTexture1D_npx5i")
-
 [node name="Landmine" type="Area2D" unique_id=1538265662]
 z_index = -1
 script = ExtResource("1_27ja4")
@@ -73,23 +55,16 @@ shape = SubResource("CircleShape2D_wdut5")
 
 [node name="FuseTimer" type="Timer" parent="." unique_id=651076542]
 
-[node name="ExplodingSound" type="AudioStreamPlayer2D" parent="." unique_id=330402603]
-stream = ExtResource("3_k0qlb")
-
-[node name="ExplodingParticles" type="GPUParticles2D" parent="." unique_id=55456874]
-texture_filter = 1
-emitting = false
-amount = 25
-texture = ExtResource("6_3hobw")
-lifetime = 0.2
-one_shot = true
-explosiveness = 0.8
-process_material = SubResource("ParticleProcessMaterial_1vivr")
-
 [node name="Lifespan" type="Timer" parent="." unique_id=1019603472]
 wait_time = 15.0
 one_shot = true
 autostart = true
+
+[node name="ExplodingEffect" parent="." unique_id=1941640193 instance=ExtResource("4_6vccw")]
+unique_name_in_owner = true
+
+[node name="ExplodingSound" parent="." unique_id=1696187672 instance=ExtResource("5_6vccw")]
+unique_name_in_owner = true
 
 [connection signal="timeout" from="FuseTimer" to="." method="_on_fuse_timer_timeout"]
 [connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]

@@ -4,7 +4,7 @@ extends Node
 signal player_health_is_zero
 
 const NORMAL_COLOR: Color = Color("1cc93d") # Green
-const LOW_COLOR: Color = Color("dc000b")    # Red
+const LOW_COLOR: Color = Color("dc000b") # Red
 
 @export var low_health_threshold: int = 1
 @export var invulnerability_duration: float = 1.0
@@ -17,7 +17,7 @@ var is_invulnerable: bool = false
 
 @onready var player_health_bar: ProgressBar = %PlayerHealthBar
 @onready var phantom_camera_noise_emitter_2d: PhantomCameraNoiseEmitter2D = %PhantomCameraNoiseEmitter2D
-@onready var hurt_sound: AudioStreamPlayer2D = %HurtSound
+@onready var hit_sound: AudioStreamPlayer2D = %HitSound
 
 
 func _ready() -> void:
@@ -37,7 +37,7 @@ func take_damage(amount: int) -> void:
 	phantom_camera_noise_emitter_2d.emit()
 	current_health = clamp(current_health, 0, max_health)
 	_update_player_health_bar()
-	hurt_sound.play()
+	hit_sound.play()
 
 	if current_health <= 0:
 		_health_is_zero()

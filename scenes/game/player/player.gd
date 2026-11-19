@@ -17,6 +17,5 @@ func take_damage(amount: int) -> void:
 
 
 func _on_health_component_player_health_is_zero() -> void:
-	await get_tree().create_timer(0.1).timeout
-	queue_free()
 	player_died.emit()
+	queue_free()

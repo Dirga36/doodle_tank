@@ -12,8 +12,8 @@ var is_armed: bool = false
 @onready var fuse_timer: Timer = $FuseTimer
 @onready var explosion_area: Area2D = $BlastArea
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var exploding_sound: AudioStreamPlayer2D = $ExplodingSound
 @onready var exploding_particles: GPUParticles2D = $ExplodingParticles
+@onready var exploding_sound: AudioStreamPlayer2D = %ExplodingSound
 
 
 func _ready() -> void:

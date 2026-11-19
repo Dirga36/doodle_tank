@@ -10,13 +10,13 @@ func _ready() -> void:
 	BoltsManager.bolts_multiplier_changed.connect(_on_bolts_manager_bolts_multiplier_changed)
 
 	# Initial text with 6-digit leading zeros.
-	bolts_label.text = "Bolts: %06d" % BoltsManager.bolts
+	bolts_label.text = "%d" % BoltsManager.bolts
 	bolts_multiplier_label.text = "x%.1f" % BoltsManager.bolts_multiplier
 
 
 func _on_bolts_manager_bolts_changed(new_bolts: int) -> void:
 	# Format with 6 digits, padding with zeros on the left.
-	bolts_label.text = "Bolts: %06d" % new_bolts
+	bolts_label.text = "%d" % new_bolts
 
 
 func _on_bolts_manager_bolts_multiplier_changed(new_bolts_multiplier: float) -> void:

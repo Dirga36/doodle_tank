@@ -5,9 +5,6 @@
 [ext_resource type="Script" uid="uid://cs067voql78lf" path="res://scenes/game/player/player.gd" id="1_524rm"]
 [ext_resource type="Texture2D" uid="uid://b4q8swvmfnrny" path="res://scenes/game/player/body.png" id="1_gfjak"]
 [ext_resource type="PackedScene" uid="uid://x4cuqvqshld" path="res://scenes/game/player/cannon/cannon.tscn" id="2_gfjak"]
-[ext_resource type="AudioStream" uid="uid://cptcmo0edcexf" path="res://assets/sfx/tankengine_sound.mp3" id="4_vpxtw"]
-[ext_resource type="AudioStream" uid="uid://6jpao1imbdr" path="res://assets/sfx/moving.mp3" id="5_2rpb8"]
-[ext_resource type="AudioStream" uid="uid://0fyriqobva55" path="res://assets/sfx/hurt_sound.mp3" id="5_jvpd5"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_ixkur"]
 [ext_resource type="Script" uid="uid://bga3aqjv48503" path="res://scenes/game/player/health_manager.gd" id="7_3vwxf"]
 [ext_resource type="Script" uid="uid://cacvu1aaw7k8j" path="res://scenes/game/player/movement_manager.gd" id="8_6bxg8"]
@@ -15,6 +12,9 @@
 [ext_resource type="Script" uid="uid://dimvdouy8g0sv" path="res://addons/phantom_camera/scripts/resources/phantom_camera_noise_2d.gd" id="11_i0dnl"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="12_sxkrj"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="13_ixkur"]
+[ext_resource type="PackedScene" uid="uid://dqmxu3l6ng5rd" path="res://scenes/game/SFX/player_move.tscn" id="14_ltioj"]
+[ext_resource type="PackedScene" uid="uid://isr6f0vg2upc" path="res://scenes/game/SFX/player_hit.tscn" id="15_sb6bg"]
+[ext_resource type="PackedScene" uid="uid://qgm6sbdsg7ew" path="res://scenes/game/SFX/engine1.tscn" id="16_3khhd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
 size = Vector2(24, 16)
@@ -49,24 +49,6 @@ texture = ExtResource("1_gfjak")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1847681323]
 shape = SubResource("RectangleShape2D_1vivr")
-
-[node name="MovingSound" type="AudioStreamPlayer2D" parent="." unique_id=839098852]
-unique_name_in_owner = true
-stream = ExtResource("5_2rpb8")
-volume_db = -5.0
-max_distance = 10.0
-
-[node name="EngineSound" type="AudioStreamPlayer2D" parent="." unique_id=583875070]
-unique_name_in_owner = true
-stream = ExtResource("4_vpxtw")
-autoplay = true
-max_distance = 10.0
-attenuation = 3.0314324
-parameters/looping = true
-
-[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=2116628262]
-unique_name_in_owner = true
-stream = ExtResource("5_jvpd5")
 
 [node name="MainCannon" parent="." unique_id=882763557 instance=ExtResource("2_gfjak")]
 z_index = 1
@@ -157,5 +139,17 @@ growth_time = 0.02
 duration = 0.3
 decay_time = 0.1
 metadata/_custom_type_script = "uid://bhd4nuiu23e7l"
+
+[node name="MovingSound" parent="." unique_id=1531839324 instance=ExtResource("14_ltioj")]
+unique_name_in_owner = true
+
+[node name="HitSound" parent="." unique_id=10243269 instance=ExtResource("15_sb6bg")]
+unique_name_in_owner = true
+
+[node name="EngineSound" parent="." unique_id=732079316 instance=ExtResource("16_3khhd")]
+unique_name_in_owner = true
+volume_db = -5.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="player_health_is_zero" from="HealthComponent" to="." method="_on_health_component_player_health_is_zero"]

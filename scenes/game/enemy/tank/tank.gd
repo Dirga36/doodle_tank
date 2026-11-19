@@ -9,10 +9,10 @@ const DEATH_SPEED: float = 10.0
 @onready var player: CharacterBody2D = Global.player
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var health_component: Node = $HealthComponent
-@onready var die_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var tank_cannon: Area2D = $TankCannon
-@onready var explosion_effect: GPUParticles2D = $Explosion
+@onready var exploding_effect: GPUParticles2D = %ExplodingEffect
+@onready var exploding_sound: AudioStreamPlayer2D = %ExplodingSound
 
 
 func _ready() -> void:
@@ -67,7 +67,7 @@ func _on_health_component_died() -> void:
 	speed = DEATH_SPEED
 	sprite_2d.hide()
 	tank_cannon.hide()
-	die_sound.play()
-	explosion_effect.emitting = true
-	await die_sound.finished
+	exploding_sound.play()
+	exploding_effect.emitting = true
+	await exploding_sound.finished
 	queue_free()

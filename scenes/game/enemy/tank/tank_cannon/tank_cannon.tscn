@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dowslycig5dit" path="res://scenes/game/enemy/tank/tank_cannon.png" id="1_753bg"]
 [ext_resource type="Script" uid="uid://cvqekqg4ywofi" path="res://scenes/game/enemy/tank/tank_cannon/tank_cannon.gd" id="1_xp1dw"]
-[ext_resource type="AudioStream" uid="uid://7a1grn3rx8j7" path="res://assets/sfx/cannon2.mp3" id="3_8r7w4"]
 [ext_resource type="PackedScene" uid="uid://b717c3fbmunui" path="res://scenes/game/VFX/cannon_firing.tscn" id="4_c6udp"]
+[ext_resource type="PackedScene" uid="uid://ha8vuwjjrcxg" path="res://scenes/game/SFX/cannon2.tscn" id="4_xd3u1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1vivr"]
 radius = 7.0
@@ -60,10 +60,13 @@ texture = ExtResource("1_753bg")
 libraries/ = SubResource("AnimationLibrary_c6udp")
 playback_auto_capture_ease_type = 1
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2142371120]
-stream = ExtResource("3_8r7w4")
-
 [node name="Marker2D" type="Marker2D" parent="." unique_id=669092156]
 position = Vector2(20, 0)
 
-[node name="CannonFiring" parent="Marker2D" unique_id=1964081938 instance=ExtResource("4_c6udp")]
+[node name="FiringEffect" parent="Marker2D" unique_id=1964081938 instance=ExtResource("4_c6udp")]
+unique_name_in_owner = true
+position = Vector2(-20, 0)
+
+[node name="FiringSound" parent="." unique_id=528659847 instance=ExtResource("4_xd3u1")]
+unique_name_in_owner = true
+max_distance = 500.0
