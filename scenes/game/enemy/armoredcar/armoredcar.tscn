@@ -29,10 +29,6 @@ simplify_path = true
 avoidance_enabled = true
 radius = 25.0
 
-[node name="Timer" type="Timer" parent="." unique_id=888491329]
-wait_time = 0.2
-autostart = true
-
 [node name="HealthComponent" type="Node" parent="." unique_id=655271643]
 script = ExtResource("3_ov0wq")
 
@@ -48,5 +44,4 @@ autoplay = true
 max_distance = 1000.0
 parameters/looping = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

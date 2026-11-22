@@ -149,7 +149,6 @@ unique_name_in_owner = true
 [node name="EngineSound" parent="." unique_id=732079316 instance=ExtResource("16_3khhd")]
 unique_name_in_owner = true
 volume_db = -5.0
-autoplay = true
 parameters/looping = true
 
 [connection signal="player_health_is_zero" from="HealthComponent" to="." method="_on_health_component_player_health_is_zero"]

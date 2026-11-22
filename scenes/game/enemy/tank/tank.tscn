@@ -48,10 +48,6 @@ simplify_path = true
 avoidance_enabled = true
 radius = 25.0
 
-[node name="Timer" type="Timer" parent="." unique_id=1761808205]
-wait_time = 0.2
-autostart = true
-
 [node name="HealthComponent" type="Node" parent="." unique_id=1081564431]
 script = ExtResource("4_mdpx2")
 
@@ -72,7 +68,6 @@ parameters/looping = true
 
 [connection signal="body_entered" from="TargetArea" to="TargetComponent" method="_on_target_area_body_entered"]
 [connection signal="body_exited" from="TargetArea" to="TargetComponent" method="_on_target_area_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="target_in_range" from="TargetComponent" to="TankCannon" method="_on_target_component_target_in_range"]
 [connection signal="target_lost" from="TargetComponent" to="TankCannon" method="_on_target_component_target_lost"]
