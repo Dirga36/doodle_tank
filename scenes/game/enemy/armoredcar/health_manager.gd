@@ -3,9 +3,9 @@ extends Node
 
 signal died
 
-@export var max_health: int = 5
+@export var max_health: float = 5.0
 
-var current_health: int = 5
+var current_health: float = max_health
 
 
 func _ready() -> void:
@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 ## Applies damage, clamping health between 0 and [member max_health].
-func take_damage(amount: int) -> void:
+func take_damage(amount: float) -> void:
 	current_health -= amount
 	# Clamp prevents health from dropping below 0.
 	current_health = clamp(current_health, 0, max_health)

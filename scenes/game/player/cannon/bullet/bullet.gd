@@ -6,7 +6,7 @@ extends Area2D
 
 var stats: PlayerStats = preload("res://resources/player_stats.tres")
 
-@onready var damage: int = stats.damage
+@onready var damage: float = stats.damage
 @onready var trail: Line2D = $Line2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var impact_effect: GPUParticles2D = $Marker2D/BulletImpact

@@ -6,14 +6,15 @@ signal player_health_is_zero
 const NORMAL_COLOR: Color = Color("1cc93d") # Green
 const LOW_COLOR: Color = Color("dc000b") # Red
 
-@export var low_health_threshold: int = 1
+@export var low_health_threshold: float = 1.0
 @export var invulnerability_duration: float = 1.0
 
 var stats: PlayerStats = preload("res://resources/player_stats.tres")
 
-var max_health: int = stats.max_health
-var current_health: int = stats.max_health
+var max_health: float = stats.max_health
+var current_health: float = stats.max_health
 var is_invulnerable: bool = false
+var damage_reduction: float = 0.25 # 25% damage reduction
 
 @onready var player_health_bar: ProgressBar = %PlayerHealthBar
 @onready var phantom_camera_noise_emitter_2d: PhantomCameraNoiseEmitter2D = %PhantomCameraNoiseEmitter2D
@@ -28,12 +29,13 @@ func _ready() -> void:
 
 
 ## Applies incoming damage, ignoring it while invulnerable.
-func take_damage(amount: int) -> void:
+func take_damage(amount: float) -> void:
 	# Ignore damage while invulnerable.
 	if is_invulnerable:
 		return
 
-	current_health -= amount
+	var final_damage: float = max(0.0, amount * (1.0 - damage_reduction))
+	current_health -= final_damage
 	phantom_camera_noise_emitter_2d.emit()
 	current_health = clamp(current_health, 0, max_health)
 	_update_player_health_bar()

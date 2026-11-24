@@ -6,8 +6,8 @@ const DEATH_SPEED: float = 10.0
 
 @export var speed: float = 75.0
 @export var rotation_speed: float = 3.0 # Higher values make rotation faster.
-@export var health: int = 1
-@export var damage: int = 1
+@export var health: float = 1.0
+@export var damage: float = 1.0
 
 @onready var player: CharacterBody2D = Global.player
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 
 
 ## Applies damage and destroys the drone when health is depleted.
-func take_damage(amount: int) -> void:
+func take_damage(amount: float) -> void:
 	health -= amount
 	if health <= 0:
 		_die()

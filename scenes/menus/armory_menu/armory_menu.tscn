@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bxqks3gvk11h0" path="res://scenes/menus/armory_menu/armory_menu.gd" id="1_kjroa"]
 [ext_resource type="Script" uid="uid://ybhtd41v7od1" path="res://scenes/menus/armory_menu/total_bolts.gd" id="2_kjroa"]
 [ext_resource type="Texture2D" uid="uid://dntm7xvd0fpoh" path="res://icon.png" id="2_krp6m"]
-[ext_resource type="Resource" uid="uid://3u1456lqtauu" path="res://resources/player_stats.tres" id="2_wtrf8"]
+[ext_resource type="Resource" uid="uid://dwptdnrpnjoi7" path="res://resources/player_stats.tres" id="2_wtrf8"]
 [ext_resource type="PackedScene" uid="uid://b1hnrly8yf0dl" path="res://scenes/menus/armory_menu/upgrade_row.tscn" id="3_krp6m"]
 [ext_resource type="Texture2D" uid="uid://kchtqqjqivg1" path="res://assets/ui_icons/bolts.png" id="5_g04py"]
 
@@ -35,6 +35,32 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Armory"
 horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="." unique_id=983117095]
+layout_mode = 1
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 296.0
+offset_bottom = 124.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3" unique_id=520879905]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer3/HBoxContainer" unique_id=825191489]
+layout_mode = 2
+alignment = 1
+
+[node name="TankName" type="Label" parent="MarginContainer3/HBoxContainer/VBoxContainer" unique_id=730503380]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "Bastion"
+
+[node name="Label" type="Label" parent="MarginContainer3/HBoxContainer/VBoxContainer" unique_id=1424826314]
+layout_mode = 2
+text = "Passive: 25% Damage Reduction"
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1777184871]
 layout_mode = 1
