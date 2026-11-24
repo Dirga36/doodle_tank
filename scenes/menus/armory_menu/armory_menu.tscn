@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bxqks3gvk11h0" path="res://scenes/menus/armory_menu/armory_menu.gd" id="1_kjroa"]
 [ext_resource type="Script" uid="uid://ybhtd41v7od1" path="res://scenes/menus/armory_menu/total_bolts.gd" id="2_kjroa"]
 [ext_resource type="Texture2D" uid="uid://dntm7xvd0fpoh" path="res://icon.png" id="2_krp6m"]
-[ext_resource type="Resource" uid="uid://s8jg3w0kbj47" path="res://resources/player_stats.tres" id="2_wtrf8"]
+[ext_resource type="Resource" uid="uid://3u1456lqtauu" path="res://resources/player_stats.tres" id="2_wtrf8"]
 [ext_resource type="PackedScene" uid="uid://b1hnrly8yf0dl" path="res://scenes/menus/armory_menu/upgrade_row.tscn" id="3_krp6m"]
 [ext_resource type="Texture2D" uid="uid://kchtqqjqivg1" path="res://assets/ui_icons/bolts.png" id="5_g04py"]
 
@@ -64,6 +64,7 @@ texture = ExtResource("2_krp6m")
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/HBoxContainer" unique_id=1994390289]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 16
 
 [node name="Label" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" unique_id=433339788]
 layout_mode = 2
@@ -92,26 +93,17 @@ layout_mode = 2
 [node name="StatName" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Health" index="0" unique_id=24482138]
 text = "HEALTH"
 
-[node name="UpgradeCostLabel" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Health/HBoxContainer" parent_id_path=PackedInt32Array(425628962, 2063942504) index="0" unique_id=483533118]
-text = ""
-
 [node name="UpgradeRow_Speed" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList" unique_id=1593692458 instance=ExtResource("3_krp6m")]
 layout_mode = 2
 
 [node name="StatName" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Speed" index="0" unique_id=24482138]
 text = "SPEED"
 
-[node name="UpgradeCostLabel" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Speed/HBoxContainer" parent_id_path=PackedInt32Array(1593692458, 2063942504) index="0" unique_id=483533118]
-text = ""
-
 [node name="UpgradeRow_Damage" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList" unique_id=551389085 instance=ExtResource("3_krp6m")]
 layout_mode = 2
 
 [node name="StatName" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Damage" index="0" unique_id=24482138]
 text = "DAMAGE"
-
-[node name="UpgradeCostLabel" parent="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Damage/HBoxContainer" parent_id_path=PackedInt32Array(551389085, 2063942504) index="0" unique_id=483533118]
-text = ""
 
 [editable path="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Health"]
 [editable path="MarginContainer2/HBoxContainer/VBoxContainer/StatsList/UpgradeRow_Speed"]

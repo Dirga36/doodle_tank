@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://b1hnrly8yf0dl"]
 
+[ext_resource type="Texture2D" uid="uid://kchtqqjqivg1" path="res://assets/ui_icons/bolts.png" id="1_dk5ku"]
+
 [node name="UpgradeRow" type="HBoxContainer" unique_id=425628962]
 custom_minimum_size = Vector2(0, 40)
 anchors_preset = 15
@@ -34,6 +36,10 @@ text = "+"
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2063942504]
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1313130701]
+layout_mode = 2
+texture = ExtResource("1_dk5ku")
+stretch_mode = 3
+
 [node name="UpgradeCostLabel" type="Label" parent="HBoxContainer" unique_id=483533118]
 layout_mode = 2
-text = "1000 pts"
