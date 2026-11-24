@@ -848,8 +848,6 @@ stream_4 = ExtResource("112_ku5u4")
 
 [node name="MainMenu" unique_id=869232425 instance=ExtResource("1_ub2bi")]
 script = ExtResource("2_x31ro")
-level_select_packed_scene = null
-confirm_new_game = true
 armory_packed_scene = ExtResource("3_y0y4v")
 options_packed_scene = ExtResource("3_0jpat")
 credits_packed_scene = ExtResource("4_m0ubd")
@@ -946,6 +944,5 @@ autoplay = true
 bus = &"Music"
 
 [connection signal="animation_finished" from="BackgroundTextureRect/AnimatedSprite2D" to="BackgroundTextureRect/AnimatedSprite2D" method="_on_animation_finished"]
-[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/ContinueGameButton" to="." method="_on_continue_game_button_pressed"]
-[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/ContinueGameButton" to="." method="_on_play_game_button_pressed"]
 [connection signal="confirmed" from="NewGameConfirmation" to="." method="_on_new_game_confirmation_confirmed"]
