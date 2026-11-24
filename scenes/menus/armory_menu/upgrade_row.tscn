@@ -9,10 +9,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 8
 
-[node name="StatName" type="Label" parent="." unique_id=24482138]
-custom_minimum_size = Vector2(100, 0)
+[node name="StatIcon" type="TextureRect" parent="." unique_id=944972765]
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 
 [node name="UpgradeLevel" type="HBoxContainer" parent="." unique_id=1930164835]
@@ -30,6 +30,7 @@ max_value = 3.0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 32
 text = "+"
 
