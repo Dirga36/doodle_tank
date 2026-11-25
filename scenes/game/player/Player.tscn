@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bwnlgm7e42ps2" path="res://scenes/game/player/camera.gd" id="1_4kuee"]
 [ext_resource type="Script" uid="uid://cs067voql78lf" path="res://scenes/game/player/player.gd" id="1_524rm"]
 [ext_resource type="Texture2D" uid="uid://b4q8swvmfnrny" path="res://scenes/game/player/body.png" id="1_gfjak"]
-[ext_resource type="PackedScene" uid="uid://x4cuqvqshld" path="res://scenes/game/player/cannon/cannon.tscn" id="2_gfjak"]
+[ext_resource type="PackedScene" uid="uid://x4cuqvqshld" path="res://scenes/game/player/main_cannon/main_cannon.tscn" id="2_gfjak"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="6_ixkur"]
 [ext_resource type="Script" uid="uid://bga3aqjv48503" path="res://scenes/game/player/health_manager.gd" id="7_3vwxf"]
 [ext_resource type="Script" uid="uid://cacvu1aaw7k8j" path="res://scenes/game/player/movement_manager.gd" id="8_6bxg8"]
@@ -110,7 +110,6 @@ script = ExtResource("1_4kuee")
 
 [node name="Camera" type="Camera2D" parent="CameraComponent" unique_id=1291757047]
 physics_interpolation_mode = 1
-top_level = true
 zoom = Vector2(4, 4)
 
 [node name="PhantomCameraHost" type="Node" parent="CameraComponent/Camera" unique_id=558434319]
