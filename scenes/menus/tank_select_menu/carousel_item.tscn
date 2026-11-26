@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bkeejk6a4kp8l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hddlb"]
+content_margin_top = 1.0
+bg_color = Color(1, 1, 1, 1)
+
+[node name="CarouselItem" type="VBoxContainer" unique_id=1869734785]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="SelectButton" type="Button" parent="." unique_id=1502725004]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="." unique_id=170121650]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="HSeparator" type="HSeparator" parent="." unique_id=1473993267]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_hddlb")
+
+[node name="Description" type="Label" parent="." unique_id=1524323642]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32

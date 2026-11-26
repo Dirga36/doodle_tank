@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://csskruxlik54a"]
+
+[ext_resource type="PackedScene" uid="uid://bcyh4ub5b0oit" path="res://addons/carousel_container/carousel_container.tscn" id="1_qoeqg"]
+[ext_resource type="Texture2D" uid="uid://rik4hlg0q1dq" path="res://scenes/menus/tank_select_menu/fv214.png" id="2_iwjc3"]
+[ext_resource type="Texture2D" uid="uid://cdw3b87a2koo6" path="res://scenes/menus/tank_select_menu/T-90.png" id="3_hddlb"]
+[ext_resource type="PackedScene" uid="uid://bkeejk6a4kp8l" path="res://scenes/menus/tank_select_menu/carousel_item.tscn" id="4_hddlb"]
+
+[node name="TankSelectMenu" type="Control" unique_id=685994113]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CarouselContainer" parent="." unique_id=424449301 instance=ExtResource("1_qoeqg")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+seperation = 1000
+base_x_position = 1
+base_y_position = 1
+
+[node name="FV214" parent="CarouselContainer" unique_id=1341343038 instance=ExtResource("4_hddlb")]
+layout_mode = 2
+
+[node name="SelectButton" parent="CarouselContainer/FV214" index="0" unique_id=1502725004]
+icon = ExtResource("2_iwjc3")
+
+[node name="Name" parent="CarouselContainer/FV214" index="1" unique_id=170121650]
+text = "FV214"
+
+[node name="Description" parent="CarouselContainer/FV214" index="3" unique_id=1524323642]
+text = "25% Defense"
+
+[node name="T90" parent="CarouselContainer" unique_id=2073848065 instance=ExtResource("4_hddlb")]
+self_modulate = Color(1, 1, 1, 0.6666667)
+z_index = -1
+layout_mode = 2
+
+[node name="SelectButton" parent="CarouselContainer/T90" index="0" unique_id=1502725004]
+icon = ExtResource("3_hddlb")
+
+[node name="Name" parent="CarouselContainer/T90" index="1" unique_id=170121650]
+text = "T90"
+
+[node name="Description" parent="CarouselContainer/T90" index="3" unique_id=1524323642]
+text = "25% Speed"
+
+[editable path="CarouselContainer/FV214"]
+[editable path="CarouselContainer/T90"]

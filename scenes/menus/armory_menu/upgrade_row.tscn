@@ -2,6 +2,17 @@
 
 [ext_resource type="Texture2D" uid="uid://kchtqqjqivg1" path="res://assets/ui_icons/bolts.png" id="1_dk5ku"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dk5ku"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [node name="UpgradeRow" type="HBoxContainer" unique_id=425628962]
 custom_minimum_size = Vector2(0, 40)
 anchors_preset = 15
@@ -24,6 +35,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_dk5ku")
 max_value = 3.0
 
 [node name="UpgradeButton" type="Button" parent="." unique_id=448688465]

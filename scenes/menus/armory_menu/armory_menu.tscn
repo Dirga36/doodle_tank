@@ -22,24 +22,6 @@ grow_vertical = 2
 script = ExtResource("1_kjroa")
 stats = ExtResource("2_wtrf8")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1005729139]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.057000004
-offset_bottom = -36.936
-grow_horizontal = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1683397894]
-layout_mode = 2
-alignment = 1
-
-[node name="ArmoryMenu" type="Label" parent="MarginContainer/HBoxContainer" unique_id=181389026]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Armory"
-horizontal_alignment = 1
-
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1777184871]
 layout_mode = 1
 anchors_preset = 8

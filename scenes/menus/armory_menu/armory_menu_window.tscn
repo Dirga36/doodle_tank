@@ -3,6 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://crndfbb22ri4s" path="res://addons/maaacks_game_template/base/nodes/windows/popup_window_scene_container.tscn" id="1_04ky3"]
 [ext_resource type="PackedScene" uid="uid://co1r8vl0iaa8w" path="res://scenes/menus/armory_menu/armory_menu.tscn" id="2_us5ig"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_us5ig"]
+font_size = 32
+
 [node name="PopupWindowSceneContainer" unique_id=232665413 instance=ExtResource("1_04ky3")]
 anchors_preset = -1
 anchor_left = 0.0
@@ -14,6 +17,13 @@ offset_top = -7.776
 offset_right = 0.0
 offset_bottom = 0.0
 packed_scene = ExtResource("2_us5ig")
+
+[node name="TitleMargin" parent="ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(394030069) index="0" unique_id=1262022916]
+visible = true
+
+[node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(1788474031) index="0" unique_id=1049966061]
+text = "Armory"
+label_settings = SubResource("LabelSettings_us5ig")
 
 [node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" parent_id_path=PackedInt32Array(1371114575) index="0" unique_id=314526102]
 size_flags_horizontal = 0
