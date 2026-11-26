@@ -2,7 +2,7 @@ extends Area2D
 ## Enemy projectile that damages the player and leaves a fading trail.
 
 @export var speed: float = 500.0
-@export var damage: float = 1.0
+@export var damage: float = 100.0
 @export var max_points: int = 10
 
 @onready var trail: Line2D = $Line2D

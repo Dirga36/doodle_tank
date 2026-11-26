@@ -14,7 +14,7 @@ var stats: PlayerStats = preload("res://resources/player_stats.tres")
 var max_health: float = stats.max_health
 var current_health: float = stats.max_health
 var is_invulnerable: bool = false
-var damage_reduction: float = 0.25 # 25% damage reduction
+var defense: float = 0.25 # 25% damage reduction
 
 @onready var player_health_bar: ProgressBar = %PlayerHealthBar
 @onready var phantom_camera_noise_emitter_2d: PhantomCameraNoiseEmitter2D = %PhantomCameraNoiseEmitter2D
@@ -34,7 +34,7 @@ func take_damage(amount: float) -> void:
 	if is_invulnerable:
 		return
 
-	var final_damage: float = max(0.0, amount * (1.0 - damage_reduction))
+	var final_damage: float = max(0.0, amount * (1.0 - defense))
 	current_health -= final_damage
 	phantom_camera_noise_emitter_2d.emit()
 	current_health = clamp(current_health, 0, max_health)

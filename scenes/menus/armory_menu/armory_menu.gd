@@ -72,7 +72,7 @@ func _on_health_upgrade() -> void:
 	if game_state.total_bolts >= cost and stats.max_health_level < MAX_LEVEL:
 		game_state.total_bolts -= cost
 		stats.max_health_level += 1
-		stats.max_health += 2
+		stats.max_health += 500.0
 		save_stats()
 		GlobalState.save()
 
@@ -82,7 +82,7 @@ func _on_speed_upgrade() -> void:
 	if game_state.total_bolts >= cost and stats.speed_level < MAX_LEVEL:
 		game_state.total_bolts -= cost
 		stats.speed_level += 1
-		stats.speed += 20
+		stats.speed += 20.0
 		save_stats()
 		GlobalState.save()
 
@@ -92,6 +92,6 @@ func _on_damage_upgrade() -> void:
 	if game_state.total_bolts >= cost and stats.damage_level < MAX_LEVEL:
 		game_state.total_bolts -= cost
 		stats.damage_level += 1
-		stats.damage += 1
+		stats.damage += 100.0
 		save_stats()
 		GlobalState.save()

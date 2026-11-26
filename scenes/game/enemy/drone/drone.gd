@@ -6,7 +6,7 @@ const DEATH_SPEED: float = 10.0
 
 @export var speed: float = 75.0
 @export var rotation_speed: float = 3.0 # Higher values make rotation faster.
-@export var health: float = 1.0
+@export var health: float = 100.0
 @export var damage: float = 1.0
 
 @onready var player: CharacterBody2D = Global.player
