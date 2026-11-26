@@ -33,7 +33,6 @@ size = Vector2(8, 8)
 radius = 48.0
 
 [node name="Landmine" type="Area2D" unique_id=1538265662]
-z_index = -1
 script = ExtResource("1_27ja4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=355298743]

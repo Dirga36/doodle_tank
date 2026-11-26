@@ -8,11 +8,11 @@ var stats: PlayerStats = preload("res://resources/player_stats.tres")
 
 var is_armed: bool = false
 
-@onready var damage: int = stats.damage * 3
+@onready var damage: float = stats.damage * 3.0
 @onready var fuse_timer: Timer = $FuseTimer
 @onready var explosion_area: Area2D = $BlastArea
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var exploding_particles: GPUParticles2D = $ExplodingParticles
+@onready var exploding_effect: GPUParticles2D = %ExplodingEffect
 @onready var exploding_sound: AudioStreamPlayer2D = %ExplodingSound
 
 
@@ -41,7 +41,7 @@ func explode() -> void:
 
 	# Destroy the bomb.
 	animated_sprite_2d.hide()
-	exploding_particles.emitting = true
+	exploding_effect.emitting = true
 	exploding_sound.play()
 	await exploding_sound.finished
 	queue_free()
