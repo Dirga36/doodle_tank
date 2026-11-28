@@ -25,6 +25,8 @@ const DRIVE_SOURCE_MAX_CHARS := 8000
 
 const DRIVE_FAULT_CALLS := 5
 
+const SOFTWARE_ADAPTERS := ["llvmpipe", "lavapipe", "softpipe", "swiftshader"]
+
 const CAPTURE_EVERY_PHYSICS := 1
 
 const RECORD_TAIL_PHYSICS := 60
@@ -57,21 +59,17 @@ const EDITOR_REPLY_TIMEOUT_MS := 3000
 const MAX_FRAMES := 9000
 
 const OVERLAY_LAYER := 128
-const OVERLAY_PAD := 24.0
 const CHIP_HEIGHT := 34.0
 const CAPTION_FONT_SIZE := 28
 const CAPTION_FONT_MIN := 16
 const CHIP_FONT_SIZE := 22
 const CAPTION_PANEL_COLOR := Color(0.05, 0.06, 0.09, 0.72)
 const CHIP_PANEL_COLOR := Color(0.06, 0.07, 0.10, 0.82)
-const CAPTION_SUB_FONT_SIZE := 20
 const CHIP_ROW_GAP := 62.0
 const HARNESS_GROUP := "ziva_input_harness"
-const REC_COLOR := Color(0.86, 0.13, 0.15)
 const CURSOR_COLOR := Color(1.0, 0.95, 0.4)
-const TRAIL_COLOR := Color(1.0, 0.85, 0.2, 0.55)
-const RIPPLE_MS := 450
-const TRAIL_POINTS := 40
+const MOUSE_SHOWN_MS := 1000
+const HIDDEN_CURSOR := Vector2i(-9999, -9999)
 const MOUSE_LABELS := {
 	MOUSE_BUTTON_LEFT: "LMB", MOUSE_BUTTON_RIGHT: "RMB", MOUSE_BUTTON_MIDDLE: "MMB"
 }
@@ -113,15 +111,14 @@ var _overlay: CanvasLayer = null
 var _overlay_draw: Node2D = null
 var _intent := ""
 var _held: Dictionary = {}
+var _received: Dictionary = {}
+var _mouse_used_ms := -MOUSE_SHOWN_MS
 var _caption_fit: Dictionary = {}
 var _session_goal := ""
-var _sig_cursor := Vector2i(-9999, -9999)
+var _sig_cursor := HIDDEN_CURSOR
 var _sig_held := -1
 var _sig_intent := -1
-var _sig_ripples := -1
 var _sig_frozen := false
-var _trail: Array = []
-var _ripples: Array = []
 var _speed_on := false
 var _speed: Dictionary = {}
 var _speed_monitors: Dictionary = {}
@@ -235,8 +232,7 @@ func _inject(event: InputEvent) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if not _record_dir.is_empty():
-		_note_overlay_event(event)
+	_note_overlay_event(event)
 
 
 func _button_index(entry: Dictionary) -> MouseButton:
@@ -1049,11 +1045,6 @@ func _tick_recorder(delta: float) -> void:
 			_overlay_draw.queue_redraw()
 		return
 	_record_live_ms += delta * 1000.0
-	var cursor: Vector2 = get_viewport().get_mouse_position()
-	if _trail.is_empty() or (_trail[-1] as Vector2).distance_squared_to(cursor) > 4.0:
-		_trail.append(cursor)
-		if _trail.size() > TRAIL_POINTS:
-			_trail.remove_at(0)
 	if _overlay_dirty():
 		_overlay_draw.queue_redraw()
 	if _capturing:
@@ -1151,6 +1142,10 @@ func _build_overlay() -> void:
 
 
 func _note_overlay_event(event: InputEvent) -> void:
+	if event is InputEventMouse:
+		_mouse_used_ms = Time.get_ticks_msec()
+		if event is InputEventMouseMotion:
+			_received["mouse motion"] = true
 	var label := ""
 	var pressed := false
 	if event is InputEventKey:
@@ -1164,8 +1159,6 @@ func _note_overlay_event(event: InputEvent) -> void:
 		var button: InputEventMouseButton = event
 		label = String(MOUSE_LABELS.get(button.button_index, "mouse %d" % button.button_index))
 		pressed = button.pressed
-		if pressed:
-			_ripples.append([get_viewport().get_mouse_position(), Time.get_ticks_msec()])
 	elif event is InputEventAction:
 		var action: InputEventAction = event
 		label = String(action.action)
@@ -1176,112 +1169,73 @@ func _note_overlay_event(event: InputEvent) -> void:
 		return
 	if pressed:
 		_held[label] = true
+		_received[label] = true
 	else:
 		_held.erase(label)
+
+
+func _mouse_shown() -> bool:
+	return (
+		Time.get_ticks_msec() - _mouse_used_ms < MOUSE_SHOWN_MS
+		or MOUSE_LABELS.values().any(func(label: String) -> bool: return _held.has(label))
+	)
 
 
 func _draw_overlay() -> void:
 	var size: Vector2 = get_viewport().get_visible_rect().size
 	var font: Font = ThemeDB.fallback_font
 
-	if _trail.size() > 1:
-		_overlay_draw.draw_polyline(PackedVector2Array(_trail), TRAIL_COLOR, 3.0)
-	var now := Time.get_ticks_msec()
-	var alive: Array = []
-	for ripple in _ripples:
-		var age: float = float(now - int(ripple[1])) / float(RIPPLE_MS)
-		if age > 1.0:
-			continue
-		alive.append(ripple)
-		_overlay_draw.draw_arc(
-			ripple[0], 12.0 + age * 48.0, 0.0, TAU, 32, Color(CURSOR_COLOR, 1.0 - age), 3.0
-		)
-	_ripples = alive
-	var cursor: Vector2 = get_viewport().get_mouse_position()
-	_overlay_draw.draw_arc(cursor, 14.0, 0.0, TAU, 24, CURSOR_COLOR, 3.0)
-	_overlay_draw.draw_line(cursor - Vector2(22, 0), cursor + Vector2(22, 0), CURSOR_COLOR, 2.0)
-	_overlay_draw.draw_line(cursor - Vector2(0, 22), cursor + Vector2(0, 22), CURSOR_COLOR, 2.0)
+	if _mouse_shown():
+		var cursor: Vector2 = get_viewport().get_mouse_position()
+		_overlay_draw.draw_arc(cursor, 14.0, 0.0, TAU, 24, CURSOR_COLOR, 3.0)
+		_overlay_draw.draw_line(cursor - Vector2(22, 0), cursor + Vector2(22, 0), CURSOR_COLOR, 2.0)
+		_overlay_draw.draw_line(cursor - Vector2(0, 22), cursor + Vector2(0, 22), CURSOR_COLOR, 2.0)
 
-	var goal := _intent
-	if goal.is_empty():
-		goal = ("GOAL: " + _session_goal) if not _session_goal.is_empty() else "no stated goal"
-	var under := (
-		"paused between actions - Ziva is deciding what to do next"
-		if _frozen
-		else _input_line(cursor)
-	)
+	var caption := _intent
+	if _frozen:
+		caption = "Paused - Ziva is deciding what to do next"
+	elif caption.is_empty():
+		caption = ("GOAL: " + _session_goal) if not _session_goal.is_empty() else "no stated goal"
 	var pad := 22.0
-	var goal_size := _fit_caption(font, goal, size.x - 120.0, CAPTION_FONT_SIZE)
-	var under_size := CAPTION_SUB_FONT_SIZE
-	var goal_w: float = font.get_string_size(goal, HORIZONTAL_ALIGNMENT_LEFT, -1, goal_size).x
-	var under_w: float = font.get_string_size(under, HORIZONTAL_ALIGNMENT_LEFT, -1, under_size).x
-	var block_w: float = maxf(goal_w, under_w) + pad * 2.0
-	var block_h: float = float(goal_size) + float(under_size) + pad * 2.0
-	var bx: float = (size.x - block_w) * 0.5
-	var by: float = size.y - CHIP_ROW_GAP - block_h
-	_overlay_draw.draw_rect(Rect2(bx, by, block_w, block_h), CAPTION_PANEL_COLOR)
-	_overlay_draw.draw_rect(Rect2(bx, by, 3.0, block_h), REC_COLOR)
+	var caption_size := _fit_caption(font, caption, size.x - 120.0, CAPTION_FONT_SIZE)
+	var caption_w: float = font.get_string_size(
+		caption, HORIZONTAL_ALIGNMENT_LEFT, -1, caption_size
+	).x
+	var block := Rect2(0.0, 0.0, caption_w + pad * 2.0, float(caption_size) + pad * 2.0)
+	block.position = Vector2((size.x - block.size.x) * 0.5, size.y - CHIP_ROW_GAP - block.size.y)
+	_overlay_draw.draw_rect(block, CAPTION_PANEL_COLOR)
 	_overlay_draw.draw_string(
-		font, Vector2(bx + pad, by + pad + float(goal_size) * 0.78), goal,
-		HORIZONTAL_ALIGNMENT_LEFT, -1, goal_size, Color(0.99, 0.95, 0.74)
-	)
-	_overlay_draw.draw_string(
-		font, Vector2(bx + pad, by + pad + float(goal_size) + float(under_size) * 0.82), under,
-		HORIZONTAL_ALIGNMENT_LEFT, -1, under_size, Color(0.74, 0.87, 0.99)
+		font, block.position + Vector2(pad, pad + float(caption_size) * 0.78), caption,
+		HORIZONTAL_ALIGNMENT_LEFT, -1, caption_size, Color(0.99, 0.95, 0.74)
 	)
 
-	var labels: Array = _held.keys()
-	if not labels.is_empty():
-		var widths: Array = []
-		var total := 0.0
-		for label in labels:
-			var w: float = font.get_string_size(
-				String(label), HORIZONTAL_ALIGNMENT_LEFT, -1, CHIP_FONT_SIZE
-			).x + 30.0
-			widths.append(w)
-			total += w + 10.0
-		var cx: float = (size.x - total) * 0.5
-		for i in range(labels.size()):
-			var w2: float = widths[i]
-			var chip := Rect2(cx, size.y - CHIP_ROW_GAP + 14.0, w2, CHIP_HEIGHT)
-			_overlay_draw.draw_rect(chip, CHIP_PANEL_COLOR)
-			_overlay_draw.draw_rect(chip, CURSOR_COLOR, false, 2.0)
-			_overlay_draw.draw_string(
-				font, Vector2(cx + 15.0, chip.position.y + 24.0), String(labels[i]),
-				HORIZONTAL_ALIGNMENT_LEFT, -1, CHIP_FONT_SIZE, Color(1, 1, 1, 0.97)
-			)
-			cx += w2 + 10.0
-
-	var rec_y := size.y - OVERLAY_PAD - 7.0
-	_overlay_draw.draw_circle(
-		Vector2(OVERLAY_PAD + 7.0, rec_y), 7.0,
-		Color(0.55, 0.55, 0.6) if _frozen else REC_COLOR
-	)
-	var rec_label := "PAUSED" if _frozen else "REC"
+	if _held.is_empty():
+		return
+	var keys := " + ".join(PackedStringArray(_held.keys()))
+	var w: float = font.get_string_size(keys, HORIZONTAL_ALIGNMENT_LEFT, -1, CHIP_FONT_SIZE).x + 30.0
+	var chip := Rect2((size.x - w) * 0.5, size.y - CHIP_ROW_GAP + 14.0, w, CHIP_HEIGHT)
+	_overlay_draw.draw_rect(chip, CHIP_PANEL_COLOR)
+	_overlay_draw.draw_rect(chip, CURSOR_COLOR, false, 2.0)
 	_overlay_draw.draw_string(
-		font, Vector2(OVERLAY_PAD + 23.0, rec_y + 8.0), rec_label,
-		HORIZONTAL_ALIGNMENT_LEFT, -1, CHIP_FONT_SIZE, Color(0, 0, 0, 0.55)
-	)
-	_overlay_draw.draw_string(
-		font, Vector2(OVERLAY_PAD + 22.0, rec_y + 7.0), rec_label,
-		HORIZONTAL_ALIGNMENT_LEFT, -1, CHIP_FONT_SIZE, Color(1, 1, 1, 0.93)
+		font, chip.position + Vector2(15.0, 24.0), keys,
+		HORIZONTAL_ALIGNMENT_LEFT, -1, CHIP_FONT_SIZE, Color(1, 1, 1, 0.97)
 	)
 
 
 func _overlay_dirty() -> bool:
-	var cursor: Vector2i = Vector2i(get_viewport().get_mouse_position())
+	var cursor := (
+		Vector2i(get_viewport().get_mouse_position()) if _mouse_shown() else HIDDEN_CURSOR
+	)
 	if (
 		cursor == _sig_cursor
 		and _held.size() == _sig_held
 		and _intent.length() == _sig_intent
-		and _ripples.size() == _sig_ripples
 		and _frozen == _sig_frozen
 	):
 		return false
 	_sig_cursor = cursor
 	_sig_held = _held.size()
 	_sig_intent = _intent.length()
-	_sig_ripples = _ripples.size()
 	_sig_frozen = _frozen
 	return true
 
@@ -1299,11 +1253,6 @@ func _fit_caption(font: Font, text: String, limit: float, base: int) -> int:
 		_caption_fit.clear()
 	_caption_fit[key] = size_px
 	return size_px
-
-
-func _input_line(cursor: Vector2) -> String:
-	var held := "nothing held" if _held.is_empty() else ", ".join(PackedStringArray(_held.keys()))
-	return "game receives: %s | pointer %d,%d" % [held, int(cursor.x), int(cursor.y)]
 
 
 func _drag_point(entry: Dictionary, key: String) -> Variant:
@@ -1655,8 +1604,29 @@ func _run_drive_body(runner: RefCounted, api: DriveApi, done: Dictionary) -> voi
 	done["finished"] = true
 
 
+func _rendered_on(start_ms: int, start_drawn: int, start_physics: int) -> String:
+	var seconds := maxf((Time.get_ticks_msec() - start_ms) / 1000.0, 0.001)
+	var fps := roundi((Engine.get_frames_drawn() - start_drawn) / seconds)
+	var adapter := RenderingServer.get_video_adapter_name()
+	var cpu := RenderingServer.get_video_adapter_type() == RenderingDevice.DEVICE_TYPE_CPU
+	for software in SOFTWARE_ADAPTERS:
+		cpu = cpu or adapter.to_lower().contains(software)
+	var text := "%s at %d frames per second" % [adapter, fps]
+	if cpu:
+		var speed := (Engine.get_physics_frames() - start_physics) / float(Engine.physics_ticks_per_second) / seconds
+		text = (
+			"the CPU (%s), not a GPU, at %d frames per second, so the game ran at %.2fx real time "
+			% [adapter, fps, speed]
+			+ "and a drive's %ds clock covers about %ds of play"
+			% [UNTIL_WALL_CLOCK_BUDGET_MS / 1000, roundi(speed * UNTIL_WALL_CLOCK_BUDGET_MS / 1000)]
+		)
+	print("ziva_input_harness: drive rendered on " + text)
+	return text
+
+
 func _op_drive(msg: Dictionary) -> Dictionary:
 	_intent = String(msg.get("intent", ""))
+	_received = {}
 	var source := String(msg.get("source", ""))
 	if source.strip_edges().is_empty():
 		return {"ok": false, "error": "game_drive needs `source`: the statements of a GDScript function body"}
@@ -1674,6 +1644,8 @@ func _op_drive(msg: Dictionary) -> Dictionary:
 	var runner: RefCounted = (compiled as GDScript).new()
 	var api := DriveApi.new(self, maxi(int(msg.get("max_physics_frames", 600)), 1))
 	var start := Engine.get_physics_frames()
+	var start_ms := Time.get_ticks_msec()
+	var start_drawn := Engine.get_frames_drawn()
 	_thaw()
 	var done := {"finished": false, "returned": null}
 	_run_drive_body(runner, api, done)
@@ -1708,11 +1680,14 @@ func _op_drive(msg: Dictionary) -> Dictionary:
 		released.append(label)
 	if not released.is_empty():
 		await get_tree().physics_frame
+	var rendered_on := _rendered_on(start_ms, start_drawn, start)
 	_freeze()
 	var reply := {
 		"ok": api.fault == "",
 		"calls": api.calls,
 		"physics_frames": Engine.get_physics_frames() - start,
+		"rendered_on": rendered_on,
+		"game_received": _received.keys(),
 	}
 	if not api.logs.is_empty():
 		reply["log"] = api.logs
@@ -1720,7 +1695,8 @@ func _op_drive(msg: Dictionary) -> Dictionary:
 		reply["released_at_end"] = released
 	if api.fault != "":
 		reply["error"] = (
-			api.fault + " | last calls: " + _capped(JSON.stringify(api.calls.slice(-DRIVE_FAULT_CALLS)))
+			api.fault + " | rendered on " + rendered_on + " | last calls: "
+			+ _capped(JSON.stringify(api.calls.slice(-DRIVE_FAULT_CALLS)))
 		)
 	else:
 		reply["returned"] = _jsonable(returned)

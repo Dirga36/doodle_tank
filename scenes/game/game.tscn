@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dnbjuvow8mb7t" path="res://scenes/windows/pause_menu.tscn" id="3_5jirj"]
 [ext_resource type="PackedScene" uid="uid://c50tl5xtmg1ad" path="res://scenes/game/hud/hud.tscn" id="4_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://rkcf0x7y6x5o" path="res://scenes/game/map/map.tscn" id="4_lfrn8"]
-[ext_resource type="PackedScene" uid="uid://bnb74kakdh20r" path="res://scenes/game/player/Player.tscn" id="5_5i0tg"]
+[ext_resource type="PackedScene" uid="uid://b6y4kvfi2hmrk" path="res://scenes/game/player/tank_variants/fv214/fv214.tscn" id="5_otnwt"]
 [ext_resource type="Script" uid="uid://4nkpv6xboiyc" path="res://scenes/game/scripts/enemy_spawner/enemy_spawner.gd" id="6_otnwt"]
 [ext_resource type="Script" uid="uid://cghg8xwlea0l5" path="res://scenes/game/scripts/enemy_spawner/enemy_spawn_entry.gd" id="7_3xj4h"]
 [ext_resource type="Script" uid="uid://bmlwpkrav3q56" path="res://addons/maaacks_game_template/extras/scripts/win_lose_manager.gd" id="7_bdhmt"]
@@ -51,7 +51,9 @@ game_timer = NodePath("../../../../../../GameTimer")
 
 [node name="WorldContainer" type="Node" parent="." unique_id=1518243678]
 
-[node name="Player" parent="WorldContainer" unique_id=1542430198 instance=ExtResource("5_5i0tg")]
+[node name="Player" type="Node2D" parent="WorldContainer" unique_id=712695517]
+
+[node name="Fv214" parent="WorldContainer/Player" unique_id=1542430198 instance=ExtResource("5_otnwt")]
 position = Vector2(2048, 2048)
 
 [node name="EnemySpawner" type="Node" parent="WorldContainer" unique_id=1735956272 node_paths=PackedStringArray("tile_map_layer", "player")]
@@ -73,7 +75,7 @@ game_lost_scene = ExtResource("9_kp23o")
 [node name="GoalManager" type="Node" parent="." unique_id=1125904230]
 script = ExtResource("8_87uf6")
 
-[connection signal="player_died" from="WorldContainer/Player" to="GoalManager" method="_on_player_player_died"]
+[connection signal="player_died" from="WorldContainer/Player/Fv214" to="GoalManager" method="_on_player_died"]
 
 [editable path="Hud"]
 [editable path="WorldContainer/Map"]

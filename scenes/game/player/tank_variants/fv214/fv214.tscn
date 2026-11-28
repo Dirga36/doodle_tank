@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b6y4kvfi2hmrk"]
+
+[ext_resource type="PackedScene" uid="uid://bnb74kakdh20r" path="res://scenes/game/player/tank_base/tank_base.tscn" id="1_b1w6c"]
+[ext_resource type="Texture2D" uid="uid://us565go3vskx" path="res://scenes/game/player/tank_variants/fv214/fv214_body.png" id="2_fjsg6"]
+[ext_resource type="Texture2D" uid="uid://c0m60p3sgw7cr" path="res://scenes/game/player/tank_variants/fv214/fv214_main_cannon.png" id="3_h417o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vivr"]
+size = Vector2(24, 16)
+
+[node name="Fv214" unique_id=1542430198 instance=ExtResource("1_b1w6c")]
+
+[node name="Body" parent="." index="0" unique_id=1570839702]
+texture = ExtResource("2_fjsg6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1" unique_id=1711052218]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_1vivr")
+
+[node name="Sprite2D" parent="MainCannon" parent_id_path=PackedInt32Array(882763557) index="0" unique_id=742158677]
+texture = ExtResource("3_h417o")
+
+[node name="Marker2D" parent="MainCannon" parent_id_path=PackedInt32Array(882763557) index="2" unique_id=1669542452]
+position = Vector2(27, 0)
+
+[node name="FiringEffect" parent="MainCannon/Marker2D" index="0" unique_id=1964081938]
+position = Vector2(-1, 0)
+
+[editable path="MainCannon"]

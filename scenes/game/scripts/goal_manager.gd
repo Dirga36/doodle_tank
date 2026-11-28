@@ -17,7 +17,7 @@ func _process(_delta: float) -> void:
 		_record_bolts()
 
 
-func _on_player_player_died() -> void:
+func _on_player_died() -> void:
 	print("LOSE")
 	win_lose_manager.game_lost()
 	_record_bolts()
@@ -28,3 +28,7 @@ func _record_bolts() -> void:
 	var game_state: GameState = GameState.get_or_create_state()
 	game_state.total_bolts += bolts_gained
 	GlobalState.save()
+
+
+func _on_fv_214_player_died() -> void:
+	pass # Replace with function body.

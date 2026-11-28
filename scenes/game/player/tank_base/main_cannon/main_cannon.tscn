@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://x4cuqvqshld"]
 
-[ext_resource type="Script" uid="uid://cca0akmqunw5o" path="res://scenes/game/player/main_cannon/main_cannon.gd" id="1_th3vg"]
-[ext_resource type="Texture2D" uid="uid://dhimrgwsd5tlo" path="res://scenes/game/player/main_cannon/main_cannon.png" id="2_th3vg"]
+[ext_resource type="Script" uid="uid://cca0akmqunw5o" path="res://scenes/game/player/tank_base/main_cannon/main_cannon.gd" id="1_th3vg"]
 [ext_resource type="PackedScene" uid="uid://b717c3fbmunui" path="res://scenes/game/VFX/cannon_firing.tscn" id="4_mkcoo"]
 [ext_resource type="PackedScene" uid="uid://373ios23v4n1" path="res://scenes/game/SFX/cannon1.tscn" id="4_qftx8"]
 
@@ -50,7 +49,6 @@ script = ExtResource("1_th3vg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=742158677]
 texture_filter = 1
-texture = ExtResource("2_th3vg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=1897184259]
 libraries/ = SubResource("AnimationLibrary_qftx8")
@@ -61,7 +59,6 @@ visible = false
 shape = SubResource("CircleShape2D_j0ebl")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1669542452]
-position = Vector2(24, 0)
 
 [node name="FiringEffect" parent="Marker2D" unique_id=1964081938 instance=ExtResource("4_mkcoo")]
 unique_name_in_owner = true

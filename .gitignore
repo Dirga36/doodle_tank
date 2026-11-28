@@ -30,6 +30,7 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+.mcp.json
 
 # Environment variables & secrets (if using APIs / custom tools)
 .env

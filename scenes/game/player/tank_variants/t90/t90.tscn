@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://h0rlec6avb37"]
+
+[ext_resource type="PackedScene" uid="uid://bnb74kakdh20r" path="res://scenes/game/player/tank_base/tank_base.tscn" id="1_6s08c"]
+[ext_resource type="Texture2D" uid="uid://b3opqe1x84q13" path="res://scenes/game/player/tank_variants/t90/t90_body.png" id="2_33k8w"]
+[ext_resource type="Texture2D" uid="uid://bodjfbey7c5ga" path="res://scenes/game/player/tank_variants/t90/t90_main_cannon.png" id="3_ia87j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vrlf"]
+size = Vector2(21, 12)
+
+[node name="T90" unique_id=1542430198 instance=ExtResource("1_6s08c")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0" unique_id=596765397]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_8vrlf")
+
+[node name="Body" parent="." index="1" unique_id=1570839702]
+texture = ExtResource("2_33k8w")
+
+[node name="Sprite2D" parent="MainCannon" parent_id_path=PackedInt32Array(882763557) index="0" unique_id=742158677]
+texture = ExtResource("3_ia87j")
+
+[node name="Marker2D" parent="MainCannon" parent_id_path=PackedInt32Array(882763557) index="2" unique_id=1669542452]
+position = Vector2(19, 0)
+
+[node name="CameraComponent" parent="." index="5" unique_id=460608095]
+max_zoom = 5.5
+
+[editable path="MainCannon"]
