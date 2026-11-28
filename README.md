@@ -32,7 +32,7 @@ Doodle Tank is a 2D survival and twin-stick tank game built with Godot 4. Surviv
 2. Open the project in Godot:
 
    ```powershell
-   & "Godot_v4.7.2-stable_win64.exe" --path . --editor
+   & "C:\Users\*\Godot_v4.7.2-stable_win64.exe" --path . --editor
    ```
 
 3. Press **F5** or open the opening scene at `res://scenes/opening/opening.tscn`.
@@ -55,10 +55,10 @@ Run these commands from the repository root in PowerShell.
 
 | Task | Command | Description |
 | --- | --- | --- |
-| Open editor | `& "C:\Users\Admin\Desktop\Godot_v4.7.2-stable_win64.exe" --path . --editor` | Opens the Godot project editor |
-| Run project | `& "C:\Users\Admin\Desktop\Godot_v4.7.2-stable_win64.exe" --path .` | Starts the configured opening scene |
-| Run gameplay | `& "C:\Users\Admin\Desktop\Godot_v4.7.2-stable_win64.exe" --path . res://scenes/game/game.tscn` | Starts the single gameplay scene directly |
-| Export Windows | `& "C:\Users\Admin\Desktop\Godot_v4.7.2-stable_win64.exe" --headless --path . --export-release "Windows Desktop" "build\DoodleTank.exe"` | Creates a Windows export |
+| Open editor | `& "C:\Users\*\Godot_v4.7.2-stable_win64.exe" --path . --editor` | Opens the Godot project editor |
+| Run project | `& "C:\Users\*\Godot_v4.7.2-stable_win64.exe" --path .` | Starts the configured opening scene |
+| Run gameplay | `& "C:\Users\*\Godot_v4.7.2-stable_win64.exe" --path . res://scenes/game/game.tscn` | Starts the single gameplay scene directly |
+| Export Windows | `& "C:\Users\*\Godot_v4.7.2-stable_win64.exe" --headless --path . --export-release "Windows Desktop" "build\DoodleTank.exe"` | Creates a Windows export |
 
 There is currently no automated test suite. Verify changes in the Godot editor and by running the gameplay scene.
 
